@@ -52,7 +52,7 @@
         <div class="row" id="header-row">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-11" id="title-span">
+              <div class="col-md-12" id="title-span">
                 <h1><a class="azbr-color" href="<?php echo baseHref; ?>"><em>Arizona Border Region</em></a>
                   <small class="pull-right">
                     The Tucson & Southern Arizona Region of the Sports Car Club of America since 1959
@@ -67,7 +67,7 @@
       
         <!-- navbar -->
         <div class="navbar navbar-inverse" role="navigation">
-          <div class="container">
+          <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -152,10 +152,12 @@
                   </ul>
                 </li>
                 <!-- scca dropdown -->
-
               </ul>
+              <p class="navbar-text navbar-right">
+                <a href="http://www.scca.com/about/index.cfm?cid=44704"><strong><em>Join the SCCA Today!</em></strong></a>
+              </p>
             </div><!-- / nav-collapse -->
-          </div><!-- / container  -->
+          </div><!-- / container-fluid  -->
         </div>
         <!-- / navbar -->
 <?php

@@ -43,9 +43,9 @@ body {
   background-image:
     url( 'http://192.168.1.249/~jisrael/new.azbrscca.org/images/SCCA_50.png' );
   background-repeat: no-repeat;
-  background-position: left center;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  background-position: right center;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }    
 
 #title-span h1 {
@@ -58,13 +58,13 @@ body {
   font-size: 50%;
   color: #fff;
   padding: 8px;
-  text-shadow: 2px 2px #08c;
+  text-shadow: -2px 0 #777, 0 2px #777, 2px 0 #777, 0 -2px #777;
 }
 
 #title-span a:hover {
   color: #f8b20b;
   text-decoration: none;
-  text-shadow: 2px 2px #fff;
+  text-shadow: 1px 1px #fff;
 }
 
 #wrap {

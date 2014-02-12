@@ -8,7 +8,7 @@
 
     <div class="container">
       <div id="footer-row">
-        <em>&copy Arizona Border Region</em>
+        <em>&copy; Arizona Border Region</em>
       </div>
     </div>
     
@@ -115,7 +115,7 @@
                     <li><a href="#">2014 SCCA Rallycross Rules</a></li>
 
                     <li class="divider"></li>
-                    <li><a href=""<?php echo baseHref; ?>roadrally">Road Rally</a></li>
+                    <li><a href="<?php echo baseHref; ?>roadrally">Road Rally</a></li>
                   </ul>
                 </li>
 

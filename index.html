@@ -1,7 +1,59 @@
 <?php
   require_once "common/Common.php";
 
-  Display::open_page();
+  require_once "Events.php";
 
+  Display::open_page();
+?>
+        <div class="row">
+
+          <div class="col-md-7">
+            <h2 class="azbr-color"><em>Autocross</em></h2>
+            <div class="well well-small">
+              <?php Events::upcoming_block(); ?>
+              <?php Events::past_tabs(); ?>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <h2 class="azbr-color"><em>Region #88</em></h2>
+            <div class="well well-small">
+              <div class="row">
+                <div class="col-xs-6 col-md-8">
+                  The Sports Car Club of America is represented in the Tucson and southern Arizona area
+                  by the Arizona Border Region, region #88, which is part of the larger SCCA Southern
+                  Pacific Division. The Arizona Border region host Solo events, more commonly referred
+                  to as autocross, we also have Rallycross events and Road Rally events. The Region also
+                  holds monthly board meetings, typically the first Tuesday of each month, which are open
+                  to anyone interested in the SCCA, autocross, or the Region's activities. A complete
+                  schedule of our events and board meetings can be found on the event calendar.
+                </div>
+                <div class="col-xs-6 col-md-4">
+                  <a href="<?php echo baseHref; ?>about/" class="thumbnail">
+                    <img src="<?php echo baseHref; ?>images/logo-small.png" />
+                  </a>
+
+                  <a class="btn btn-info btn-block" href="<?php echo baseHref; ?>about/">
+                    Read More <i class="fa fa-angle-double-right"></i>
+                  </a>
+
+                  <hr/>
+
+                  <a class="btn btn-default btn-sm btn-block" href="http://twitter.com/azbrscca">
+                    <i class="fa fa-twitter"></i> @azbrscca
+                  </a>
+                  <a class="btn btn-default btn-sm btn-block" href="http://www.facebook.com/azbrscca">
+                    <i class="fa fa-thumbs-o-up"></i> on
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- / row -->
+
+<?php
   Display::close_page();
 ?>

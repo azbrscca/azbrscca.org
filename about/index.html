@@ -1,0 +1,53 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+?>
+
+        <h2 class="page-header azbr-color">The Arizona Border Region</h2>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="well well-small">
+              <p>
+                The Sports Car Club of America is represented in the Tucson and southern Arizona area
+                by the Arizona Border Region, region #88, which is part of the larger SCCA Southern
+                Pacific Division. The Arizona Border region's primary activity is Solo events, more
+                commonly referred to as autocross. We also sanction rallycross events in conjuntion
+                with Arizona Rally Group and host regional road rally events. Monthly board meetings
+                are open to anyone and are typically the first Tuesday of every month.
+              </p>
+              <p>
+                A complete schedule of our events and board meetings can be found on the event calendar.
+              </p>
+              <p>
+                Competition is not limited to SCCA members as the organization offers a weekend/temporary
+                membership for those who would like to compete but who have not yet joined the SCCA. All
+                that is required to participate is a driver's license, a nominally safe car that can pass
+                a straightfoward tech inspection, and a helmet (loaners are available at no cost). Event
+                registration fees are discounted for SCCA members and for those that pre-register online.
+              </p>
+
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <ul class="nav nav-pills">
+                    <li><a href="<?php echo baseHref; ?>calendar.html">Event Calendar</a></li>
+                    <li><a href="<?php echo baseHref; ?>about/board.html">Board Members</a></li>
+                    <li><a href="<?php echo baseHref; ?>documents/articles.pdf">Articles of Incorporation</a></li>
+                    <li><a href="<?php echo baseHref; ?>documents/bylaws.pdf">Bylaws</a>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <a href="<?php echo baseHref; ?>about/" class="thumbnail">
+              <img src="<?php echo baseHref; ?>images/logo-large.png" />
+            </a>
+          </div>
+        </div>
+
+<?php
+  Display::close_page();
+?>

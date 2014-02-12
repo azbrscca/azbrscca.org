@@ -79,41 +79,45 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
 
-                <!-- events dropdown -->
+                <!-- autox dropdown -->
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event Information <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autocross <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?php echo baseHref; ?>events/calendar.php">Event Calendar</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Tucson Autocross</li>
-                    <li><a href="<?php echo baseHref; ?>autocross/entryfees.html">Entry Fees</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/site.html">Site Information</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/calendar.html">Event Calendar</a></li>
+                    <li><a href="<?php echo baseHref; ?>events/info.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/supplimentals.html">Supplimental Regulations</a></li>
-                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Forums</a></li>
-                    <li><a href="http://www.azsolo.zenfolio.com/">Photos</a></li>
-                    <li><a href="<?php echo baseHref; ?>results/">Results</a></li>
+                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forums</a></li>
                     <li class="divider"></li>
-                    <li class="dropdown-header">Tucson Rallycross</li>
-                    <li><a href="http://www.arizonarallygroup.com/">AZ Rally Group</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">More Autocross in AZ</li>
-                    <li><a href="http://www.azsolo.com/">Arizona Region (Phoenix)</a></li>
-                    <li><a href="http://www.sierrasportscars.net/">Sierra Sports Car Club</a></li>
-                  </ul>
-                </li>
-                <!-- / events dropdown -->
+                    <li><a href="<?php echo baseHref; ?>courses/">Course Map Archive</a></li>
+                    <li><a href="http://www.azsolo.zenfolio.com/">Event Photos</a></li>
+                    <li><a href="<?php echo baseHref; ?>results/">Event Results</a></li>
 
-                <!-- autocross dropdown -->
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autocross Information<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
                     <li><a href="<?php echo baseHref; ?>events/2013SoloRules.pdf">2013 SCCA Solo Rules</a></li>
                     <li><a href="http://www.moutons.org/sccasolo/Lists/">Car Classification Help</a></li>
                     <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/pax/index.html">PAX/RTP Factors</a></li>
+
+                    <li class="divider"></li>
+                    <li class="dropdown-header">More Arizona Autocross</li>
+                    <li><a href="http://www.azsolo.com/">Arizona Region (Phoenix)</a></li>
+                    <li><a href="http://www.sierrasportscars.net/">Sierra Sports Car Club</a></li>
                   </ul>
-                </li>                
-                <!-- / autocross dropdown -->
+                </li>
+                <!-- / autox dropdown -->
+
+                <!-- rally & rallyx dropdown -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rallycross &amp; Road Rally  <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-header">Rallycross</li>
+                    <li><a href="http://www.arizonarallygroup.com/">AZ Rally Group</a></li>
+                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forums</a></li>
+                    <li><a href="#">2014 SCCA Rallycross Rules</a></li>
+
+                    <li class="divider"></li>
+                    <li><a href=""<?php echo baseHref; ?>roadrally">Road Rally</a></li>
+                  </ul>
+                </li>
 
                 <!-- azbr dropdown -->
                 <li class="dropdown">
@@ -121,18 +125,13 @@
                   <ul class="dropdown-menu">
                     <li><a href="<?php echo baseHref; ?>about/index.html">About Region #88</a></li>
                     <li><a href="<?php echo baseHref; ?>about/board2012.php">Board Members</a></li>
-                    <li><a href="<?php echo baseHref; ?>courses/">Course Map Archive</a></li>
                   </ul>
                 </li>
                 <!-- / azbr dropdown -->
 
                 <!-- sopac dropdown -->
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">SoPac Division <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="http://www.scca-sopac.org/">Division Website</a></li>
-                    <li><a href="http://www.facebook.com/pages/SCCA-Southern-Pacific-Division-SoPac/255426047137">SoPac Facebook</a></li>
-                  </ul>
+                  <a href="http://www.scca-sopac.org/" class="dropdown-toggle" data-toggle="dropdown">Southern Pacific Division</a>
                 </li>
                 <!-- / sopac dropdown -->
 

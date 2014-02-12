@@ -1,0 +1,38 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+
+  $json_string = MindTheCones::getRequest( "classes/" );
+  $scca_classes = json_decode( $json_string, true );
+
+  $pax_lookup = array();
+
+  var_dump( $scca_classes[0] );
+
+  foreach( $scca_classes as $scca_class ) {
+
+    $date_tokens = preg_split( "/-/", $scca_class[ 'date_effective' ] );
+    $year = $date_tokens[0];
+
+    if ( !array_key_exists( $year, $pax_lookup ) ) {
+      $pax_lookup[ $year ] = array();
+    }
+  }
+?>
+
+        <h2 class="page-header azbr-color">Autocross PAX/RTP Factors</h2>
+        <div class="row">
+          
+          <select>
+            <option value="">Select A Year</option>
+            <?php foreach( array_keys( $pax_lookup ) as $year ) { ?>
+            <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+            <?php } ?>
+          </select>
+
+        </div>
+
+<?php
+  Display::close_page();
+?>

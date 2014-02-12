@@ -1,0 +1,168 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+
+  $json_string = MindTheCones::getRequest( "events/calendar/2014/", array( 'public' => 1 ));
+  $events = json_decode( $json_string, true );
+?>
+
+        <h2 class="page-header azbr-color">Autocross Event Calendar</h2>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="well well-sm">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Event Date</th>
+                    <th> ! </th>
+                    <th>Online Registration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach( $events as $event ) { ?>
+                  <tr>
+                    <td>
+                      <?php echo date( "l, F j", $event[ 'date_ts' ] ); ?>
+                    </td>
+                    <td>
+                      <?php echo $event[ 'name' ]; ?>
+                    </td>
+                    <td>
+                      <?php echo $event[ 'registration_open' ]; ?>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="alert alert-info">
+              <h4 class="text-center">Schedule &amp; Run/Work Order</h4>
+              Below are the standard event schedules and run/work orders.
+              If we need to deviate from the standard schedule for any reason, we
+              will attempt to inform entrants via the front page of the website
+              or the forums.
+            </div>
+
+            <div class="well well-sm">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <p><strong>Fall &amp; Spring Series Events</strong></p>
+                  <p><em>January - April and September - December</em></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Site Open</div>
+                <div class="col-md-4">7:00am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Registration &amp; Tech Open</div>
+                <div class="col-md-4">7:45am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Registration Closes</div>
+                <div class="col-md-4">8:30am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Tech Closes</div>
+                <div class="col-md-4">8:45am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Novice Walk</div>
+                <div class="col-md-4">8:45am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8"><strong>Mandatory</strong> Drivers Meeting</div>
+                <div class="col-md-4">9:00am</div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <p>
+                    Run <span class="label label-info">A</span>
+                    Work <span class="label label-info">C</span>
+                  </p>
+                  <p>
+                    Run <span class="label label-info">B</span>
+                    Work <span class="label label-info">D</span>
+                  </p>
+                </div>
+                <div class="col-md-6 text-center">
+                  <p>
+                    Run <span class="label label-info">C</span>
+                    Work <span class="label label-info">A</span>
+                  </p>
+                  <p>
+                    Run <span class="label label-info">D</span>
+                    Work <span class="label label-info">B</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="well well-sm">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <p><strong>Summer Series Events</strong></p>
+                  <p><em>May - August</em></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Site Open</div>
+                <div class="col-md-4">6:30am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Registration &amp; Tech Open</div>
+                <div class="col-md-4">7:15am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Registration Closes</div>
+                <div class="col-md-4">8:00am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Tech Closes</div>
+                <div class="col-md-4">8:15am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">Novice Walk</div>
+                <div class="col-md-4">8:15am</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8"><strong>Mandatory</strong> Drivers Meeting</div>
+                <div class="col-md-4">8:30am</div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <p>
+                    Run <span class="label label-info">A</span>
+                    Work <span class="label label-info">B</span>
+                  </p>
+                  <p>
+                    Run <span class="label label-info">B</span>
+                    Work <span class="label label-info">A</span>
+                  </p>
+                </div>
+                <div class="col-md-6 text-center">
+                  <p>
+                    Run <span class="label label-info">C</span>
+                    Work <span class="label label-info">D</span>
+                  </p>
+                  <p>
+                    Run <span class="label label-info">D</span>
+                    Work <span class="label label-info">C</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+<?php
+  Display::close_page();
+?>

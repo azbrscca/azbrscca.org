@@ -6,10 +6,10 @@
   $json_string = MindTheCones::getRequest( "classes/" );
   $scca_classes = json_decode( $json_string, true );
 
+  $json_string = MindTheCones::getRequest( "classes/types" );
+  $class_types = json_decode( $json_string, true );
+
   $pax_lookup = array();
-
-  var_dump( $scca_classes[0] );
-
   foreach( $scca_classes as $scca_class ) {
 
     $date_tokens = preg_split( "/-/", $scca_class[ 'date_effective' ] );
@@ -18,21 +18,118 @@
     if ( !array_key_exists( $year, $pax_lookup ) ) {
       $pax_lookup[ $year ] = array();
     }
+
+    $pax_lookup[ $year ][ $scca_class[ 'id' ] ] = $scca_class;
+  }
+
+  $type_lookup = array();
+  foreach( $class_types as $type ) {
+    $type_lookup[ $type['id'] ] = $type[ 'type' ];
   }
 ?>
+        
+        <h2 class="page-header azbr-color">
+          Autocross PAX/RTP Factors
+          <small class="azbr-alt-color">
+            Professional Autocross indeX/Racers Theoretical Performance
+           </small>
+        </h2>
 
-        <h2 class="page-header azbr-color">Autocross PAX/RTP Factors</h2>
         <div class="row">
-          
-          <select>
-            <option value="">Select A Year</option>
-            <?php foreach( array_keys( $pax_lookup ) as $year ) { ?>
-            <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
-            <?php } ?>
-          </select>
+          <div class="col-md-3">
 
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div class="col-md-8">
+                  <select class="form-control" id="pax_year">
+                    <option value="0">Select A Year</option>
+                    <?php foreach( array_keys( $pax_lookup ) as $year ) { ?>
+                    <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-6">
+            <div id="pax-div">
+            </div>
+          </div>
         </div>
 
+        <script>
+          var scca_classes = $.parseJSON( '<?php echo addslashes( json_encode( $pax_lookup ) ); ?>' );
+          var class_types = $.parseJSON( '<?php echo addslashes( json_encode( $type_lookup ) ); ?>' );
+
+          $( "#pax_year" ).change( function() {
+            var cur_type = 0;
+            var key = $(this).val();
+            var pax_div = $("#pax-div");
+            pax_div.empty();
+
+            var panels = {}
+
+            if ( key == 0 ) {
+              return;
+            }
+
+            $.each( scca_classes[key], function( id, scca_class ) {
+
+              if ( panels[scca_class['type']] == undefined ) {
+                var panel = $("<div/>",{'class':"panel panel-info"});
+                panel.append(
+                  $("<div/>", {'class':"panel-heading"}).append(
+                    $("<h4/>", {'class':"panel-title"}).append(
+                      class_types[scca_class['type']]
+                    )
+                  )
+                ).append(
+                  $("<div/>",{'class':"panel-body"})
+                );
+                panels[scca_class['type']] = panel;
+              }
+
+              panel = panels[scca_class['type']]
+              var panel_body = panel.children(":last");
+              var row = $("<div/>",{'class':"row"});
+              row.append( 
+                $("<div/>",{'class':"col-md-5"}).html(
+                  scca_class['name']
+                ));
+              row.append( 
+                $("<div/>",{'class':"col-md-2"}).html(
+                  scca_class['initials']
+                ));
+              row.append( 
+                $("<div/>",{'class':"col-md-2"}).html(
+                  parseFloat(scca_class['pax']).toFixed(3)
+                ));
+
+              /*
+              var prev_class = scca_classes[parseInt(key)-1][scca_class['prev_id']];
+              if ( prev_class != undefined ) {
+                row.append( 
+                  $("<div/>",{'class':"col-md-1"}).html(
+                    parseFloat(prev_class['pax']).toFixed(3)
+                  )
+                );
+              }
+              */
+
+              panel_body.append(row);
+            });
+
+            $.each( panels, function(ndx,panel) {
+              pax_div.append(panel);
+            });
+
+          });
+
+          $("#pax_year").val(<?php echo date('Y',time());?>);
+          $("#pax_year").trigger('change');
+        </script>
+      
 <?php
   Display::close_page();
 ?>

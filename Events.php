@@ -22,32 +22,36 @@
                 <?php foreach( $events as $index => $event ) { ?>
 
                   <div class="tab-pane<?php if ( $index == 0 ) { echo " active"; } ?>" id="autocross-<?php echo $event[ 'id' ]; ?>">
-                    <h5>
-                      <?php echo date( "F j", $event[ 'date_ts' ] ); ?> 
-                      <?php if ( !empty( $event[ 'name' ] ) ) { echo $event[ 'name' ]; } ?>
-                      Autocross at <?php echo $event[ 'site_name' ]; ?>
-                    </h5>
-
-                    <?php if ( $event[ 'results' ] ) { ?>
-                    <p class="text-center">
-                      <a class="btn btn-info" href="<?php echo baseHref; ?>results">
-                        Results for this event are available online.
-                        <i class="icon-flag-checkered"></i>
-                      </a>
-                    </p>
-                    <?php } ?>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5>
+                          <?php echo date( "F j", $event[ 'date_ts' ] ); ?> 
+                          <?php if ( !empty( $event[ 'name' ] ) ) { echo $event[ 'name' ]; } ?>
+                          Autocross at <?php echo $event[ 'site_name' ]; ?>
+                        </h5>
+                      </div>
+                    
+                      <?php if ( $event[ 'results' ] ) { ?>
+                      <div class="col-md-4 text-right">
+                        <a class="btn btn-info" href="<?php echo baseHref; ?>autocross/results">
+                          View Results
+                          <i class="fa fa-angle-double-right"></i>
+                        </a>
+                      </div>
+                      <?php } ?>
+                    </div>
 
                     <?php
-                      $map = "courses/".date( "Y.m.d", $event[ 'date_ts' ] ).".jpg";
+                      $map = "autocross/courses/".date( "Y-m-d", $event[ 'date_ts' ] ).".jpg";
                       if ( file_exists( rootDir.$map ) ) {
                     ?>
-                    <ul class="thumbnails">
-                      <li class="col-md-12">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12">
                         <div class="thumbnail">
                           <img src="<?php echo baseHref.$map; ?>" />
                         </div>
-                      </li>
-                    </ul>
+                      </div>
+                    </div>
                     <?php
                       } // course map thumbnail 
                     ?>
@@ -107,6 +111,23 @@
 <?php   } ?>
           </div>
         </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="autox-carousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <?php $images = Functions::listFiles( "autocross/carousel", "jpg" ); ?>
+                <?php foreach( $images as $index => $image ) {  ?>
+                <div class="item<?php if ( $index == 0 ) { echo " active"; } ?>">
+                  <img alt="" src="<?php echo baseHref.$image; ?>" />
+                </div>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
       <hr/>
 <?php
       }

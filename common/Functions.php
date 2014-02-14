@@ -1,27 +1,27 @@
 <?php
   class Functions {
 
-  	public static function decodeJSONField( &$item, $key, $field ) {
-  	  $item[ $field ] = json_decode( $item[ $field ] );
-  	}
+    public static function decodeJSONField( &$item, $key, $field ) {
+      $item[ $field ] = json_decode( $item[ $field ] );
+    }
 
-	private static function removePrefix( &$item, $index, $start) {
-	  $item = substr( $item, $start );
-	}
+    private static function removePrefix( &$item, $index, $start) {
+      $item = substr( $item, $start );
+    }
 
     public static function listFiles( $dir, $ext = "*", $recursive = false ) {
       $files = glob( rootDir.$dir."/*".$ext );
-	  array_walk( $files, array( "Functions", "removePrefix" ), strlen( rootDir ) );
+      array_walk( $files, array( "Functions", "removePrefix" ), strlen( rootDir ) );
 
-	  if ( $recursive ) {
-		$subdirs = glob( rootDir.$dir."/*", GLOB_ONLYDIR );
-		array_walk( $subdirs, array( "Functions", "removePrefix" ), strlen( rootDir ) );
-		  foreach( $subdirs as $subdir ) {
-			$files = array_merge( $files, Functions::listFiles( $subdir, $ext, true ) );
-		  }
-	  }
+      if ( $recursive ) {
+        $subdirs = glob( rootDir.$dir."/*", GLOB_ONLYDIR );
+        array_walk( $subdirs, array( "Functions", "removePrefix" ), strlen( rootDir ) );
+        foreach( $subdirs as $subdir ) {
+          $files = array_merge( $files, Functions::listFiles( $subdir, $ext, true ) );
+        }
+      }
 
-	  return $files;
+      return $files;
     }
 
     public static function cleanArray( $dirtyArray ) {

@@ -14,7 +14,6 @@
     </div>
     -->
     
-    <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
   </body>
 </html>
 <?php
@@ -44,6 +43,7 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     -->
     <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
+    <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -90,15 +90,16 @@
                     <li><a href="<?php echo baseHref; ?>autocross/supplimental.html">Supplimental Regulations</a></li>
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forums</a></li>
                     <li class="divider"></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/results/">Event Results</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/courses/">Course Map Archive</a></li>
                     <li><a href="http://www.azsolo.zenfolio.com/">Event Photos</a></li>
-                    <li><a href="<?php echo baseHref; ?>results/">Event Results</a></li>
-                    <li><a href="<?php echo baseHref; ?>courses/">Course Map Archive</a></li>
 
-                    <li class="dropdown-header">Rules &
-                    <li><a href="<?php echo baseHref; ?>events/2013SoloRules.pdf">2013 SCCA Solo Rules</a></li>
-                    <li><a href="http://www.moutons.org/sccasolo/Lists/">Car Classification Help</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">SCCA Classing &amp; Rules</li>
+                    <li><a href="<?php echo baseHref; ?>autocross/2013SoloRules.pdf">2013 SCCA Solo Rules</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/pax.html">PAX/RTP Factors</a></li>
                     <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/pax/index.html">PAX/RTP Factors</a></li>
+                    <li><a href="http://www.moutons.org/sccasolo/Lists/">Car Classification Help</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">More Arizona Autocross</li>
@@ -117,6 +118,7 @@
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forums</a></li>
                     <li><a href="#">2014 SCCA Rallycross Rules</a></li>
 
+                    <li class="divider"></li>
                     <li class="dropdown-header">Road Rally</li>
                     <li><a href="<?php echo baseHref; ?>roadrally">Event Information</a></li>
                   </ul>
@@ -143,8 +145,9 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">SCCA<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="http://www.scca.org/">National Website</a></li>
-                    <li class="dropdown-header">Get a Membership</li>
+                    <li><a href="http://www.scca.org/">SCCA National Website</li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Become a Member</li>
                     <li><a href="http://www.scca.com/about/index.cfm?cid=44704">Membership Details</a></li>
                     <li><a href="http://ams.scca.com/netforum/eweb/firstgear.htm">First Gear</a></li>
                     <li><a href="http://ams.scca.com/netforum/eweb/ind.htm">Individual</a></li>

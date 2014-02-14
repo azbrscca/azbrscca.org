@@ -127,7 +127,8 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">AZ Border Region <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?php echo baseHref; ?>about/index.html">About Region #88</a></li>
-                    <li><a href="<?php echo baseHref; ?>about/board2012.php">Board Members</a></li>
+                    <li><a href="<?php echo baseHref; ?>about/board.html">Board Members</a></li>
+                    <li><a href="<?php echo baseHref; ?>about/meetings.html">Club Meetings</a></li>
                   </ul>
                 </li>
                 <!-- / azbr dropdown -->

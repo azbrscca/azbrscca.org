@@ -17,12 +17,20 @@
                   <tr>
                     <th>Event Date</th>
                     <th>Online Registration</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $found_next = false; ?>
                   <?php foreach( $events as $event ) { ?>
+
+                  <?php 
+                          if ( ( $event[ 'date_ts' ] > time() ) && !$found_next ) {
+                              $found_next = true;
+                  ?>
+                  <tr class="info">
+                  <?php } else { ?>
                   <tr>
+                  <?php } ?>
                     <td>
                       <p><?php echo date( "l, F j", $event[ 'date_ts' ] ); ?></p>
                       <?php if ( $event[ 'name' ] != "" ) { ?>
@@ -30,8 +38,25 @@
                       <?php } ?>
                     </td>
                     </td>
-                    <td><?php echo date( "l, F j, g:ia", $event[ 'registration_open_ts' ] ); ?></td>
-                    <td><?php echo $event[ 'status' ]; ?></td>
+                    <td>
+                    <?php if ( $event[ 'status' ] == "closed" ) { ?>
+                    <span class="text-danger">
+                      Closed at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>
+                    </span>
+                    <?php } else if ( $event[ 'status' ] == "will open" ) { ?>
+                    <span class="text-info">
+                      Opens at <?php echo date( "g:ia l, F j", $event[ 'registration_open_ts' ] ); ?>
+                    </span>
+                    <?php } else if ( $event[ 'status' ] == "open" ) { ?>
+                    <span class="text-success">
+                      <a class="btn btn-success btn-sm"
+                          href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>">
+                       Open Now!
+                     </a>
+                      Closes at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>
+                    </span>
+                    <?php } ?>
+                    </td>
                   </tr>
                   <?php } ?>
                 </tbody>

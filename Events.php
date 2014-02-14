@@ -89,16 +89,15 @@
 
 <?php   } else if ( $event[ 'status' ] == "open" ) { ?>
     
-            <h4 align="center" class="text-success">
+            <h4 class="text-success text-center">
               Online registration is open!
               <a class="btn btn-success" href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
-              <br/>
-              <small>
-                Online registration closes
-                <?php echo date( "l, F j, Y", $event[ 'registration_close_ts' ] ); ?> at 
-                <?php echo date( "h:i a", $event[ 'registration_close_ts' ] ); ?>.
-              </small>
             </h4>
+            <h5 class="text-center">
+              Online registration closes
+              <?php echo date( "l, F j, Y", $event[ 'registration_close_ts' ] ); ?> at 
+              <?php echo date( "g:i a", $event[ 'registration_close_ts' ] ); ?>.
+            </h5>
 
 <?php   } else if ( $event[ 'status' ] == "closed" ) { ?>
 

@@ -16,22 +16,22 @@
                 <thead>
                   <tr>
                     <th>Event Date</th>
-                    <th> ! </th>
                     <th>Online Registration</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach( $events as $event ) { ?>
                   <tr>
                     <td>
-                      <?php echo date( "l, F j", $event[ 'date_ts' ] ); ?>
+                      <p><?php echo date( "l, F j", $event[ 'date_ts' ] ); ?></p>
+                      <?php if ( $event[ 'name' ] != "" ) { ?>
+                      <p><em><?php echo $event[ 'name' ]; ?></em></p>
+                      <?php } ?>
                     </td>
-                    <td>
-                      <?php echo $event[ 'name' ]; ?>
                     </td>
-                    <td>
-                      <?php echo $event[ 'registration_open' ]; ?>
-                    </td>
+                    <td><?php echo date( "l, F j, g:ia", $event[ 'registration_open_ts' ] ); ?></td>
+                    <td><?php echo $event[ 'status' ]; ?></td>
                   </tr>
                   <?php } ?>
                 </tbody>
@@ -43,7 +43,7 @@
             <div class="alert alert-info">
               <h4 class="text-center">Schedule &amp; Run/Work Order</h4>
               Below are the standard event schedules and run/work orders.
-              If we need to deviate from the standard schedule for any reason, we
+              If we need to deviate from the standard schedule for any reason we
               will attempt to inform entrants via the front page of the website
               or the forums.
             </div>

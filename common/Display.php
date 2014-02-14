@@ -6,13 +6,14 @@
       </div> <!-- /container -->
     </div> <!-- /wrap -->
 
+    <!--
     <div class="container">
       <div id="footer-row">
         <em>&copy; Arizona Border Region</em>
       </div>
     </div>
+    -->
     
-    <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
     <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
   </body>
 </html>
@@ -42,6 +43,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     -->
+    <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
   </head>
 
   <body>
@@ -66,7 +68,7 @@
         <!-- / header-row -->
       
         <!-- navbar -->
-        <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar navbar-default" role="navigation">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -84,14 +86,15 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autocross <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?php echo baseHref; ?>autocross/calendar.html">Event Calendar</a></li>
-                    <li><a href="<?php echo baseHref; ?>events/info.html">Site &amp; Entry Fee Information</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/supplimentals.html">Supplimental Regulations</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/details.html">Site &amp; Entry Fee Information</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/supplimental.html">Supplimental Regulations</a></li>
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forums</a></li>
                     <li class="divider"></li>
-                    <li><a href="<?php echo baseHref; ?>courses/">Course Map Archive</a></li>
                     <li><a href="http://www.azsolo.zenfolio.com/">Event Photos</a></li>
                     <li><a href="<?php echo baseHref; ?>results/">Event Results</a></li>
+                    <li><a href="<?php echo baseHref; ?>courses/">Course Map Archive</a></li>
 
+                    <li class="dropdown-header">Rules &
                     <li><a href="<?php echo baseHref; ?>events/2013SoloRules.pdf">2013 SCCA Solo Rules</a></li>
                     <li><a href="http://www.moutons.org/sccasolo/Lists/">Car Classification Help</a></li>
                     <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li>
@@ -99,7 +102,7 @@
 
                     <li class="divider"></li>
                     <li class="dropdown-header">More Arizona Autocross</li>
-                    <li><a href="http://www.azsolo.com/">Arizona Region (Phoenix)</a></li>
+                    <li><a href="http://www.azsolo.com/">Arizona Region SCCA (Phoenix)</a></li>
                     <li><a href="http://www.sierrasportscars.net/">Sierra Sports Car Club</a></li>
                   </ul>
                 </li>
@@ -114,8 +117,8 @@
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forums</a></li>
                     <li><a href="#">2014 SCCA Rallycross Rules</a></li>
 
-                    <li class="divider"></li>
-                    <li><a href="<?php echo baseHref; ?>roadrally">Road Rally</a></li>
+                    <li class="dropdown-header">Road Rally</li>
+                    <li><a href="<?php echo baseHref; ?>roadrally">Event Information</a></li>
                   </ul>
                 </li>
 
@@ -130,24 +133,27 @@
                 <!-- / azbr dropdown -->
 
                 <!-- sopac dropdown -->
-                <li class="dropdown">
-                  <a href="http://www.scca-sopac.org/" class="dropdown-toggle" data-toggle="dropdown">Southern Pacific Division</a>
+                <li>
+                  <a href="http://www.scca-sopac.org/">Southern Pacific Division</a>
                 </li>
                 <!-- / sopac dropdown -->
 
                 <!-- scca dropdown -->
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">SCCA National <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">SCCA<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="http://www.scca.org/">SCCA National Website</a></li>
+                    <li><a href="http://www.scca.org/">National Website</a></li>
+                    <li class="dropdown-header">Get a Membership</li>
                     <li><a href="http://www.scca.com/about/index.cfm?cid=44704">Membership Details</a></li>
-                    <li><a href="http://ams.scca.com/netforum/eweb/firstgear.htm">First Gear Membership</a></li>
-                    <li><a href="http://ams.scca.com/netforum/eweb/ind.htm">Individual Membership</a></li>
-                    <li><a href="http://ams.scca.com/netforum/eweb/family.htm">Family Membership</a></li>
+                    <li><a href="http://ams.scca.com/netforum/eweb/firstgear.htm">First Gear</a></li>
+                    <li><a href="http://ams.scca.com/netforum/eweb/ind.htm">Individual</a></li>
+                    <li><a href="http://ams.scca.com/netforum/eweb/family.htm">Family</a></li>
                     <li><a href="http://www.scca.com/about/index.cfm?cid=44704">Military Discount</a></li>
-                    <li><a href="http://www.sccagear.com/">Merchandise Collection</a></li>
+                    <li class="divider">
+                    <li><a href="http://www.sccagear.com/">SCCA Gear</a></li>
                     <li class="divider"></li>
                     <li><a href="http://www.sccaforums.com/">SCCA Forums</a></li>
+                    <li><a href="http://www.solomatters.com/">SoloMatters</a></li>
                   </ul>
                 </li>
                 <!-- scca dropdown -->

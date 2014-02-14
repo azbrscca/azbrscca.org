@@ -18,7 +18,7 @@ body {
   color: #f8b20b
 }
 
- .azbr-alt-color {
+.azbr-alt-color {
   color: #08c;
 }
 
@@ -80,4 +80,11 @@ body {
   
 h2 {
   text-shadow: 2px 2px #000;
+}
+
+.dropdown-header {
+  background-color: #08c;
+  color: #fff;
+  font-size: 100%;
+  font-weight: bold;
 }

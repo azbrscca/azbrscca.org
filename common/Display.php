@@ -100,6 +100,8 @@
                     <li><a href="<?php echo baseHref; ?>autocross/pax.html">PAX/RTP Factors</a></li>
                     <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li>
                     <li><a href="http://www.moutons.org/sccasolo/Lists/">Car Classification Help</a></li>
+                    <li><a href="http://www.sccastartingline.com/resources.php">Starting Line AutoX FAQ</a></li>
+                    <li><a href="http://www.solomatters.com/">Solo Matters</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">More Arizona Autocross</li>
@@ -145,7 +147,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">SCCA<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="http://www.scca.org/">SCCA National Website</li>
+                    <li><a href="http://www.scca.org/">SCCA National Website</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Become a Member</li>
                     <li><a href="http://www.scca.com/about/index.cfm?cid=44704">Membership Details</a></li>
@@ -157,7 +159,6 @@
                     <li><a href="http://www.sccagear.com/">SCCA Gear</a></li>
                     <li class="divider"></li>
                     <li><a href="http://www.sccaforums.com/">SCCA Forums</a></li>
-                    <li><a href="http://www.solomatters.com/">SoloMatters</a></li>
                   </ul>
                 </li>
                 <!-- scca dropdown -->

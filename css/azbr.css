@@ -19,7 +19,7 @@ body {
 }
 
 .azbr-alt-color {
-  color: #08c;
+  color: #0088cc;
 }
 
 #container {
@@ -79,11 +79,14 @@ body {
 }
   
 h2 {
-  text-shadow: 2px 2px #000;
+  background-color: rgba( 0, 0, 0, .25 );
+  padding: 5px;
+  padding-left: 15px;
+  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
 .dropdown-header {
-  background-color: #08c;
+  background-color: #f8b20b;
   color: #fff;
   font-size: 100%;
   font-weight: bold;

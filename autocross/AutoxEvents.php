@@ -1,5 +1,5 @@
 <?php
-  class Events {
+  class AutoxEvents {
 
     public static function past_tabs() {
 
@@ -33,7 +33,7 @@
                     
                       <?php if ( $event[ 'results' ] ) { ?>
                       <div class="col-md-4 text-right">
-                        <a class="btn btn-info" href="<?php echo baseHref; ?>autocross/results">
+                        <a class="btn btn-primary" href="<?php echo baseHref; ?>autocross/results">
                           View Results
                           <i class="fa fa-angle-double-right"></i>
                         </a>
@@ -109,6 +109,9 @@
               Online registration is closed.
             </h4>
 <?php   } ?>
+            <p align="center">
+              Please refer to the <a href="<?php echo baseHref; ?>/autocross/calendar.html">event calendar</a>
+              for the schedule and run/work order.
           </div>
         </div>
 

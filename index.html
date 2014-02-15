@@ -1,7 +1,9 @@
 <?php
   require_once "common/Common.php";
 
-  require_once "Events.php";
+  require_once "autocross/AutoxEvents.php";
+  require_once "rallycross/RallyxEvents.php";
+
   require_once "Meetings.php";
 
   Display::open_page();
@@ -11,8 +13,8 @@
           <div class="col-md-7">
             <h2 class="azbr-color"><em>Autocross</em></h2>
             <div class="well well-sm">
-              <?php Events::upcoming_block(); ?>
-              <?php Events::past_tabs(); ?>
+              <?php AutoxEvents::upcoming_block(); ?>
+              <?php AutoxEvents::past_tabs(); ?>
             </div>
           </div>
 
@@ -35,18 +37,18 @@
                     <img src="<?php echo baseHref; ?>images/logo-small.png" />
                   </a>
 
-                  <a class="btn btn-info btn-block" href="<?php echo baseHref; ?>about/">
-                    More <i class="fa fa-angle-double-right"></i>
+                  <a class="btn btn-primary btn-block" href="<?php echo baseHref; ?>about/">
+                    Read More <i class="fa fa-angle-double-right"></i>
                   </a>
 
                   <hr/>
 
-                  <a class="btn btn-default btn-sm btn-block" href="http://twitter.com/azbrscca">
+                  <a class="btn btn-primary btn-md btn-block" href="http://twitter.com/azbrscca">
                     <i class="fa fa-twitter"></i> @azbrscca
                   </a>
-                  <a class="btn btn-default btn-sm btn-block" href="http://www.facebook.com/azbrscca">
-                    <i class="fa fa-thumbs-o-up"></i> on
+                  <a class="btn btn-primary btn-md btn-block" href="http://www.facebook.com/azbrscca">
                     <i class="fa fa-facebook"></i>
+                    azbrscca
                   </a>
                   
                 </div>
@@ -73,16 +75,11 @@
 
             <h2 class="azbr-color"><em>Rallycross</em></h2>
             <div class="well well-sm">
+              <?php RallyxEvents::upcoming_block(); ?>
             </div>
 
             <h2 class="azbr-color"><em>Road Rally</em></h2>
             <div class="well well-sm">
-            </div>
-
-
-
-              
-              
             </div>
 
           </div>

@@ -3,7 +3,9 @@
 
   Display::open_page();
 
-  $json_string = MindTheCones::getRequest( "events/calendar/2014/", array( 'public' => 1 ));
+  $calendar_year = 2014;
+
+  $json_string = MindTheCones::getRequest( "events/calendar/".$calendar_year."/", array( 'public' => 1 ));
   $events = json_decode( $json_string, true );
 ?>
 
@@ -20,10 +22,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $found_next = false; ?>
-                  <?php foreach( $events as $event ) { ?>
-
                   <?php 
+                        $found_next = false;
+                        foreach( $events as $event ) {
                           if ( ( $event[ 'date_ts' ] > time() ) && !$found_next ) {
                               $found_next = true;
                   ?>

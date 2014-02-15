@@ -118,7 +118,7 @@
 
         <div class="row">
           <div class="col-md-12">
-            <div id="autox-carousel" class="carousel slide" data-ride="carousel">
+            <div id="autox-carousel" class="carousel slide visible-md visible-lg" data-ride="carousel">
               <div class="carousel-inner">
                 <?php $images = Functions::listFiles( "autocross/carousel", "jpg" ); ?>
                 <?php foreach( $images as $index => $image ) {  ?>

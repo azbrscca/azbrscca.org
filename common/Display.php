@@ -132,7 +132,6 @@
                   <ul class="dropdown-menu">
                     <li><a href="<?php echo baseHref; ?>about/index.html">About Region #88</a></li>
                     <li><a href="<?php echo baseHref; ?>about/board.html">Board Members</a></li>
-                    <li><a href="<?php echo baseHref; ?>about/meetings.html">Club Meetings</a></li>
                   </ul>
                 </li>
                 <!-- / azbr dropdown -->

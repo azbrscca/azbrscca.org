@@ -1,0 +1,28 @@
+<?php
+  require_once "../common/Common.php"
+  
+  $apiFlag = "mtc/";
+  $method = strtoupper( $_SERVER[ 'REQUEST_METHOD' ] );
+  $uri = substr( $_SERVER[ 'REQUEST_URI' ],
+                  strpos( $_SERVER[ 'REQUEST_URI' ], $apiFlag ) + strlen( $apiFlag ) );
+
+  header('Content-Type: application/json');
+
+  switch( $method ) {
+    case 'GET':
+      if ( strpos( $uri, '?' ) !== false ) {
+        $uri = substr( $uri, 0, strpos( $uri, '?' ) );
+      }
+      echo MindTheCones::getRequest( $uri, $_GET );
+    break;
+
+    case 'POST':
+      echo MindTheCones::postRequest( $uri, $_POST );
+    break;
+
+    default:
+      json_encode( array( 'error' => "method not supported" ) );
+    break;
+
+  }
+?>

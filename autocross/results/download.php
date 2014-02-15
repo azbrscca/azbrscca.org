@@ -1,0 +1,305 @@
+<?php
+  require_once "../lib/functions.php";
+  
+  define( "timeOnly", "Time Only" );
+  
+  if ( !empty( $_POST ) ) {
+    $args = filter( $_POST );
+
+		if ( $args[ 'type' ] == "series" ) {
+			series_results_spreadsheet( $args[ 'id' ] );
+		} else if ( $args[ 'type' ] == "event" ) {
+			event_results_spreadsheet( $args[ 'id' ] );
+		}
+  }
+
+
+  function get_trophies( $num_cars ) {
+  
+    $trophies = 0;
+
+    if ( $num_cars > 0 ) { $trophies++; }
+    if ( $num_cars > 3 ) { $trophies++; }
+    if ( $num_cars > 6 ) { $trophies++; }
+    if ( $num_cars > 9 ) { $trophies++; }
+    if ( $num_cars > 14 ) { $trophies++; }
+
+    return $trophies;
+  }
+
+	function sortByClass( $one, $two ) {
+
+		if ( $one[ 'class' ] == $two[ 'class' ] ) {
+			return ( $one[ 'pax_time' ] - $two[ 'pax_time' ] );
+		} else {
+			return ( strcmp( $one[ 'class' ], $two[ 'class' ] ) );
+		}
+	}
+
+  function event_results_spreadsheet( $eventId ) {
+
+    $data = file_get_contents( mindtheconesApi."db/events/".$eventId."/" );
+    $event = json_decode( $data, true );
+
+    $data = file_get_contents( mindtheconesApi."results/event/".$eventId."/" );
+    $jsonData = json_decode( $data, true );
+    
+    $results = array(
+    	"PAX" => array(),
+    	"Open" => array(),
+    	"Street Tire" => array(),
+    	"Ladies" => array(),
+    	"Novice" => array(),
+    	"Time Only" => array()
+    );
+
+    foreach( $jsonData as $item ) {
+      array_push( $results[ $item[ 'category' ] ], $item );
+    }
+    
+    usort( $results[ 'Open' ], 'sortByClass' );
+
+    header("Content-type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment; filename=AZBR_Event_Results_".$event[ 'date' ].".xls");
+
+    $sort_by = "pax_time";
+    $sort_in = "category";
+
+
+    $results_fields = array( 
+                             "class_rank" => "Rank",
+                             "class" => "Class",
+                             "name" => "Name",
+                             "car" => "Year/Make/Model",
+                             "all_times" => "All Times",
+                             "fast_time" => "Fast Time",
+                             "time_rank" => "Time Rank",
+                             "pax_factor" => "PAX Factor",
+                             "pax_time" => "PAX Time",
+                             "pax_rank" => "PAX Rank",
+                             "points" => "Class Points" );
+
+    $all_fields = sizeof( $results_fields ) + ( $event[ 'runs_per_heat' ] * 2 ) - 1;
+?>
+
+            <table border="1" cellpadding="0" cellspacing="0">
+              <thead>
+                <tr>
+                  <td colspan="<?php echo $all_fields; ?>" style="background-color: #dfd">
+                    Results for AZBR Event on <?php echo date( "F d, Y", $event[ 'date_ts' ] ); ?>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+<?php
+		foreach( array_keys( $results_fields ) as $field ) {
+			if ( $field == "all_times" ) {
+				for( $run=1; $run <= $event[ 'runs_per_heat' ]; $run++ ) {
+?>
+                  <td>Run <?php echo $run; ?></td>
+                  <td>&nbsp;</td>
+<?php
+				}
+			} else {
+?>
+                  <td><?php echo $results_fields[ $field ]; ?></td>
+<?php
+			}
+		}
+?>
+                </tr>
+              </thead>
+              <tbody>
+<?php
+    foreach( $results as $category => $entries ) {
+?>
+                <tr>
+                  <td colspan="<?php echo $all_fields; ?>" style="background-color: #ff8;"><?php echo $category; ?></td>
+                </tr>
+<?php
+
+			foreach( $entries as $result ) {
+				$times = json_decode( $result[ 'all_times' ], true );
+?>
+                <tr>
+                  <td><?php echo $result[ 'class_rank' ]; ?></td>
+                  <td><?php echo $result[ 'class' ]; ?></td>
+                  <td><?php echo $result[ 'name' ]; ?></td>
+                  <td><?php echo $result[ 'car' ]; ?></td>
+
+                  <?php foreach( $times as $time ) { ?>
+
+                  <td><?php if ( is_numeric( $time[ 'raw' ] ) ) {
+                  						echo number_format( $time[ 'raw' ], 3 );
+                  					} else {
+                  					  echo $time[ 'raw' ];
+                  					}?></td>
+
+                  <td><?php if ( is_numeric( $time[ 'penalty' ] ) && intval( $time[ 'penalty' ] > 0 ) ) { echo $time[ 'penalty' ]; } else { echo "&nbsp;"; } ?></td>
+                  <?php } ?>
+
+                  <td><?php if ( is_numeric( $result[ 'fast_time' ] ) ) {
+                  						echo number_format( $result[ 'fast_time' ], 3 );
+                  					} else {
+                  					  echo $result[ 'fast_time' ];
+                  					}?></td>
+
+                  <td><?php if ( $category != "Time Only" ) { echo $result[ 'time_rank' ]; } else { "&nbsp;"; } ?></td>
+                  <td><?php echo number_format( $result[ 'scca_class_pax' ], 3 ); ?></td>
+                  <td><?php echo number_format( $result[ 'pax_time' ], 3 ); ?></td>
+                  <td><?php if ( $category != "Time Only" ) { echo $result[ 'pax_rank' ]; } else { "&nbsp;"; } ?></td>
+                  <td><?php echo round( $result[ 'points' ] ); ?></td>
+                  
+                </tr>
+<?php
+			}
+    }
+?>
+              </tbody>
+            </table>
+<?php
+  }
+
+  function series_results_spreadsheet( $seriesId ) {
+
+    $data = file_get_contents( mindtheconesApi."db/series/".$seriesId."/" );
+    $series = json_decode( $data, true );
+
+    $data = file_get_contents( mindtheconesApi."results/series/".$seriesId."/" );
+    $results = json_decode( $data, true );
+
+    header("Content-type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment; filename=AZBR_".preg_replace( "/ /", "_", $series[ 'name' ] )."_Series_Results.xls");
+
+    $categories = array( "PAX", "Open", "Street Tire", "Ladies", "Novice" );
+?>
+            <table border="1" cellpadding="0" cellspacing="0">
+              <thead>
+                <tr>
+                  <td colspan="<?php echo sizeof( $results[ 'series_events' ] ) + 4; ?>" style="background-color: #dfd">
+                    Results for AZBR <?php echo $series[ 'name' ]; ?> Series
+                  </td>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rank</td>
+                  <td>Name</td>
+                  <td>Class</td>
+<?php
+    foreach( $results[ 'series_events' ] as $event ) {
+?>
+                  <td><?php echo date( "M d", strtotime( $event[ 'event_date' ] ) ); ?></td>
+<?php      
+    }
+?>
+                  <td>Points</td>
+                </tr>
+              </thead>
+              <tbody>
+<?php
+
+    foreach( $categories as $category ) {
+
+      if ( !empty( $results[ 'categories' ][ $category ][ 'divided' ] ) ) {
+        unset( $results[ 'categories' ][ $category ][ 'divided' ] );
+
+        foreach( array_keys( $results[ 'categories' ][ $category ] ) as $sccaClass ) {
+
+          $classResults = $results[ 'categories' ][ $category ][ $sccaClass ];
+
+          $trophies = get_trophies( $classResults[ 'qualified' ] );
+?>
+                <tr style="padding: 2px;">
+                  <td colspan="<?php echo sizeof( $results[ 'series_events' ] ) + 4; ?>" style="background-color: #ff8;">
+                    <?php echo $category." ".$sccaClass; ?>
+                  </td>
+                </tr>
+<?php
+
+	        $rank = 1;
+  	      foreach( $classResults[ 'results' ] as $result ) {
+?>
+                <tr style="padding: 2px;">
+                  <td><?php echo $rank++; ?></td>
+                  <td><?php echo $result[ 'name' ]; ?></td>
+                  <td><?php echo $result[ 'class' ]; ?></td>
+
+
+<?php
+	  				foreach( $results[ 'series_events' ] as $event ) {
+?>
+									<td>
+<?php
+	  					$key = date( "M d", strtotime( $event[ 'event_date' ] ) );
+		  				if ( array_key_exists( $key, $result[ 'events' ] ) ) {
+			  		 	 echo round( $result[ 'events' ][ $key ] );
+				   		} else {
+					    	echo "&nbsp;";
+	  					}
+?>
+									</td>
+<?php
+		  				}
+?>					
+
+                  <td><?php echo round( $result[ 'points' ] ); ?></td>
+                </tr>
+<?php
+      	  }
+
+
+
+        }
+
+
+      } else {
+
+
+
+        $trophies = get_trophies( $results[ 'categories' ][ $category ][ 'qualified' ] );
+?>
+                <tr style="padding: 2px;">
+                  <td colspan="<?php echo sizeof( $results[ 'series_events' ] ) + 4; ?>" style="background-color: #ff8;">
+                    <?php echo preg_replace( "/-/", " ", $category ); ?>
+                  </td>
+                </tr>
+<?php
+        $rank = 1;
+        foreach( $results[ 'categories' ][ $category ][ 'results' ] as $result ) {
+          $rankString = $rank;
+          if ( $rank <= $trophies ) { $rankString = "<strong>".$rankString."</strong>"; }
+          $rank++;
+?>
+                <tr style="padding: 2px;">
+                  <td><?php echo $rankString; ?></td>
+                  <td><?php echo $result[ 'name' ]; ?></td>
+                  <td><?php echo $result[ 'class' ]; ?></td>
+<?php
+  				foreach( $results[ 'series_events' ] as $event ) {
+?>
+									<td>
+<?php
+	  				$key = date( "M d", strtotime( $event[ 'event_date' ] ) );
+		  			if ( array_key_exists( $key, $result[ 'events' ] ) ) {
+			  		  echo round( $result[ 'events' ][ $key ] );
+				   	} else {
+					    echo "&nbsp;";
+	  				}
+?>
+									</td>
+<?php
+		  		}
+?>					
+                  <td><?php echo round( $result[ 'points' ] ); ?></td>
+                </tr>
+<?php
+        }
+    	}
+		}
+?>
+              </tbody>
+            </table>
+<?php
+  }
+?>

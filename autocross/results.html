@@ -1,0 +1,582 @@
+<?php
+  require_once "../common/Common.php";
+
+  require_once "AutoxEvents.php";
+
+  Display::open_page();
+
+  $data = MindTheCones::getRequest( "results/list/available" );
+  $avail_results = json_decode( $data, true );
+?>
+
+        <h2 class="azbr-color">
+          Autocross Event Results
+        </h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="well well-sm">
+            <?php AutoxEvents::avail_results() ?>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="well well-sm">
+                <div id="results-inner">
+                </div>
+            </div>
+          </div>
+        </div>
+        
+        <script type="text/javascript" src="<?php echo baseHref; ?>js/dateformat-1.2.3.js"></script>
+        <script type="text/javascript">
+        
+          var categories = [ 'PAX', 'Open', 'Street Tire', 'Ladies', 'Novice', 'Time Only' ];
+          var classes = new Array();
+          var options = {};
+          var eventJSON, results, seriesJSON;
+          var selectedCategories = new Array(), selectedClasses = new Array();
+
+          function eventTable() {
+            $( "#order_by" ).removeAttr( 'disabled' );
+            $( "#reset_sorting" ).removeAttr( 'disabled' );
+            $( "#start_over" ).removeAttr( 'disabled' );
+            $( "#sort_type" ).removeAttr( 'disabled' );
+
+            var groupByCategory = ( $( "#sort_type" ).val() == "category" );
+            var sortByPax = ( $( "#order_by" ).val() == "pax_time" );
+
+            $( "#results-inner" ).empty();
+
+            var table = $( "<table/>", { 'class' : "table table-condensed table-hover" } );
+            $( "#results-inner" ).append( table );
+
+            var row = $( "<tr/>" );
+            if ( groupByCategory ) {
+              var cell = $( "<td/>", { 'colspan' : 9, 'style' : "text-align: center;" } );
+            } else {
+              var cell = $( "<td/>", { 'colspan' : 10, 'style' : "text-align: center;" } );
+            }
+            cell.append( "Viewing Results for " );
+            cell.append( dateFormat( new Date( parseInt( eventJSON.date_ts ) * 1000 ), "fullDate" ) );
+            row.append( cell );
+            table.append( $( "<thead/>" ).append( row ) );
+
+            row = $( "<tr/>" );
+            if ( groupByCategory ) {
+              cell = $( "<td/>", { 'colspan' : 9, 'style' : "text-align: center;" } );
+            } else {
+              cell = $( "<td/>", { 'colspan' : 10, 'style' : "text-align: center;" } );
+            }
+            cell.append( "Classes: " + selectedClasses + " Categories: " + selectedCategories );
+            row.append( cell );
+            table.append( $( "<thead/>" ).append( row ) );
+
+            var body = $( "<tbody/>" );
+
+            row = $( "<tr/>" );
+            cell = $( "<td/>", { 'colspan' : "2" } );
+            cell.append( "Driver" );
+            body.append( row.append( cell ) );
+
+            if ( groupByCategory ) {
+              cell = $( "<td/>", { 'colspan' : "2" } );
+            } else {
+              cell = $( "<td/>", { 'colspan' : "3" } );
+            }
+            cell.append( "Car" );
+            body.append( row.append( cell ) );
+
+            cell = $( "<td/>", { 'colspan' : "2" } );
+            cell.append( "Times" );
+            body.append( row.append( cell ) );
+
+            cell = $( "<td/>" );
+            if ( groupByCategory ) {
+              cell.attr( 'colspan', 3 );
+            }
+            if ( groupByCategory ) {
+              cell.append( "Rankings &amp; Points" );
+            } else {
+              cell.append( "Points" );
+            }
+            body.append( row.append( cell ) );
+
+            row = $( "<tr/>" );
+            cell = $( "<td/>" );
+            cell.append( "&nbsp;" );
+            row.append( cell );
+
+            cell = $( "<td/>" );
+            cell.append( "Name" );
+            row.append( cell );
+
+            cell = $( "<td/>" );
+            cell.append( "Year/Make/Model" );
+            row.append( cell );
+
+            cell = $( "<td/>" );
+            cell.append( "Class" );
+            row.append( cell );
+
+            if ( !groupByCategory ) {
+              cell = $( "<td/>" );
+              cell.append( "Category" );
+              row.append( cell );
+            }
+
+            cell = $( "<td/>" );
+            cell.append( "Fast" );
+            row.append( cell );
+
+            cell = $( "<td/>" );
+            cell.append( "PAX" );
+            row.append( cell );
+
+            if ( groupByCategory ) {
+              cell = $( "<td/>" );
+              cell.append( "Time" );
+              row.append( cell );
+  
+              cell = $( "<td/>" );
+              cell.append( "PAX" );
+              row.append( cell );
+            }
+  
+            cell = $( "<td/>" );
+            cell.append( "Points" );
+            row.append( cell );
+            body.append( row );
+
+            if ( groupByCategory ) {
+
+              var rbc = {};
+              $.each( categories, function( index, category ) {
+                rbc[ category ] = Array();
+              });
+
+              $.each( results, function( index, result ) {
+                rbc[ result.category ].push( result );
+              });
+
+              $.each( categories, function( index, category ) {
+
+                var showCategory = ( $.inArray( "All", selectedCategories ) >= 0 );
+                showCategory |= ( ( $.inArray( "Comps", selectedCategories ) >= 0 ) && ( category != "Time Only" ) )
+                showCategory |= ( $.inArray( category, selectedCategories ) >= 0 );
+                if ( showCategory ) {
+
+                  row = $( "<tr/>" )
+                  cell = $( "<td/>", { 'class' : "info", 'colspan' : 9 } );
+                  if ( category == 'Time Only' ) {
+                   cell.html( "Time Only" );
+                  } else {
+                    cell.html( category + " Category" );
+                  }
+                  body.append( row.append( cell ) );
+  
+                  if ( category == "Open" ) {
+                    rbc[ category ].sort( sortByClass );
+                  }
+  
+                  var openClass = "", openIndex = 0;
+
+                  $.each( rbc[ category ], function( index, result ) {
+
+                    var showClass = ( $.inArray( "All", selectedClasses ) >= 0 );
+                    showClass |= ( $.inArray( result[ 'class' ], selectedClasses ) >= 0 );
+
+                    if ( showClass ) {  
+                      if ( category == "Open" ) {
+                        if ( ( index > 0 ) && ( result[ 'class' ] != openClass ) ) {
+                          body.append( $( "<tr/>" ).append( $( "<td/>", { 'colspan' : 9 } ).html( $( "<hr/>" ) ) ) );
+                          openIndex = 0;
+                        }
+                        body.append( resultRow( openIndex, result, groupByCategory, sortByPax ) );
+                        openClass = result[ 'class' ];
+                        openIndex++;
+                      } else {
+                          body.append( resultRow( index, result, groupByCategory, sortByPax ) );
+                      }
+                    }
+                  });
+                }                
+              });
+
+            } else {
+              var rank = 0;
+              $.each( results, function( index, result ) {
+              
+                var showCategory = ( $.inArray( "All", selectedCategories ) >= 0 );
+                showCategory |= ( ( $.inArray( "Comps", selectedCategories ) >= 0 ) && ( result.category != "Time Only" ) )
+                showCategory |= ( $.inArray( result.category, selectedCategories ) >= 0 );
+
+                var showClass = ( $.inArray( "All", selectedClasses ) >= 0 );
+                showClass |= ( $.inArray( result[ 'class' ], selectedClasses ) >= 0 );
+
+                if ( showCategory && showClass ) {
+                  body.append( resultRow( rank, result, groupByCategory, sortByPax ) );
+                  rank++;
+                }
+              });
+            }
+
+            table.append( body );
+
+          }
+
+          function seriesTable() {
+
+            $( "#order_by" ).attr( 'disabled', "disabled" );          
+            $( "#reset_sorting" ).attr( 'disabled', "disabled" );
+            $( "#start_over" ).attr( 'disabled', "disabled" );
+            $( "#sort_type" ).attr( 'disabled', "disabled" );
+
+            var groupByCategory = ( $( "#sort_type" ).val() == "category" );
+            var sortByPax = ( $( "#order_by" ).val() == "pax_time" );
+
+            $( "#results" ).empty();
+
+            var table = $( "<table/>", { 'cellpadding' : 0, 'cellspacing' : 0 } );
+            $( "#results" ).append( table );
+
+            var body = $( "<tbody/>" );
+
+            var row = $( "<tr/>" );
+            var cell = $( "<td/>", { 'colspan' : results.series_events.length + 5, 'style' : "text-align: center;" } );
+            cell.append( "Viewing Results for AZBR " + seriesJSON.name + " Series" );
+            row.append( cell );
+            table.append( $( "<thead/>" ).append( row ) );
+
+            row = $( "<tr/>" );
+
+            cell = $( "<th/>", { 'colspan' : 2 });
+            cell.append( "Driver" );
+            row.append( cell );
+
+            cell = $( "<th/>" );
+            cell.append( "Class" );
+            row.append( cell );
+
+            cell = $( "<td/>" );
+            cell.append( "Car" );
+            row.append( cell );
+
+            $.each( results.series_events, function( index, eventJSON ) {
+              cell = $( "<td/>" );
+              cell.append( dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" ) );
+              row.append( cell );
+            }); 
+
+            cell = $( "<td/>" );
+            cell.append( "Points" );
+            row.append( cell );
+            body.append( row );
+
+            $.each( categories, function( key, category ) {
+
+              if ( results.categories[ category ] ) {
+                row = $( "<tr/>" );
+                cell = $( "<td/>", { 'colspan' : results.series_events.length + 5 } );
+                cell.append( category );
+                row.append( cell );
+                body.append( row );
+
+
+                if ( results.categories[ category ].divided ) {
+
+                  $.each( results.categories[ category ], function( key, value ) {
+                    if ( value instanceof Object ) {
+                      var trophies = trophyCount( value.qualified );
+                      $.each( value.results, function( index, result ) {
+
+                        row = $( "<tr/>" );
+                        cell = $( "<td/>" ).append( index+1 );
+                        if ( index < trophies ) {
+                          cell.css( 'color', "#f8b20b" );
+                          cell.css( 'font-weight', "bold" );
+                        }
+  
+                        row.append( cell );
+                        row.append( $( "<td/>" ).append( result.name.replace( "\\", "" ) ) );
+                        row.append( $( "<td/>" ).append( result[ 'class' ] ) );
+                        row.append( $( "<td/>" ).append( result.cars ) );
+    
+                        $.each( results.series_events, function( e, eventJSON ) {
+                          var dateKey = dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" );
+                          cell = $( "<td/>" );
+                          if ( result.events[ dateKey ] ) {
+                            cell.append( Math.round( result.events[ dateKey ] ) );
+                          }
+                          row.append( cell );
+                        }); 
+      
+                        row.append( $( "<td/>" ).append( Math.round( result.points ) ) );
+  
+                        body.append( row );
+                      });
+                    }
+
+                    row = $( "<tr/>" );
+                    cell = $( "<td/>", { 'colspan' : results.series_events.length + 5 } );
+                    cell.append( $( "<hr/>" ) );
+                    body.append( row.append( cell ) );
+                  });
+
+                } else {
+
+                  var trophies = trophyCount( results.categories[ category ].qualified );
+                  $.each( results.categories[ category ].results, function( index, result ) {
+                    row = $( "<tr/>" );
+                    cell = $( "<td/>" ).append( index+1 );
+                    if ( index < trophies ) {
+                      cell.css( 'color', "#f8b20b" );
+                      cell.css( 'font-weight', "bold" );
+                    }
+
+                    row.append( cell );
+                    row.append( $( "<td/>" ).append( result.name.replace( "\\", "" ) ) );
+                    row.append( $( "<td/>" ).append( result[ 'class' ] ) );
+                    row.append( $( "<td/>" ).append( result.cars ) );
+
+                    $.each( results.series_events, function( e, eventJSON ) {
+                      var dateKey = dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" );
+                      cell = $( "<td/>" );
+                      if ( result.events[ dateKey ] ) {
+                        cell.append( Math.round( result.events[ dateKey ] ) );
+                      }
+                      row.append( cell );
+                    }); 
+  
+                    row.append( $( "<td/>" ).append( Math.round( result.points ) ) );
+
+                    body.append( row );
+                  
+                  });
+                }
+
+              }
+
+            });
+            
+            table.append( body );
+          }
+
+          function getResults( ccReset ) {
+
+            var selected = $( "#id" ).find( ":selected" );
+
+            if ( selected.data( 'type' ) == "event" ) {
+            
+              $( "#categories" ).removeAttr( 'disabled' );
+              if ( ccReset ) {
+                $( "#categories" ).find( "option:selected" ).removeAttr( 'selected' );
+                $( "#categories" ).find( "option[value='All']" ).attr( 'selected', "selected" );
+                selectedCategories = new Array();
+                selectedCategories.push( "All" );
+              }
+
+              $.getJSON( "<?php echo baseHref; ?>mtc/db/events/" + $( "#id" ).val(),
+                         function( json ) {
+                eventJSON = json;
+
+                $.getJSON( "<?php echo baseHref; ?>mtc/results/event/" + $( "#id" ).val(),
+                         { 'order_by' : $( "#order_by" ).val() },
+                           function( resultsJSON ) {
+                  results = resultsJSON;
+                  
+                  classes = new Array();
+                  $.each( resultsJSON, function( index, result ) {
+                    if ( $.inArray( result[ 'class' ], classes ) == -1 ) {
+                      classes.push( result[ 'class' ] );
+                    }
+                  });
+                  classes.sort();
+                  if ( ccReset ) {
+                    $( "#classes" ).find( "option" ).remove();
+                    $( "#classes").append( $( "<option/>" ).val( "All" ).html( "All" ).attr( 'selected', "selected" ) );
+                    $.each( classes, function( index, c ) {
+                      $( "#classes").append( $( "<option/>" ).val( c ).html( c ) );
+                    });
+                    selectedClasses = new Array();
+                    selectedClasses.push( "All" );
+                  }
+                  
+                  eventTable();
+                });
+              });
+
+            } else if ( selected.data( 'type' ) == "series" ) {
+
+              $( "#categories" ).attr( 'disabled', "disabled" );
+
+              $.getJSON( "<?php echo baseHref; ?>mtc/db/series/" + $( "#id" ).val(),
+                         function( json ) {
+                seriesJSON = json;
+
+                $.getJSON( "<?php echo baseHref; ?>mtc/results/series/" + $( "#id" ).val(),
+                          {},
+                          function( resultsJSON ) {
+                  results = resultsJSON;
+                  seriesTable();
+                });
+              });
+
+            }
+          }
+
+          function resultRow( index, result, groupByCategory, sortByPax ) {
+              row = $( "<tr/>" );
+              if ( parseInt( result.pax_rank ) == 1 ) {
+                // toppax
+              } else if ( parseInt( result.time_rank ) == 1 ) {
+                // ftd  
+              }
+
+              row.append( $( "<td/>" ).append( index+1 ) );
+
+              var cell = $( "<td/>" );
+
+              var span = $( "<span/>", {
+                'onmouseover': "this.style.cursor='pointer';",
+                'data-result-id': result.id
+              })
+              .on( 'click', function() { toggle( this ); })
+              .html( result.name.replace( "\\", "" ) );
+              cell.append( span );
+
+              var div = $( "<div/>" )
+              div.attr( 'id', 'result_' + result.id );
+              div.css( 'display', "none" );
+              
+              var times = jQuery.parseJSON( result.all_times );
+              $.each( times, function( index, time ) {
+              
+                div.append( index+1 ).append( ". " );
+                if ( isNaN( time.raw ) ) {
+                  div.append( time.raw );
+                } else {
+                  div.append( parseFloat( time.raw ).toFixed( 3 ) );
+                }
+
+                if ( time.penalty > 0 ) {
+                  div.append( " " ).append( "(" ).append( time.penalty ).append( ")" );
+                }
+                div.append( $( "<br/>" ) );
+              });
+
+              cell.append( div );
+
+              row.append( cell );
+              
+              row.append( $( "<td/>" ).append( result.car ) );
+              row.append( $( "<td/>" ).append( result[ 'class' ] ) );
+              if ( !groupByCategory ) {
+                row.append( $( "<td/>" ).append( result.category ) );
+              }
+
+              cell = $( "<td/>" ).append( parseFloat( result.fast_time ).toFixed( 3 ) );
+              if ( !sortByPax ) {
+                //
+              }
+              row.append( cell );
+
+              cell = $( "<td/>" ).append( parseFloat( result.pax_time ).toFixed( 3 ) );
+              if ( sortByPax ) {
+                //
+              }
+              row.append( cell );
+              
+              if ( groupByCategory ) {
+                if ( result.category == "Time Only" ) {
+                  row.append( $( "<td/>" ) );
+                  row.append( $( "<td/>" ) );
+                } else {
+                  row.append( $( "<td/>" ).append( result.time_rank ) );
+                  row.append( $( "<td/>" ).append( result.pax_rank ) );
+                }
+              }
+              row.append( $( "<td/>" ).append( Math.round( parseFloat( result.points ) ) ) );
+            return row;
+          }
+
+          function sortByClass( one, two ) {
+
+            if ( one[ 'class' ] == two[ 'class' ] ) {
+              return ( one.pax_time - two.pax_time );
+            } else {
+              return ( one[ 'class' ].localeCompare( two[ 'class' ] ) );
+            }
+          }
+
+          function toggle( item ) {
+            var id = '#result_' + $( item ).data( 'result-id' );
+            if ( $( id ).is( ":hidden" ) ) {
+              $( id ).slideDown();
+            } else {
+              $( id ).slideUp();
+            }
+          }
+
+          function trophyCount( qualifiers ) {
+            var trophies = 0;
+            if ( qualifiers > 0 ) { trophies++; }
+            if ( qualifiers > 3 ) { trophies++; }
+            if ( qualifiers > 6 ) { trophies++; }
+            if ( qualifiers > 9 ) { trophies++; }
+            if ( qualifiers > 14 ) { trophies++; }
+            return trophies;
+          }
+
+          $( "#classes" ).change( function() {
+            selectedClasses = new Array();
+            $.each( $( this ).find( "option:selected" ), function( index, option ) {
+              selectedClasses.push( $( option ).val() );
+            });
+            eventTable();            
+          });
+          
+          $( "#categories" ).change( function() {
+            selectedCategories = new Array();
+            $.each( $( this ).find( "option:selected" ), function( index, option ) {
+              selectedCategories.push( $( option ).val() );
+            });
+            eventTable();            
+          });
+
+          $( "#id" ).change( function() {
+            var selected = $( this ).find( "option:selected" );
+            var type = $( "#type" ).val( selected.data( 'type' ) );
+            getResults( true );
+          });
+
+          $( "#order_by" ).change( function() {
+            getResults( false );
+          });
+
+          $( "#reset_sorting" ).click( function() {
+            $( "#order_by" ).val( "pax_time" );
+            $( "#sort_type" ).val( "category" );
+            getResults( true );            
+          });
+
+          $( "#sort_type" ).change( function() {
+            eventTable();
+          });
+
+          $( "#start_over" ).click( function() {
+            var firstEvent =  $( "#id" ).find( 'option[data-type^="event"]' )[ 0 ];
+            $( "#id" ).val( $( firstEvent ).val() );
+            $( "#order_by" ).val( "pax_time" );
+            $( "#sort_type" ).val( "category" );
+            getResults( true );
+          });
+        
+          var firstEvent =  $( "#id" ).find( 'option[data-type^="event"]' )[ 0 ];
+          $( "#type" ).val( "event" );
+          $( firstEvent ).attr( 'selected', "selected" );
+          getResults( true );
+          
+        </script>
+<?php
+  Display::close_page();
+?>

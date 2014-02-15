@@ -2,6 +2,7 @@
   require_once "common/Common.php";
 
   require_once "Events.php";
+  require_once "Meetings.php";
 
   Display::open_page();
 ?>
@@ -63,7 +64,7 @@
                 Championships in early September.
               </p>
               <p>
-                <strong>Next Meeting:</strong> Tuesday, Month, Day, Year
+                <strong>Next Meeting:</strong> <?php echo Meetings::get_next(); ?>
               </p>
               <p>
                 Feel free to attend and enjoy free pizza and bench racing.

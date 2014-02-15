@@ -90,7 +90,7 @@
                     <li><a href="<?php echo baseHref; ?>autocross/supplimental.html">Supplimental Regulations</a></li>
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forums</a></li>
                     <li class="divider"></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/results/">Event Results</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/courses/">Course Map Archive</a></li>
                     <li><a href="http://www.azsolo.zenfolio.com/">Event Photos</a></li>
 

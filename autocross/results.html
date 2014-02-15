@@ -13,16 +13,16 @@
           Autocross Event Results
         </h2>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="well well-sm">
             <?php AutoxEvents::avail_results() ?>
             </div>
           </div>
 
-          <div class="col-md-8">
+          <div class="col-md-9">
             <div class="well well-sm">
-                <div id="results-inner">
-                </div>
+              <div id="results-inner">
+              </div>
             </div>
           </div>
         </div>
@@ -47,106 +47,26 @@
 
             $( "#results-inner" ).empty();
 
+            $( "#results-inner").append(
+              $("<h3/>",{'class':"text-info text-center"}).html(
+                "Viewing Results for " + 
+                dateFormat( new Date( parseInt( eventJSON.date_ts ) * 1000 ), "fullDate" )
+              )
+            );
+
+            $( "#results-inner").append(
+              $("<h5/>",{'class':"text-center"}).html(
+                "Classes visible: " + selectedClasses + ". Categories visible: " + selectedCategories + "."
+              )
+            );
+
             var table = $( "<table/>", { 'class' : "table table-condensed table-hover" } );
             $( "#results-inner" ).append( table );
 
-            var row = $( "<tr/>" );
-            if ( groupByCategory ) {
-              var cell = $( "<td/>", { 'colspan' : 9, 'style' : "text-align: center;" } );
-            } else {
-              var cell = $( "<td/>", { 'colspan' : 10, 'style' : "text-align: center;" } );
-            }
-            cell.append( "Viewing Results for " );
-            cell.append( dateFormat( new Date( parseInt( eventJSON.date_ts ) * 1000 ), "fullDate" ) );
-            row.append( cell );
-            table.append( $( "<thead/>" ).append( row ) );
+            table.append( table_header(groupByCategory) )
 
-            row = $( "<tr/>" );
-            if ( groupByCategory ) {
-              cell = $( "<td/>", { 'colspan' : 9, 'style' : "text-align: center;" } );
-            } else {
-              cell = $( "<td/>", { 'colspan' : 10, 'style' : "text-align: center;" } );
-            }
-            cell.append( "Classes: " + selectedClasses + " Categories: " + selectedCategories );
-            row.append( cell );
-            table.append( $( "<thead/>" ).append( row ) );
 
             var body = $( "<tbody/>" );
-
-            row = $( "<tr/>" );
-            cell = $( "<td/>", { 'colspan' : "2" } );
-            cell.append( "Driver" );
-            body.append( row.append( cell ) );
-
-            if ( groupByCategory ) {
-              cell = $( "<td/>", { 'colspan' : "2" } );
-            } else {
-              cell = $( "<td/>", { 'colspan' : "3" } );
-            }
-            cell.append( "Car" );
-            body.append( row.append( cell ) );
-
-            cell = $( "<td/>", { 'colspan' : "2" } );
-            cell.append( "Times" );
-            body.append( row.append( cell ) );
-
-            cell = $( "<td/>" );
-            if ( groupByCategory ) {
-              cell.attr( 'colspan', 3 );
-            }
-            if ( groupByCategory ) {
-              cell.append( "Rankings &amp; Points" );
-            } else {
-              cell.append( "Points" );
-            }
-            body.append( row.append( cell ) );
-
-            row = $( "<tr/>" );
-            cell = $( "<td/>" );
-            cell.append( "&nbsp;" );
-            row.append( cell );
-
-            cell = $( "<td/>" );
-            cell.append( "Name" );
-            row.append( cell );
-
-            cell = $( "<td/>" );
-            cell.append( "Year/Make/Model" );
-            row.append( cell );
-
-            cell = $( "<td/>" );
-            cell.append( "Class" );
-            row.append( cell );
-
-            if ( !groupByCategory ) {
-              cell = $( "<td/>" );
-              cell.append( "Category" );
-              row.append( cell );
-            }
-
-            cell = $( "<td/>" );
-            cell.append( "Fast" );
-            row.append( cell );
-
-            cell = $( "<td/>" );
-            cell.append( "PAX" );
-            row.append( cell );
-
-            if ( groupByCategory ) {
-              cell = $( "<td/>" );
-              cell.append( "Time" );
-              row.append( cell );
-  
-              cell = $( "<td/>" );
-              cell.append( "PAX" );
-              row.append( cell );
-            }
-  
-            cell = $( "<td/>" );
-            cell.append( "Points" );
-            row.append( cell );
-            body.append( row );
-
             if ( groupByCategory ) {
 
               var rbc = {};
@@ -166,7 +86,7 @@
                 if ( showCategory ) {
 
                   row = $( "<tr/>" )
-                  cell = $( "<td/>", { 'class' : "info", 'colspan' : 9 } );
+                  cell = $( "<td/>", { 'class' : "active", 'colspan' : 9 } );
                   if ( category == 'Time Only' ) {
                    cell.html( "Time Only" );
                   } else {
@@ -234,10 +154,10 @@
             var groupByCategory = ( $( "#sort_type" ).val() == "category" );
             var sortByPax = ( $( "#order_by" ).val() == "pax_time" );
 
-            $( "#results" ).empty();
+            $( "#results-inner" ).empty();
 
             var table = $( "<table/>", { 'cellpadding' : 0, 'cellspacing' : 0 } );
-            $( "#results" ).append( table );
+            $( "#results-inner" ).append( table );
 
             var body = $( "<tbody/>" );
 
@@ -359,6 +279,53 @@
             });
             
             table.append( body );
+          }
+
+          function table_header (groupByCategory) {
+
+            var colspan = 2;
+            var car_colspan = groupByCategory ? colspan : colspan+1;
+            var rnp_colspan = groupByCategory ? colspan+1 : colspan-1;
+            var thead = $("<thead/>");
+            var row = $( "<tr/>" );
+            thead.append(row);
+
+            row.append($( "<th/>",{'class':"bg-warning text-center",'colspan':colspan}).html("Driver"));
+            row.append($( "<th/>",{'class':"bg-danger text-center",'colspan':car_colspan}).html("Car"));
+            row.append($( "<th/>",{'class':"bg-success text-center",'colspan':colspan}).html("Times"));
+
+            var cell_html = groupByCategory ? "Rankings &amp; Points" : "Points";
+            row.append($( "<th/>",{'class':"bg-info text-center",'colspan':rnp_colspan}).html(cell_html));
+
+            row = $("<tr/>");
+            thead.append(row);
+
+            row.append($( "<th/>").html("&nbsp;"));
+            row.append($( "<th/>").html("Name"));
+            row.append($( "<th/>").html("Year Make/Model"));
+            row.append($( "<th/>").html("SCCA Class"));
+
+            if ( !groupByCategory ) {
+              row.append($( "<th/>").html("AZBR Category"));
+            }
+
+            row.append($( "<th/>").html("Fastest"));
+            row.append($( "<th/>").html("PAX"));
+
+
+
+            if ( groupByCategory ) {
+              row.append($( "<th/>").html("Raw Time"));
+              row.append($( "<th/>").html("PAX Time"));
+            }
+  
+            cell = $( "<td/>" );
+            cell.append( "Points" );
+            row.append( cell );
+
+
+
+            return thead;
           }
 
           function getResults( ccReset ) {

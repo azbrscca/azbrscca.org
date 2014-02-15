@@ -24,6 +24,10 @@
               </div>
 
               <div class="form-group">
+                <input class="btn btn-default" id="download" type="submit" value="Download" />
+              </div>
+
+              <div class="form-group">
                 <label for="sort_type">Sort In:</label>
                 <select class="form-control" id="sort_type">
                   <option value="category">Category</option>
@@ -42,7 +46,6 @@
               <div class="form-group text-center">
                 <input class="btn btn-default" id="reset_sorting" type="button" value="Reset Sorting" />
                 <input class="btn btn-default" id="start_over" type="button" value="Start Over" />
-                <input class="btn btn-default" id="download" type="submit" value="Download" />
               </div>
 
               <div class="form-group">

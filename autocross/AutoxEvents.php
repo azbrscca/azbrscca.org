@@ -1,6 +1,81 @@
 <?php
   class AutoxEvents {
 
+    public static function avail_results() {
+
+      $data = MindTheCones::getRequest( "results/list/available" );
+      $avail_results = json_decode( $data, true );
+?>
+
+            <form action="download.php" name="results_form"
+                  id="results_form" method="post" role="form">
+              <input id="type" name="type" type="hidden" value="event" />
+
+              <div class="form-group">
+                <label for="id">Select an Event or Series</label>
+                <select class="form-control" id="id" name="id">
+                  <option value="0">Select</option>
+                  <?php foreach( $avail_results as $item ) { ?>
+                  <option data-type="<?php echo $item[ 'type' ]; ?>" value="<?php echo $item[ 'id' ]; ?>">
+                    <?php echo $item[ 'label' ]; ?>
+                  </option>
+                  <?php } ?>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="sort_type">Sort In:</label>
+                <select class="form-control" id="sort_type">
+                  <option value="category">Category</option>
+                  <option value="overall">Overall</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="order_by">Sort By:</label>
+                <select class="form-control" id="order_by">
+                  <option value="pax_time">PAX Time</option>
+                  <option value="fast_time">Fast Time</option>
+                </select>
+              </div>
+
+              <div class="form-group text-center">
+                <input class="btn btn-default" id="reset_sorting" type="button" value="Reset Sorting" />
+                <input class="btn btn-default" id="start_over" type="button" value="Start Over" />
+                <input class="btn btn-default" id="download" type="submit" value="Download" />
+              </div>
+
+              <div class="form-group">
+                <label for="classes">Classes to Display</label>
+                <select class="form-control" id="classes" name="classes[]" multiple="multiple" size="4">
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="categories">Categories to Display:</label>
+                <select class="form-control" id="categories" name="categories[]" multiple="multiple" size="4">
+                  <option value="All">All</option>
+                  <option value="Comps">All Competition</option>
+                  <option value="PAX">PAX</option>
+                  <option value="Open">Open</option>
+                  <option value="Street Tire">Street Tire</option>
+                  <option value="Ladies">Ladies</option>
+                  <option value="Time Only">Time Only</option>
+                </select>
+              </div>
+            </form>
+
+            <hr/>
+
+            <div>
+              <a class="btn btn-default btn-block" href="<?php echo baseHref; ?>/autocross/results/static.php">
+                Looking for event results prior to 2009?
+                <i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+<?php
+}
+
     public static function past_tabs() {
 
       $past_events = MindTheCones::getRequest( "events/past/", array( 'limit' => 4 ));

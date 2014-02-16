@@ -53,7 +53,7 @@ body {
 #title-span h3 {
   color: #fff;
   font-weight: bold;
-  text-shadow: -2px 0 #777, 0 2px #777, 2px 0 #777, 0 -2px #777;
+  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
 #title-span-xs h3 {

@@ -44,7 +44,9 @@
     -->
     <style>
       body { background-image: url( '<?php echo baseHref; ?>images/asphalt.jpg' ); }
-      #header-row { background-image: url( '<?php echo baseHref; ?>images/SCCA_50.png' ); }
+      @media (min-width: 767px) {
+        #header-row { background-image: url( '<?php echo baseHref; ?>images/SCCA_50.png' ); }
+      }
     </style>
 
     <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
@@ -59,12 +61,18 @@
         <div class="row" id="header-row">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-12" id="title-span">
-                <h1><a class="azbr-color" href="<?php echo baseHref; ?>"><em>Arizona Border Region</em></a>
-                  <small class="pull-right">
-                    The Tucson & Southern Arizona Region of the Sports Car Club of America since 1959
-                  </small>
+              <div class="col-md-12 hidden-xs" id="title-span">
+                <h1>
+                  <a class="azbr-color" href="<?php echo baseHref; ?>"><em>Arizona Border Region</em></a>
                 </h1>
+                <h3 class="text-right">
+                  The Tucson & Southern Arizona Region of the Sports Car Club of America since 1959
+                </h3>
+              </div>
+              <div class="col-xs-12 visible-xs" id="title-span-xs">
+                <h3 class="text-center">
+                  <a class="azbr-color" href="<?php echo baseHref; ?>">Arizona Border Region</a>
+                </h3>
               </div>
 
             </div>

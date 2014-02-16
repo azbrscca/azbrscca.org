@@ -45,19 +45,23 @@ body {
 }    
 
 #title-span h1 {
-  font-size: 350%;
+  font-size: 300%;
   font-weight: bold;
   text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
-#title-span h1 small {
-  font-size: 50%;
+#title-span h3 {
   color: #fff;
-  padding: 8px;
+  font-weight: bold;
   text-shadow: -2px 0 #777, 0 2px #777, 2px 0 #777, 0 -2px #777;
 }
 
-#title-span a:hover {
+#title-span-xs h3 {
+  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+#title-span a:hover,
+#title-span-xs a:hover {
   color: #f8b20b;
   text-decoration: none;
   text-shadow: 1px 1px #fff;

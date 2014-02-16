@@ -27,44 +27,46 @@
                   <input class="btn btn-default" id="download" type="submit" value="Download Results" />
                 </div>
 
-                <div class="form-group">
-                  <label for="sort_type">Sort In:</label>
-                  <select class="form-control" id="sort_type">
-                    <option value="category">Category</option>
-                    <option value="overall">Overall</option>
-                  </select>
-                </div>
+                <div id="sorting_and_filtering">
+                  <div class="form-group">
+                    <label for="sort_type">Sort In:</label>
+                    <select class="form-control" id="sort_type">
+                      <option value="category">Category</option>
+                      <option value="overall">Overall</option>
+                    </select>
+                  </div>
 
-                <div class="form-group">
-                  <label for="order_by">Sort By:</label>
-                  <select class="form-control" id="order_by">
-                    <option value="pax_time">PAX Time</option>
-                    <option value="fast_time">Fast Time</option>
-                  </select>
-                </div>
+                  <div class="form-group">
+                    <label for="order_by">Sort By:</label>
+                    <select class="form-control" id="order_by">
+                      <option value="pax_time">PAX Time</option>
+                      <option value="fast_time">Fast Time</option>
+                    </select>
+                  </div>
 
-                <div class="form-group text-center">
-                  <input class="btn btn-default" id="reset_sorting" type="button" value="Reset Sorting" />
-                  <input class="btn btn-default" id="start_over" type="button" value="Start Over" />
-                </div>
+                  <div class="form-group text-center">
+                    <input class="btn btn-default" id="reset_sorting" type="button" value="Reset Sorting" />
+                    <input class="btn btn-default" id="start_over" type="button" value="Start Over" />
+                  </div>
 
-                <div class="form-group">
-                  <label for="classes">Classes to Display</label>
-                  <select class="form-control" id="classes" name="classes[]" multiple="multiple" size="4">
-                  </select>
-                </div>
-                
-                <div class="form-group">
-                  <label for="categories">Categories to Display:</label>
-                  <select class="form-control" id="categories" name="categories[]" multiple="multiple" size="4">
-                    <option value="All">All</option>
-                    <option value="Comps">All Competition</option>
-                    <option value="PAX">PAX</option>
-                    <option value="Open">Open</option>
-                    <option value="Street Tire">Street Tire</option>
-                    <option value="Ladies">Ladies</option>
-                    <option value="Time Only">Time Only</option>
-                  </select>
+                  <div class="form-group">
+                    <label for="classes">Classes to Display</label>
+                    <select class="form-control" id="classes" name="classes[]" multiple="multiple" size="4">
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="categories">Categories to Display:</label>
+                    <select class="form-control" id="categories" name="categories[]" multiple="multiple" size="4">
+                      <option value="All">All</option>
+                      <option value="Comps">All Competition</option>
+                      <option value="PAX">PAX</option>
+                      <option value="Open">Open</option>
+                      <option value="Street Tire">Street Tire</option>
+                      <option value="Ladies">Ladies</option>
+                      <option value="Time Only">Time Only</option>
+                    </select>
+                  </div>
                 </div>
               </form>
 

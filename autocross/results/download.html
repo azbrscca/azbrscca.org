@@ -164,10 +164,10 @@
 
   function series_results_spreadsheet( $seriesId ) {
 
-    $data = file_get_contents( mindtheconesApi."db/series/".$seriesId."/" );
+    $data = MindTheCones::getRequest("db/series/".$seriesId."/");
     $series = json_decode( $data, true );
 
-    $data = file_get_contents( mindtheconesApi."results/series/".$seriesId."/" );
+    $data = MindTheCones::getRequest("results/series/".$seriesId."/" );
     $results = json_decode( $data, true );
 
     header("Content-type: application/vnd.ms-excel");

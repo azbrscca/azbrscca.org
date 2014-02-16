@@ -36,11 +36,6 @@
           var selectedCategories = new Array(), selectedClasses = new Array();
 
           function eventTable() {
-            $( "#order_by" ).removeAttr( 'disabled' );
-            $( "#reset_sorting" ).removeAttr( 'disabled' );
-            $( "#start_over" ).removeAttr( 'disabled' );
-            $( "#sort_type" ).removeAttr( 'disabled' );
-
             var groupByCategory = ( $( "#sort_type" ).val() == "category" );
             var sortByPax = ( $( "#order_by" ).val() == "pax_time" );
 
@@ -148,69 +143,74 @@
           }
 
           function seriesTable() {
-
-            $( "#order_by" ).attr( 'disabled', "disabled" );          
-            $( "#reset_sorting" ).attr( 'disabled', "disabled" );
-            $( "#start_over" ).attr( 'disabled', "disabled" );
-            $( "#sort_type" ).attr( 'disabled', "disabled" );
-
             var groupByCategory = ( $( "#sort_type" ).val() == "category" );
             var sortByPax = ( $( "#order_by" ).val() == "pax_time" );
 
             $( "#results-inner" ).empty();
 
-            var table = $( "<table/>", { 'cellpadding' : 0, 'cellspacing' : 0 } );
+            $( "#results-inner" ).empty();
+
+            $( "#results-inner").append(
+              $("<h3/>",{'class':"text-info text-center"}).html(
+                "Viewing Results for AZBR " + seriesJSON.name + " Series"
+              )
+            );
+
+            var table = $( "<table/>", { 'class' : "table table-condensed table-hover" } );
             $( "#results-inner" ).append( table );
 
-            var body = $( "<tbody/>" );
+            var thead = $("<thead/>");
+            table.append(thead);
 
             var row = $( "<tr/>" );
-            var cell = $( "<td/>", { 'colspan' : results.series_events.length + 5, 'style' : "text-align: center;" } );
-            cell.append( "Viewing Results for AZBR " + seriesJSON.name + " Series" );
-            row.append( cell );
-            table.append( $( "<thead/>" ).append( row ) );
+            row.append($( "<th/>",{'class':"bg-warning text-center",'colspan':'2'}).html("Driver"));
+            row.append($( "<th/>",{'class':"bg-danger text-center",'colspan':'2'}).html("Car"));
+            row.append($( "<th/>",{'class':"bg-success text-center",'colspan':results.series_events.length}).html("Events"));
+            row.append($( "<th/>",{'class':"bg-info text-center"}).html('Points'));
+            thead.append(row);
 
             row = $( "<tr/>" );
-
-            cell = $( "<th/>", { 'colspan' : 2 });
-            cell.append( "Driver" );
-            row.append( cell );
-
-            cell = $( "<th/>" );
-            cell.append( "Class" );
-            row.append( cell );
-
-            cell = $( "<td/>" );
-            cell.append( "Car" );
-            row.append( cell );
+            row.append($( "<th/>").html("&nbsp;"));
+            row.append($( "<th/>").html("Name"));
+            row.append($( "<th/>").html("Year Make/Model"));
+            row.append($( "<th/>").html("SCCA Class"));
 
             $.each( results.series_events, function( index, eventJSON ) {
-              cell = $( "<td/>" );
-              cell.append( dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" ) );
-              row.append( cell );
+              row.append(
+                $( "<th/>" )
+                  .html( dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" ) )
+              );
             }); 
+            row.append($( "<th/>").html("Total"));
+            thead.append(row);
 
-            cell = $( "<td/>" );
-            cell.append( "Points" );
-            row.append( cell );
-            body.append( row );
-
+            var cell;
+            var body = $( "<tbody/>" );
             $.each( categories, function( key, category ) {
 
               if ( results.categories[ category ] ) {
                 row = $( "<tr/>" );
-                cell = $( "<td/>", { 'colspan' : results.series_events.length + 5 } );
-                cell.append( category );
-                row.append( cell );
-                body.append( row );
+                cell = $( "<td/>", { 'class':"active", 'colspan' : results.series_events.length + 5 } )
+                          .html(category + " Category");
+                row.append(cell);
+                body.append(row);
 
 
                 if ( results.categories[ category ].divided ) {
 
                   $.each( results.categories[ category ], function( key, value ) {
 
-                    if ( value instanceof Object ) {
+                    if ( value instanceof Object &&
+                         ( value.qualified > 0 ) ) {
                       var trophies = trophyCount( value.qualified );
+
+                      body
+                        .append( $( "<tr/>" )
+                            .append( $( "<td/>", { 'colspan' : 9 } )
+                              .append( $("<em/>").html(value.results[0].class_names[0]))
+                              )
+                            );
+
                       $.each( value.results, function( index, result ) {
 
                         row = $( "<tr/>" );
@@ -222,8 +222,14 @@
   
                         row.append( cell );
                         row.append( $( "<td/>" ).append( result.name.replace( "\\", "" ) ) );
+
+                        cell = $( "<td/>" );
+                        $.each( result.cars, function( c, car ) {
+                          cell.append($("<p/>").html(car));
+                        });
+                        row.append(cell);
+
                         row.append( $( "<td/>" ).append( result[ 'class' ] ) );
-                        row.append( $( "<td/>" ).append( result.cars ) );
     
                         $.each( results.series_events, function( e, eventJSON ) {
                           var dateKey = dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" );
@@ -239,11 +245,6 @@
                         body.append( row );
                       });
                     }
-
-                    row = $( "<tr/>" );
-                    cell = $( "<td/>", { 'colspan' : results.series_events.length + 5 } );
-                    cell.append( $( "<hr/>" ) );
-                    body.append( row.append( cell ) );
                   });
 
                 } else {
@@ -259,8 +260,14 @@
 
                     row.append( cell );
                     row.append( $( "<td/>" ).append( result.name.replace( "\\", "" ) ) );
+
+                    cell = $( "<td/>" );
+                    $.each( result.cars, function( c, car ) {
+                      cell.append($("<div/>").html(car));
+                    });
+                    row.append(cell);
+
                     row.append( $( "<td/>" ).append( result[ 'class' ] ) );
-                    row.append( $( "<td/>" ).append( result.cars ) );
 
                     $.each( results.series_events, function( e, eventJSON ) {
                       var dateKey = dateFormat( new Date( parseInt( eventJSON.event_date_ts ) * 1000 ), "mmm dd" );
@@ -337,8 +344,9 @@
             var selected = $( "#id" ).find( ":selected" );
 
             if ( selected.data( 'type' ) == "event" ) {
-            
-              $( "#categories" ).removeAttr( 'disabled' );
+
+              $( "#sorting_and_filtering").slideDown();
+
               if ( ccReset ) {
                 $( "#categories" ).find( "option:selected" ).removeAttr( 'selected' );
                 $( "#categories" ).find( "option[value='All']" ).attr( 'selected', "selected" );
@@ -378,14 +386,12 @@
 
             } else if ( selected.data( 'type' ) == "series" ) {
 
-              $( "#categories" ).attr( 'disabled', "disabled" );
-
+              $( "#sorting_and_filtering").slideUp();
               $.getJSON( "<?php echo baseHref; ?>mtc/db/series/" + $( "#id" ).val(),
                          function( json ) {
                 seriesJSON = json;
 
                 $.getJSON( "<?php echo baseHref; ?>mtc/results/series/" + $( "#id" ).val(),
-                          {},
                           function( resultsJSON ) {
                   results = resultsJSON;
                   seriesTable();
@@ -396,79 +402,77 @@
           }
 
           function resultRow( index, result, groupByCategory, sortByPax ) {
+            row = $( "<tr/>" );
+            if ( parseInt( result.pax_rank ) == 1 ) {
+              // toppax
+            } else if ( parseInt( result.time_rank ) == 1 ) {
+              // ftd  
+            }
 
-            console.log( result );
-              row = $( "<tr/>" );
-              if ( parseInt( result.pax_rank ) == 1 ) {
-                // toppax
-              } else if ( parseInt( result.time_rank ) == 1 ) {
-                // ftd  
+            row.append( $( "<td/>" ).append( index+1 ) );
+
+            var cell = $( "<td/>" );
+
+            var span = $( "<span/>", {
+              'onmouseover': "this.style.cursor='pointer';",
+              'data-result-id': result.id
+            })
+            .on( 'click', function() { toggle( this ); })
+            .html( result.name.replace( "\\", "" ) );
+            cell.append( span );
+
+            var div = $( "<div/>" )
+            div.attr( 'id', 'result_' + result.id );
+            div.css( 'display', "none" );
+            
+            var times = jQuery.parseJSON( result.all_times );
+            $.each( times, function( index, time ) {
+            
+              div.append( index+1 ).append( ". " );
+              if ( isNaN( time.raw ) ) {
+                div.append( time.raw );
+              } else {
+                div.append( parseFloat( time.raw ).toFixed( 3 ) );
               }
 
-              row.append( $( "<td/>" ).append( index+1 ) );
-
-              var cell = $( "<td/>" );
-
-              var span = $( "<span/>", {
-                'onmouseover': "this.style.cursor='pointer';",
-                'data-result-id': result.id
-              })
-              .on( 'click', function() { toggle( this ); })
-              .html( result.name.replace( "\\", "" ) );
-              cell.append( span );
-
-              var div = $( "<div/>" )
-              div.attr( 'id', 'result_' + result.id );
-              div.css( 'display', "none" );
-              
-              var times = jQuery.parseJSON( result.all_times );
-              $.each( times, function( index, time ) {
-              
-                div.append( index+1 ).append( ". " );
-                if ( isNaN( time.raw ) ) {
-                  div.append( time.raw );
-                } else {
-                  div.append( parseFloat( time.raw ).toFixed( 3 ) );
-                }
-
-                if ( time.penalty > 0 ) {
-                  div.append( " " ).append( "(" ).append( time.penalty ).append( ")" );
-                }
-                div.append( $( "<br/>" ) );
-              });
-
-              cell.append( div );
-
-              row.append( cell );
-              
-              row.append( $( "<td/>" ).append( result.car ) );
-              row.append( $( "<td/>" ).append( result[ 'class' ] ) );
-              if ( !groupByCategory ) {
-                row.append( $( "<td/>" ).append( result.category ) );
+              if ( time.penalty > 0 ) {
+                div.append( " " ).append( "(" ).append( time.penalty ).append( ")" );
               }
+              div.append( $( "<br/>" ) );
+            });
 
-              cell = $( "<td/>" ).append( parseFloat( result.fast_time ).toFixed( 3 ) );
-              if ( !sortByPax ) {
-                //
-              }
-              row.append( cell );
+            cell.append( div );
 
-              cell = $( "<td/>" ).append( parseFloat( result.pax_time ).toFixed( 3 ) );
-              if ( sortByPax ) {
-                //
+            row.append( cell );
+            
+            row.append( $( "<td/>" ).append( result.car ) );
+            row.append( $( "<td/>" ).append( result[ 'class' ] ) );
+            if ( !groupByCategory ) {
+              row.append( $( "<td/>" ).append( result.category ) );
+            }
+
+            cell = $( "<td/>" ).append( parseFloat( result.fast_time ).toFixed( 3 ) );
+            if ( !sortByPax ) {
+              //
+            }
+            row.append( cell );
+
+            cell = $( "<td/>" ).append( parseFloat( result.pax_time ).toFixed( 3 ) );
+            if ( sortByPax ) {
+              //
+            }
+            row.append( cell );
+            
+            if ( groupByCategory ) {
+              if ( result.category == "Time Only" ) {
+                row.append( $( "<td/>" ) );
+                row.append( $( "<td/>" ) );
+              } else {
+                row.append( $( "<td/>" ).append( result.time_rank ) );
+                row.append( $( "<td/>" ).append( result.pax_rank ) );
               }
-              row.append( cell );
-              
-              if ( groupByCategory ) {
-                if ( result.category == "Time Only" ) {
-                  row.append( $( "<td/>" ) );
-                  row.append( $( "<td/>" ) );
-                } else {
-                  row.append( $( "<td/>" ).append( result.time_rank ) );
-                  row.append( $( "<td/>" ).append( result.pax_rank ) );
-                }
-              }
-              row.append( $( "<td/>" ).append( Math.round( parseFloat( result.points ) ) ) );
+            }
+            row.append( $( "<td/>" ).append( Math.round( parseFloat( result.points ) ) ) );
             return row;
           }
 
@@ -517,8 +521,8 @@
           });
 
           $( "#id" ).change( function() {
-            var selected = $( this ).find( "option:selected" );
-            var type = $( "#type" ).val( selected.data( 'type' ) );
+//           var selected = $( this ).find( "option:selected" );
+//           var type = $( "#type" ).val( selected.data( 'type' ) );
             getResults( true );
           });
 

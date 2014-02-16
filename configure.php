@@ -11,7 +11,7 @@
   }
 
   $target = strtolower( $argv[ 1 ] );
-  $config = $argv[ 2 ] );
+  $config = $argv[ 2 ];
   $verbose = ( ( sizeof( $argv ) > 2 ) && ( $argv[ 2 ] == '-v' ) );
 
   $files = array(

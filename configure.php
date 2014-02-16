@@ -2,7 +2,7 @@
   $dir = getcwd();
   echo $dir."\n";
   
-  $targets = array( "local", "dev", "live" );
+  $targets = array( "local", "dev", "live", "new" ) ;
   
   if ( ( sizeof( $argv ) < 3 ) ||
        !in_array( strtolower( $argv[ 1 ] ), $targets ) )  {

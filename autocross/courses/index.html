@@ -1,0 +1,73 @@
+<?php
+  require_once "../../common/Common.php";
+
+  Display::open_page();
+
+  $data = MindTheCones::getRequest( "events/past/" );
+  $json = json_decode( $data, true );
+?>
+
+        <h2 class="azbr-color">Autocross Course Map Archive</h2>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well well-sm">
+              <form>
+                <div class="form-group">
+                  <select class="form-control" id="course-map">
+                    <option value="">Select an Event</option>
+
+<?php
+  foreach( $json as $index => $event ) {
+    $course_map = "autocross/courses/".date( "Y-m-d", $event[ 'date_ts' ] ).".jpg";
+    if ( file_exists( rootDir.$course_map ) ) {
+      $text = date( "l, F d, Y", $event[ 'date_ts' ] )." at ".$event[ 'site_name' ];
+      if ( !empty( $event[ 'name' ] ) ){
+        $text = $event[ 'name' ]." - ".$text;
+      }
+?>
+                        <option value="<?php echo $course_map; ?>">
+                          <?php echo $text; ?>
+                        </option>
+<?php
+    }
+  }
+?>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well well-sm" id="course-map-row">
+              <img class="img-responsive" id="course-map-img" src="" />
+            </div>
+          </div>
+              
+          </div>
+
+        </div>
+
+        <script type="text/javascript">
+          $( document ).ready( function() {
+            $( "#course-map" ).change( function() {
+              if ( $(this).val() == "") {
+                $( "#course-map-row" ).slideUp();
+              } else {
+                console.log( "here");
+                $( "#course-map-img" ).attr( 'src', '<?php echo baseHref; ?>' + $( this ).val() );
+                $( "#course-map-row" ).slideDown();
+              }
+            });
+
+            var options = $( "#course-map option" );
+            $( "#course-map" ).val($(options[1]).val());
+            $( "#course-map" ).trigger("change");
+          });
+        </script>
+
+<?php
+  Display::close_page(); 
+?>

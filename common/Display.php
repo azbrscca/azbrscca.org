@@ -34,7 +34,7 @@
     <link href="<?php echo baseHref; ?>css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo baseHref; ?>css/azbr.css" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    <link rel="icon" type="image/png" href="<?php echo baseHref; ?>images/logo-icon.png">
     <!--
     <link rel="shortcut icon" href="ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
@@ -42,6 +42,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     -->
+    <style>
+      body { background-image: url( '<?php echo baseHref; ?>images/asphalt.jpg' ); }
+      #header-row { background-image: url( '<?php echo baseHref; ?>images/SCCA_50.png' ); }
+    </style>
+
     <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
     <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
   </head>

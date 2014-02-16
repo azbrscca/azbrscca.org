@@ -7,8 +7,6 @@ html, body {
 }
 
 body {
-  background-image:
-    url( 'images/asphalt.jpg' );
   background-attachment: fixed;
   background-repeat: repeat;
   background-position: left top;
@@ -40,8 +38,6 @@ body {
 }
 
 #header-row {
-  background-image:
-    url( 'images/SCCA_50.png' );
   background-repeat: no-repeat;
   background-position: right center;
   padding-bottom: 0px;

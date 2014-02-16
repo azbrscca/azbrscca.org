@@ -136,16 +136,12 @@
                 </li>
                 <!-- / azbr dropdown -->
 
-                <!-- sopac dropdown -->
-                <li>
-                  <a href="http://www.scca-sopac.org/">Southern Pacific Division</a>
-                </li>
-                <!-- / sopac dropdown -->
 
                 <!-- scca dropdown -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">SCCA<b class="caret"></b></a>
                   <ul class="dropdown-menu">
+                    <li><a href="http://www.scca-sopac.org/">Southern Pacific Division</a></li>
                     <li><a href="http://www.scca.org/">SCCA National Website</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Become a Member</li>

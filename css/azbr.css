@@ -8,7 +8,7 @@ html, body {
 
 body {
   background-image:
-    url( 'http://192.168.1.249/~jisrael/new.azbrscca.org/images/asphalt.jpg' );
+    url( 'images/asphalt.jpg' );
   background-attachment: fixed;
   background-repeat: repeat;
   background-position: left top;
@@ -41,7 +41,7 @@ body {
 
 #header-row {
   background-image:
-    url( 'http://192.168.1.249/~jisrael/new.azbrscca.org/images/SCCA_50.png' );
+    url( 'images/SCCA_50.png' );
   background-repeat: no-repeat;
   background-position: right center;
   padding-bottom: 0px;

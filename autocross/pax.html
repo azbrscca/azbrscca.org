@@ -114,15 +114,15 @@
               var panel_body = panel.children(":last");
               var row = $("<div/>",{'class':"row"});
               row.append( 
-                $("<div/>",{'class':"col-md-5"}).html(
+                $("<div/>",{'class':"col-md-5 col-sm-4 col-xs-6"}).html(
                   scca_class['name']
                 ));
               row.append( 
-                $("<div/>",{'class':"col-md-2"}).html(
+                $("<div/>",{'class':"col-md-2 col-sm-3 col-xs-3"}).html(
                   scca_class['initials']
                 ));
               row.append( 
-                $("<div/>",{'class':"col-md-2"}).html(
+                $("<div/>",{'class':"col-md-2 col-sm-3 col-xs-3"}).html(
                   parseFloat(scca_class['pax']).toFixed(3)
                 ));
 

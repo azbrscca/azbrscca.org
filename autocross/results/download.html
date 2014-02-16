@@ -1,10 +1,10 @@
 <?php
-  require_once "../lib/functions.php";
+  require_once "../../common/Common.php";
   
   define( "timeOnly", "Time Only" );
   
   if ( !empty( $_POST ) ) {
-    $args = filter( $_POST );
+    $args = Functions::cleanArray( $_POST );
 
 		if ( $args[ 'type' ] == "series" ) {
 			series_results_spreadsheet( $args[ 'id' ] );
@@ -38,10 +38,11 @@
 
   function event_results_spreadsheet( $eventId ) {
 
-    $data = file_get_contents( mindtheconesApi."db/events/".$eventId."/" );
+
+    $data = MindTheCones::getRequest( "db/events/".$eventId."/" );
     $event = json_decode( $data, true );
 
-    $data = file_get_contents( mindtheconesApi."results/event/".$eventId."/" );
+    $data = MindTheCones::getRequest( "results/event/".$eventId."/" );
     $jsonData = json_decode( $data, true );
     
     $results = array(

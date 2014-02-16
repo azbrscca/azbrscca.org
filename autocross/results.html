@@ -8,7 +8,6 @@
   $data = MindTheCones::getRequest( "results/list/available" );
   $avail_results = json_decode( $data, true );
 ?>
-
         <h2 class="azbr-color">
           Autocross Event Results
         </h2>
@@ -103,16 +102,22 @@
                   $.each( rbc[ category ], function( index, result ) {
 
                     var showClass = ( $.inArray( "All", selectedClasses ) >= 0 );
-                    showClass |= ( $.inArray( result[ 'class' ], selectedClasses ) >= 0 );
+                    showClass |= ( $.inArray( result[ 'scca_class_name' ], selectedClasses ) >= 0 );
 
                     if ( showClass ) {  
                       if ( category == "Open" ) {
-                        if ( ( index > 0 ) && ( result[ 'class' ] != openClass ) ) {
-                          body.append( $( "<tr/>" ).append( $( "<td/>", { 'colspan' : 9 } ).html( $( "<hr/>" ) ) ) );
+
+                        if ( result[ 'scca_class_name' ] != openClass ) {
+                          body
+                            .append( $( "<tr/>" )
+                                .append( $( "<td/>", { 'colspan' : 9 } )
+                                  .append( $("<em/>").html(result['scca_class_name']))
+                                  )
+                                )
                           openIndex = 0;
+                          openClass = result[ 'scca_class_name' ];
                         }
                         body.append( resultRow( openIndex, result, groupByCategory, sortByPax ) );
-                        openClass = result[ 'class' ];
                         openIndex++;
                       } else {
                           body.append( resultRow( index, result, groupByCategory, sortByPax ) );
@@ -131,7 +136,7 @@
                 showCategory |= ( $.inArray( result.category, selectedCategories ) >= 0 );
 
                 var showClass = ( $.inArray( "All", selectedClasses ) >= 0 );
-                showClass |= ( $.inArray( result[ 'class' ], selectedClasses ) >= 0 );
+                showClass |= ( $.inArray( result[ 'scca_class_name' ], selectedClasses ) >= 0 );
 
                 if ( showCategory && showClass ) {
                   body.append( resultRow( rank, result, groupByCategory, sortByPax ) );
@@ -139,9 +144,7 @@
                 }
               });
             }
-
             table.append( body );
-
           }
 
           function seriesTable() {
@@ -205,6 +208,7 @@
                 if ( results.categories[ category ].divided ) {
 
                   $.each( results.categories[ category ], function( key, value ) {
+
                     if ( value instanceof Object ) {
                       var trophies = trophyCount( value.qualified );
                       $.each( value.results, function( index, result ) {
@@ -353,8 +357,8 @@
                   
                   classes = new Array();
                   $.each( resultsJSON, function( index, result ) {
-                    if ( $.inArray( result[ 'class' ], classes ) == -1 ) {
-                      classes.push( result[ 'class' ] );
+                    if ( $.inArray( result[ 'scca_class_name' ], classes ) == -1 ) {
+                      classes.push( result[ 'scca_class_name' ] );
                     }
                   });
                   classes.sort();
@@ -392,6 +396,8 @@
           }
 
           function resultRow( index, result, groupByCategory, sortByPax ) {
+
+            console.log( result );
               row = $( "<tr/>" );
               if ( parseInt( result.pax_rank ) == 1 ) {
                 // toppax

@@ -1,23 +1,26 @@
 <?php
-  require_once "../lib/display.php";
-  require_once "../lib/functions.php";
+  require_once "../../common/Common.php";
 
   require_once "common.php";
 
+  Display::open_page();
+
+  $data = MindTheCones::getRequest( "results/list/available" );
+  $avail_results = json_decode( $data, true );
+
+
   if ( ( getenv( "QUERY_STRING" ) != null ) && ( getenv( "QUERY_STRING" ) != "" ) ) {
     $queryString = getenv( "QUERY_STRING" );
-    $args = parse_get_args( $queryString );
+    $args = Functions::cleanArray( $_GET );
   }
 
-  $post_args = filter( $_POST );
-
-  connect();
+  $post_args = Functions::cleanArray( $_POST );
 
   $file = "";
   $have_results = false; 
   
   if ( isset( $args[ 'y' ] ) ) {
-    $file .= rootDir."/results/".$args[ "y" ]."/";
+    $file .= rootDir."autocross/results/".$args[ "y" ]."/";
 
     if ( isset( $args[ 'm' ] ) ) {
     
@@ -33,19 +36,26 @@
     $have_results = ( !empty( $file ) ) && file_exists( $file );
   }
 
-  showHeader();
 ?>
-		<h3 class="ui-widget-header ui-corner-all">Solo Results</h3>
+        <h2 class="azbr-color">
+          Autocross Results Archive
+        </h2>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well well-sm">
+
 <?php
   if ( !$have_results ) {
     show_list();
-
   } else if ( isset( $args[ "s" ] ) ) {
     show_series( $file );
-  
   } else if ( isset( $args[ "m" ] ) ) {
     show_event( $file, $args[ "m" ], $args[ "y" ] );
   }
-
-  showFooter();
+?>
+            </div>
+          </div>
+        </div>
+<?php
+  Display::close_page();
 ?>

@@ -74,7 +74,7 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <a class="btn btn-md btn-default btn-block" href="<?php echo baseHref; ?>/autocross/results/static.php">
+                  <a class="btn btn-md btn-default btn-block" href="<?php echo baseHref; ?>autocross/results/static.html">
                     2009 and older results
                     <i class="fa fa-angle-double-right"></i>
                   </a>

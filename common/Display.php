@@ -109,7 +109,7 @@
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>
-                    <li><a href="<?php echo baseHref; ?>autocross/2013SoloRules.pdf">2013 SCCA Solo Rules</a></li>
+                    <li><a href="<?php echo baseHref; ?>documents/rulebooks/autocross/2014SoloRules.pdf">2014 SCCA Solo (Autocross) Rules</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/pax.html">PAX/RTP Factors</a></li>
                     <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li>
                     <li><a href="http://www.moutons.org/sccasolo/Lists/">Car Classification Help</a></li>
@@ -131,7 +131,7 @@
                     <li class="dropdown-header">Rallycross</li>
                     <li><a href="http://www.arizonarallygroup.com/">AZ Rally Group</a></li>
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forums</a></li>
-                    <li><a href="#">2014 SCCA Rallycross Rules</a></li>
+                    <li><a href="<?php echo baseHref; ?>documents/rulebooks/rallycross/2014RallyCrossRules.pdf">2014 SCCA Rallycross Rules</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">Road Rally</li>

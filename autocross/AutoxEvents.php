@@ -148,27 +148,31 @@
     } // end function past_tabs
 
     public static function upcoming_block() {
-      $event = array();
-      $args = array( 'limit' => 4, 'public' => 1 );
-      $next_event = MindTheCones::getRequest( "events/upcoming/", $args );
-      $json = json_decode( $next_event, true );
-      if ( sizeof( $json ) > 0 ) {
-        $event = $json[ 0 ];
-        $now = time();
-        $gap = ($event[ 'date_ts' ] - $now) / (60*60*24);
+
+      $args = array( 'public' => 1 );
+      $json = MindTheCones::getRequest( "events/upcoming/open/", $args );
+      $autox_events = json_decode( $json, true );
+
+
+      if ( empty( $autox_events ) ) {
+        $args[ 'limit' ] = 1;
+        $json = MindTheCones::getRequest( "events/upcoming/", $args );
+        $autox_events = json_decode( $json, true );
       }
 
-      if ( ( $event[ 'status' ] == 'open' ) || ( $gap < 22 ) ) {
+      foreach( $autox_events as $event ) {
 ?>
 
         <div class="row">
           <div class="col-md-12">
-           <h3 align="center">
-             Next autocross event: <?php echo date( "l, F j, Y", $event[ 'date_ts' ] ); ?>
-           </h3>
+            <h3 class="text-center">
+              <?php if( !empty($event['name'])) { echo $event['name']." "; } ?>
+              <?php echo date( "l, F j Y", $event[ 'date_ts' ] ); ?>
+              at <?php echo $event['site_name']; ?>
+            </h3>
 
 <?php   if ( $event[ 'status' ] == "will open" ) { ?>
-           <h4 align="center" class="azbr-alt-color">
+           <h4 class="text-center">
               Online registration will open:
               <?php echo date( "l, F j, Y", $event[ 'registration_open_ts' ] ); ?>
             </h4>
@@ -176,7 +180,7 @@
 <?php   } else if ( $event[ 'status' ] == "open" ) { ?>
     
             <h4 class="text-success text-center">
-              Online registration is open!
+              Online registration is open now!
               <a class="btn btn-success" href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
             </h4>
             <h5 class="text-center">
@@ -191,12 +195,10 @@
               Online registration is closed.
             </h4>
 <?php   } ?>
-            <p align="center">
-              Please refer to the <a href="<?php echo baseHref; ?>/autocross/calendar.html">event calendar</a>
-              for the schedule and run/work order.
           </div>
         </div>
 
+<?php } ?>
 
         <div class="row">
           <div class="col-md-12">
@@ -210,12 +212,14 @@
                 <?php } ?>
               </div>
             </div>
+            <p>
+              Please refer to the <a href="<?php echo baseHref; ?>/autocross/calendar.html">event calendar</a>
+              for event schedules and run/work order.
+            </p>
           </div>
         </div>
-
       <hr/>
 <?php
-      }
     } // end function upcoming_block
 
   } // end Class

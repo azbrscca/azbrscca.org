@@ -155,7 +155,7 @@
 
 
       if ( empty( $autox_events ) ) {
-        $args[ 'limit' ] = 1;
+        $args[ 'limit' ] = 2;
         $json = MindTheCones::getRequest( "events/upcoming/", $args );
         $autox_events = json_decode( $json, true );
       }
@@ -167,14 +167,15 @@
           <div class="col-md-12">
             <h3 class="text-center">
               <?php if( !empty($event['name'])) { echo $event['name']." "; } ?>
-              <?php echo date( "l, F j Y", $event[ 'date_ts' ] ); ?>
+              <?php echo date( "l, F j", $event[ 'date_ts' ] ); ?>
               at <?php echo $event['site_name']; ?>
             </h3>
 
 <?php   if ( $event[ 'status' ] == "will open" ) { ?>
            <h4 class="text-center">
               Online registration will open:
-              <?php echo date( "l, F j, Y", $event[ 'registration_open_ts' ] ); ?>
+              <?php echo date( "l, F j", $event[ 'registration_open_ts' ] ); ?> at 
+              <?php echo date( "g:ia", $event[ 'registration_open_ts' ] ); ?>.
             </h4>
 
 <?php   } else if ( $event[ 'status' ] == "open" ) { ?>
@@ -185,8 +186,8 @@
             </h4>
             <h5 class="text-center">
               Online registration closes
-              <?php echo date( "l, F j, Y", $event[ 'registration_close_ts' ] ); ?> at 
-              <?php echo date( "g:i a", $event[ 'registration_close_ts' ] ); ?>.
+              <?php echo date( "l, F j", $event[ 'registration_close_ts' ] ); ?> at 
+              <?php echo date( "g:ia", $event[ 'registration_close_ts' ] ); ?>.
             </h5>
 
 <?php   } else if ( $event[ 'status' ] == "closed" ) { ?>
@@ -218,7 +219,6 @@
             </p>
           </div>
         </div>
-      <hr/>
 <?php
     } // end function upcoming_block
 

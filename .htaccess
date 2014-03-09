@@ -3,8 +3,8 @@ order allow,deny
 deny from all
 </Files>
 
-ErrorDocument 300 "lost.html"
-ErrorDocument 400 "lost.html"
-ErrorDocument 403 "lost.html"
-ErrorDocument 404 "lost.html"
-ErrorDocument 500 "lost.html"
+ErrorDocument 300 "/lost.html"
+ErrorDocument 400 "/lost.html"
+ErrorDocument 403 "/lost.html"
+ErrorDocument 404 "/lost.html"
+ErrorDocument 500 "/lost.html"

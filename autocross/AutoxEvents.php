@@ -153,7 +153,6 @@
       $json = MindTheCones::getRequest( "events/upcoming/open/", $args );
       $autox_events = json_decode( $json, true );
 
-
       if ( empty( $autox_events ) ) {
         $args[ 'limit' ] = 2;
         $json = MindTheCones::getRequest( "events/upcoming/", $args );

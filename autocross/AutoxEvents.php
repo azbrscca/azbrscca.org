@@ -16,9 +16,11 @@
                   <select class="form-control" id="id" name="id">
                     <option value="0">Select</option>
                     <?php foreach( $avail_results as $item ) { ?>
+                    <?php   if (strpos( $item['label'], "2009")===false) { ?>
                     <option data-type="<?php echo $item[ 'type' ]; ?>" value="<?php echo $item[ 'id' ]; ?>">
                       <?php echo $item[ 'label' ]; ?>
                     </option>
+                    <?php   } ?>
                     <?php } ?>
                   </select>
                 </div>

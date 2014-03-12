@@ -39,7 +39,7 @@
     private static function get_meeting( $this_month, $this_year ) {
 
       // defaults to first tuesday of the month
-      $mtng_time = strtotime( "tuesday of ".$this_year."-".$this_month );
+      $mtng_time = strtotime( "tuesday ".$this_year."-".$this_month );
 
       // check if it has been rescheduled
       foreach( Meetings::$rescheduled_to as $item ) {

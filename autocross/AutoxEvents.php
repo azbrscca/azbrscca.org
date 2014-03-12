@@ -115,7 +115,7 @@
                     
                       <?php if ( $event[ 'results' ] ) { ?>
                       <div class="col-md-4 text-right">
-                        <a class="btn btn-primary" href="<?php echo baseHref; ?>autocross/results">
+                        <a class="btn btn-primary" href="<?php echo baseHref; ?>autocross/results.html">
                           View Results
                           <i class="fa fa-angle-double-right"></i>
                         </a>

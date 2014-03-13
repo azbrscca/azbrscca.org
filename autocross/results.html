@@ -345,7 +345,12 @@
 
             if ( selected.data( 'type' ) == "event" ) {
 
-              $( "#sorting_and_filtering").slideDown();
+              $( "#filters_btn" ).removeAttr('disabled');
+              if ( $( "#filters_btn" ).val() == "true" ) {
+                $( "#sorting_and_filtering").slideDown();
+              } else {
+                $( "#sorting_and_filtering").slideUp();                
+              }
 
               if ( ccReset ) {
                 $( "#categories" ).find( "option:selected" ).removeAttr( 'selected' );
@@ -387,6 +392,8 @@
             } else if ( selected.data( 'type' ) == "series" ) {
 
               $( "#sorting_and_filtering").slideUp();
+              $( "#filters_btn" ).attr('disabled',"disabled");
+
               $.getJSON( "<?php echo baseHref; ?>mtc/db/series/" + $( "#id" ).val(),
                          function( json ) {
                 seriesJSON = json;
@@ -518,6 +525,20 @@
               selectedCategories.push( $( option ).val() );
             });
             eventTable();            
+          });
+
+          $( "#filters_btn" ).click( function() {
+            var div = $( "#sorting_and_filtering");
+            if ( div.is(":visible") ) {
+              div.slideUp();
+              $(this).html("Show Filters");
+              $(this).val("false");
+            } else {
+              div.slideDown();
+              $(this).html("Hide Filters");
+              $(this).val("true");
+            }
+
           });
 
           $( "#id" ).change( function() {

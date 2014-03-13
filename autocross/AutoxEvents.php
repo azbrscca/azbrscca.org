@@ -26,10 +26,13 @@
                 </div>
 
                 <div class="form-group text-center">
-                  <input class="btn btn-default" id="download" type="submit" value="Download Results" />
+                  <button class="btn btn-default btn-sm" id="download" type="submit">Download Results</button>
+                  <button class="btn btn-default btn-sm" id="filters_btn" type="button" value="true">Hide Filters</button>
                 </div>
 
                 <div id="sorting_and_filtering">
+
+
                   <div class="form-group">
                     <label for="sort_type">Sort In:</label>
                     <select class="form-control" id="sort_type">
@@ -47,8 +50,8 @@
                   </div>
 
                   <div class="form-group text-center">
-                    <input class="btn btn-default" id="reset_sorting" type="button" value="Reset Sorting" />
-                    <input class="btn btn-default" id="start_over" type="button" value="Start Over" />
+                    <input class="btn btn-default btn-sm" id="reset_sorting" type="button" value="Reset Sorting" />
+                    <input class="btn btn-default btn-sm" id="start_over" type="button" value="Start Over" />
                   </div>
 
                   <div class="form-group">
@@ -76,7 +79,7 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <a class="btn btn-md btn-default btn-block" href="<?php echo baseHref; ?>autocross/results/static.html">
+                  <a class="btn btn-sm btn-default btn-block" href="<?php echo baseHref; ?>autocross/results/static.html">
                     2009 and older results
                     <i class="fa fa-angle-double-right"></i>
                   </a>

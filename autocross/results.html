@@ -54,13 +54,11 @@
               )
             );
 
-            var table = $( "<div/>", { 'class' : "table-responsive" } );
-            table.append( $( "<table/>", { 'class' : "table table-condensed table-hover" } ) );
-            $( "#results-inner" ).append( table );
-
+            var table_wrap = $( "<div/>", { 'class' : "table-responsive" } );
+            var table = $( "<table/>", { 'class' : "table table-condensed table-hover" } );
+            $( "#results-inner" ).append( table_wrap );
+            table_wrap.append( table );
             table.append( table_header(groupByCategory) )
-
-
             var body = $( "<tbody/>" );
             if ( groupByCategory ) {
 

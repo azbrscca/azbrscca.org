@@ -54,7 +54,8 @@
               )
             );
 
-            var table = $( "<table/>", { 'class' : "table table-condensed table-hover" } );
+            var table = $( "<div/>", { 'class' : "table-responsive" } );
+            table.append( $( "<table/>", { 'class' : "table table-condensed table-hover" } ) );
             $( "#results-inner" ).append( table );
 
             table.append( table_header(groupByCategory) )

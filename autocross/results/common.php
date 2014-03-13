@@ -9,7 +9,9 @@
                 <?php echo substr( $lines[ 1 ], 0, strpos( $lines[ 1 ], "," ) )." - ".date( "F", strtotime( date( "Y", time() )."-".$month."-1" ) ).", ".$year; ?>
               
               </h3>
-              <table class="table">
+              <div class="table-responsive">
+
+              <table class="table table-condensed">
 <?php
     for( $ndx=2; $ndx<sizeof( $lines ); $ndx++ ) {
       $line = $lines[ $ndx ];
@@ -54,6 +56,7 @@
 <?php } ?>
             </tbody>
           </table>
+        </div>
 <?php
   }
   
@@ -398,6 +401,7 @@
               <h3 class="text-info text-center">
                 <?php echo $tokens[ 0 ]; ?>
               </h3>
+              <div class="table-responsive">
               <table class="table">
 <?php    
     for( $ndx=1; $ndx<sizeof( $lines ); $ndx++ ) {
@@ -427,6 +431,7 @@
     }
 ?>
           </table>
+        </div>
 <?php
   }
 ?>

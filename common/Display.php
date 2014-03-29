@@ -14,7 +14,7 @@
     </div>
     -->
 
-    <link href="<?php echo baseHref; ?>css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo baseHref; ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo baseHref; ?>css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo baseHref; ?>css/azbr.css" rel="stylesheet">
 

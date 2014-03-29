@@ -170,8 +170,7 @@ if ( showCategory ) {
 
           $.each( results.categories[ category ], function( key, value ) {
 
-            if ( value instanceof Object &&
-                 ( value.qualified > 0 ) ) {
+            if ( value instanceof Object ) {
               var trophies = trophyCount( value.qualified );
 
               body

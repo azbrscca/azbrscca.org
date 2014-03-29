@@ -152,7 +152,7 @@
 <?php
     } // end function past_tabs
 
-    public static function upcoming_block() {
+    public static function upcoming_block( $deviceType = "unknown" ) {
 
       $args = array( 'public' => 1 );
       $json = MindTheCones::getRequest( "events/upcoming/open/", $args );
@@ -207,9 +207,13 @@
 
         <div class="row">
           <div class="col-md-12">
-            <div id="autox-carousel" class="carousel slide visible-md visible-lg" data-ride="carousel">
+
+            <?php 
+              $images = Functions::listFiles( "autocross/carousel", "jpg" );
+              if ( $deviceType != 'phone' ) {
+            ?>
+            <div id="autox-carousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <?php $images = Functions::listFiles( "autocross/carousel", "jpg" ); ?>
                 <?php foreach( $images as $index => $image ) {  ?>
                 <div class="item<?php if ( $index == 0 ) { echo " active"; } ?>">
                   <img alt="" src="<?php echo baseHref.$image; ?>" />
@@ -217,6 +221,14 @@
                 <?php } ?>
               </div>
             </div>
+
+            <?php
+              } else {
+                $random = rand(0, sizeof($images)-1);
+            ?>
+            <img class="img-responsive" src="<?php echo baseHref.$images[$random]; ?>" />
+            <?php } ?>
+
             <p>
               Please refer to the <a href="<?php echo baseHref; ?>/autocross/calendar.html">event calendar</a>
               for event schedules and run/work order.

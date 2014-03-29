@@ -24,9 +24,13 @@
 
         <div class="row">
           <div class="col-md-12">
-            <div id="rallyx-carousel" class="carousel slide visible-md visible-lg" data-ride="carousel">
+
+            <?php
+              $images = Functions::listFiles( "rallycross/carousel", "jpg" );
+              if ( $deviceType != 'phone' ) {
+            ?>
+            <div id="rallyx-carousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <?php $images = Functions::listFiles( "rallycross/carousel", "jpg" ); ?>
                 <?php foreach( $images as $index => $image ) {  ?>
                 <div class="item<?php if ( $index == 0 ) { echo " active"; } ?>">
                   <img alt="" src="<?php echo baseHref.$image; ?>" />
@@ -34,6 +38,14 @@
                 <?php } ?>
               </div>
             </div>
+
+            <?php
+              } else {
+                $random = rand(0, sizeof($images)-1);
+            ?>
+            <img class="img-responsive" src="<?php echo baseHref.$images[$random]; ?>" />
+            <?php } ?>
+
           </div>
         </div>
 <?php

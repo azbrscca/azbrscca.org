@@ -5,6 +5,9 @@
   require_once "autocross/AutoxEvents.php";
   require_once "rallycross/RallyxEvents.php";
 
+  require_once "common/external/Mobile-Detect-2.7.9/Mobile_Detect.php";
+  $detect = new Mobile_Detect;
+  $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
 
   Display::open_page();
 ?>
@@ -44,7 +47,7 @@
 
             <h2 class="azbr-color"><em>Autocross</em></h2>
             <div class="well well-sm">
-              <?php AutoxEvents::upcoming_block(); ?>
+              <?php AutoxEvents::upcoming_block( $deviceType ); ?>
             </div>
             <div class="well well-sm">
               <?php AutoxEvents::past_tabs(); ?>
@@ -109,7 +112,7 @@
 
             <h2 class="azbr-color"><em>Rallycross</em></h2>
             <div class="well well-sm">
-              <?php RallyxEvents::upcoming_block(); ?>
+              <?php RallyxEvents::upcoming_block( $deviceType ); ?>
             </div>
 
 

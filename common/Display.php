@@ -79,11 +79,6 @@
                   The Tucson & Southern Arizona Region of the Sports Car Club of America since 1959
                 </h3>
               </div>
-              <div class="col-xs-12 visible-xs" id="title-span-xs">
-                <h3 class="text-center">
-                  <a class="azbr-color" href="<?php echo baseHref; ?>">Arizona Border Region</a>
-                </h3>
-              </div>
 
             </div>
           </div>
@@ -100,6 +95,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              <a class="navbar-brand" href="<?php echo baseHref; ?>">
+                <span class="azbr-color visible-xs">Arizona Border Region</span>
+              </a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">

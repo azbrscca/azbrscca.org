@@ -45,29 +45,5 @@
               <img class="img-responsive" id="course-map-img" src="" />
             </div>
           </div>
-              
-          </div>
-
         </div>
-
-        <script type="text/javascript">
-          $( document ).ready( function() {
-            $( "#course-map" ).change( function() {
-              if ( $(this).val() == "") {
-                $( "#course-map-row" ).slideUp();
-              } else {
-                console.log( "here");
-                $( "#course-map-img" ).attr( 'src', '<?php echo baseHref; ?>' + $( this ).val() );
-                $( "#course-map-row" ).slideDown();
-              }
-            });
-
-            var options = $( "#course-map option" );
-            $( "#course-map" ).val($(options[1]).val());
-            $( "#course-map" ).trigger("change");
-          });
-        </script>
-
-<?php
-  Display::close_page(); 
-?>
+<?php Display::close_page( array( "azbr/autocross/courses/index.js" ) ); ?>

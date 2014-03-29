@@ -47,17 +47,17 @@ body {
 #title-span h1 {
   font-size: 400%;
   font-weight: bold;
-  text-shadow: -3px 0 #000, 0 3px #000, 3px 0 #000, 0 -3px #000;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 #title-span h3 {
   color: #fff;
   font-weight: bold;
-  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 #title-span-xs h3 {
-  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 #title-span a:hover,
@@ -81,7 +81,6 @@ h2 {
   background-color: rgba( 0, 0, 0, .4 );
   padding: 5px;
   padding-left: 15px;
-  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
 .dropdown-header {

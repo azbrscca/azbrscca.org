@@ -3,4 +3,4 @@
 
 *.tar.gz
 
-common/Common.php
+common/Common.php*

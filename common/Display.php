@@ -1,7 +1,7 @@
 <?php
   class Display {
   
-    public static function close_page() {
+    public static function close_page( $jsSources = array(), $jsonData = array() ) {
 ?>
       </div> <!-- /container -->
     </div> <!-- /wrap -->
@@ -13,17 +13,21 @@
       </div>
     </div>
     -->
-    
+
+    <?php var_dump( $jsonData ); ?>
+
+    <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
+    <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
     <script>
-      $.each( $("div[data-expires]"), function( index, div ) {
-        var expiration_date = new Date($(div).data('expires'))
-        var current_date = new Date()
-        if(current_date.getTime()>expiration_date.getTime()) {
-          $(div).hide();
-        }
-      });
+      var baseHref = "<?php echo baseHref; ?>";
+<?php foreach( $jsonData as $key => $json) { ?>
+      var <?php echo $key; ?> = $.parseJSON( '<?php echo addslashes( json_encode( $json ) ); ?>' );
+<?php } ?>
     </script>
 
+<?php foreach( $jsSources as $jsSource ) { ?>
+      <script src="<?php echo baseHref; ?>js/<?php echo $jsSource; ?>"></script>
+<?php } ?>
 
   </body>
 </html>
@@ -59,9 +63,6 @@
         #header-row { background-image: url( '<?php echo baseHref; ?>images/SCCA_50.png' ); }
       }
     </style>
-
-    <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
-    <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
   </head>
 
   <body>

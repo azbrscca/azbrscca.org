@@ -159,7 +159,7 @@
       $autox_events = json_decode( $json, true );
 
       if ( empty( $autox_events ) ) {
-        $args[ 'limit' ] = 2;
+        $args[ 'limit' ] = 1;
         $json = MindTheCones::getRequest( "events/upcoming/", $args );
         $autox_events = json_decode( $json, true );
       }

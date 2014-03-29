@@ -49,8 +49,8 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     -->
     <style>
-      body { background-image: url( '<?php echo baseHref; ?>images/asphalt.jpg' ); }
       @media (min-width: 767px) {
+        body { background-image: url( '<?php echo baseHref; ?>images/asphalt.jpg' ); }
         #header-row { background-image: url( '<?php echo baseHref; ?>images/SCCA_50.png' ); }
       }
     </style>

@@ -14,8 +14,9 @@
     </div>
     -->
 
-    <script src="<?php echo baseHref; ?>js/jquery-1.11.0.min.js"></script>
-    <script src="<?php echo baseHref; ?>js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
     <script>
       var baseHref = "<?php echo baseHref; ?>";
 <?php foreach( $jsonData as $key => $json) { ?>
@@ -43,8 +44,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="<?php echo baseHref; ?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo baseHref; ?>css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link href="<?php echo baseHref; ?>css/azbr.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="<?php echo baseHref; ?>images/logo-icon.png">

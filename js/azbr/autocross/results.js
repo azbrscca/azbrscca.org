@@ -542,5 +542,4 @@ if ( showCategory ) {
   $( "#type" ).val( "event" );
   $( firstEvent ).attr( 'selected', "selected" );
   getResults( true );
-
 });

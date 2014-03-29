@@ -3,10 +3,11 @@
 
   require_once "AutoxEvents.php";
 
-  Display::open_page();
+  require_once "../common/external/Mobile-Detect-2.7.9/Mobile_Detect.php";
+  $detect = new Mobile_Detect;
+  $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
 
-  $data = MindTheCones::getRequest( "results/list/available" );
-  $avail_results = json_decode( $data, true );
+  Display::open_page();
 ?>
         <h2 class="azbr-color">
           Autocross Event Results
@@ -14,7 +15,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="well well-sm">
-            <?php AutoxEvents::avail_results() ?>
+            <?php AutoxEvents::avail_results( $deviceType ) ?>
             </div>
           </div>
 

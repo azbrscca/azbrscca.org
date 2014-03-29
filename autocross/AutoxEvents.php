@@ -1,7 +1,7 @@
 <?php
   class AutoxEvents {
 
-    public static function avail_results() {
+    public static function avail_results( $deviceType = "unknown" ) {
 
       $data = MindTheCones::getRequest( "results/list/available" );
       $avail_results = json_decode( $data, true );
@@ -27,11 +27,14 @@
 
                 <div class="form-group text-center">
                   <button class="btn btn-default btn-sm" id="download" type="submit">Download Results</button>
+                  <?php if ($deviceType == "phone") { ?>
+                  <button class="btn btn-default btn-sm" id="filters_btn" type="button" value="false">Show Filters</button>
+                  <?php } else { ?>
                   <button class="btn btn-default btn-sm" id="filters_btn" type="button" value="true">Hide Filters</button>
+                  <?php } ?>
                 </div>
 
-                <div id="sorting_and_filtering">
-
+                <div id="sorting_and_filtering" class="<?php if ($deviceType == "phone") { "hide"; } ?>">
 
                   <div class="form-group">
                     <label for="sort_type">Sort In:</label>
@@ -210,7 +213,7 @@
 
             <?php 
               $images = Functions::listFiles( "autocross/carousel", "jpg" );
-              if ( $deviceType != 'phone' ) {
+              if ( $deviceType != "phone" ) {
             ?>
             <div id="autox-carousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">

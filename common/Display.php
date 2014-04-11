@@ -35,7 +35,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <link rel="stylesheet" href="<?php echo baseHref; ?>css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo baseHref; ?>css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo baseHref; ?>css/azbr.css">
@@ -48,18 +49,36 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     -->
+
     <style>
       @media (min-width: 767px) {
         body { background-image: url( '<?php echo baseHref; ?>images/asphalt.jpg' ); }
         #header-row { background-image: url( '<?php echo baseHref; ?>images/SCCA_50.png' ); }
       }
     </style>
+
+    <!--[if lt IE 9]>
+      <style>
+        #container {
+          background-color: #7d7d7d;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+        }
+        h2 {
+          background-color: #222;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+        }
+      </style>
+      <script src="<?php echo baseHref; ?>js/afarkas-html5shiv-3013608/dist/html5shiv.min.js"></script>
+      <script src="<?php echo baseHref; ?>js/respond.min.js"></script>
+    <![endif]-->
+
   </head>
 
   <body>
 
     <div id="wrap">
       <div class="container" id="container">
+
         <!-- header-row -->
         <div class="row" id="header-row">
           <div class="col-md-12">

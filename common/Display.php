@@ -59,6 +59,9 @@
 
     <!--[if lt IE 9]>
       <style>
+        body {
+          background: #ffffff url( '<?php echo baseHref; ?>images/asphalt.jpg' ) no-repeat 0 0;
+        }
         #container {
           background-color: #7d7d7d;
           -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";

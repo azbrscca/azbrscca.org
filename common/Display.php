@@ -68,7 +68,7 @@
           -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
         }
       </style>
-      <script src="<?php echo baseHref; ?>js/afarkas-html5shiv-3013608/dist/html5shiv.min.js"></script>
+      <script src="<?php echo baseHref; ?>js/html5shiv.min.js"></script>
       <script src="<?php echo baseHref; ?>js/respond.min.js"></script>
     <![endif]-->
 

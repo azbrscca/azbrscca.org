@@ -31,6 +31,7 @@
     /***** add rescheduled dates below *****/
     private static $rescheduled_to = array(
       "2013-01-01",
+      "2014-06-10",
     );
 
 

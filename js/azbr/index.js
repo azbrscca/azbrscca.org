@@ -4,6 +4,8 @@ $( document ).ready( function() {
     var current_date = new Date()
     if(current_date.getTime()>expiration_date.getTime()) {
       $(div).hide();
+    } else {
+      $(div).show();
     }
   });
 });

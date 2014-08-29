@@ -32,6 +32,7 @@
     private static $rescheduled_to = array(
       "2013-01-01",
       "2014-06-10",
+      "2014-09-09",
     );
 
 

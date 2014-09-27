@@ -1,7 +1,7 @@
 <?php
   class RallyxEvents {
 
-    public static function upcoming_block() {
+    public static function upcoming_block( $deviceType = "unknown" ) {
 ?>
         <div class="row">
           <div class="col-md-12">

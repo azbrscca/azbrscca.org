@@ -21,7 +21,7 @@ body {
 }
 
 #container {
-  background-color: rgba( 175, 175, 175, .9 );
+  background-color: rgba( 150, 150, 150, .9 );
 }
 
 #footer-row {
@@ -47,13 +47,13 @@ body {
 #title-span h1 {
   font-size: 400%;
   font-weight: bold;
-  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+  text-shadow: #555 5px 5px 20px;
 }
 
 #title-span h3 {
   color: #fff;
   font-weight: bold;
-  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+  text-shadow: #555 2px 2px 10px;
 }
 
 #title-span a:hover {
@@ -69,11 +69,11 @@ body {
 }
 
 .well {
-  background-color: rgba( 255, 255, 255, .7 )
+  background-color: rgba( 240, 240, 240, 1 )
 }
   
 h2 {
-  background-color: rgba( 0, 0, 0, .4 );
+  background-color: rgba( 80, 80, 80, 1 );
   padding: 5px;
   padding-left: 15px;
 }

@@ -117,6 +117,10 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
 
+                <li>
+                  <a href="<?php echo baseHref; ?>">Main</a>
+                </li>
+
                 <!-- autox dropdown -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autocross <b class="caret"></b></a>

@@ -145,13 +145,14 @@
                   <tr>
                     <td>
                       <p><?php echo date( "l, F j", $event[ 'date_ts' ] ); ?></p>
-                      <?php if ( $event[ 'name' ] != "" ) { ?>
-                      <p><em><?php echo $event[ 'name' ]; ?></em></p>
-                      <?php } ?>
                     </td>
                     <td>
                       <div class="row">
                         <div class="col-md-12">
+
+                          <?php if ( $event[ 'name' ] != "" ) { ?>
+                          <p><em><?php echo $event[ 'name' ]; ?></em></p>
+                          <?php } ?>
 
                           <?php if ( $event[ 'status' ] == "closed" ) { ?>
                           <span class="text-danger">

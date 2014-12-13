@@ -16,7 +16,7 @@
       "reg_close" => "8:30am",
       "tech_close" => "8:45am",
       "novice_walk" => "8:45am",
-      "drivers_meeting" => "9:00am"
+      "site_meeting" => "9:00am"
     ),
 
     "summer" => array(
@@ -25,7 +25,7 @@
       "reg_close" => "8:00am",
       "tech_close" => "8:15am",
       "novice_walk" => "8:15am",
-      "drivers_meeting" => "8:30am"
+      "site_meeting" => "8:30am"
     ),
 
     "fall" => array(
@@ -34,7 +34,7 @@
       "reg_close" => "8:30am",
       "tech_close" => "8:45am",
       "novice_walk" => "8:45am",
-      "drivers_meeting" => "9:00am"
+      "site_meeting" => "9:00am"
     )
   );
 
@@ -109,9 +109,12 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-8 col-xs-8"><strong>Mandatory</strong> Drivers Meeting</div>
+                <div class="col-md-8 col-xs-8">
+                    <strong>Mandatory</strong> Site Meeting
+                    <small>Everyone on site for the event must attend, driving or not.</small>
+                </div>
                 <div class="col-md-4 col-xs-2">
-                  <?php echo $schedule['drivers_meeting']; ?>
+                  <?php echo $schedule['site_meeting']; ?>
                 </div>
               </div>
 <?php    

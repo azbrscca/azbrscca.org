@@ -66,7 +66,15 @@
       // check if the meeting for this month has passed
       // and if it has, get next months meeting
       if ( $mtng_time < $now ) {
-        $this_month =  str_pad(intval($this_month)+1,2,"0",STR_PAD_LEFT);;
+
+        $this_month = intval($this_month)+1;
+        if ($this_month > 12) {
+          $this_year = intval($this_year)+1;
+          $this_month = 1;
+        }
+
+        $this_month =  str_pad(intval($this_month),2,"0",STR_PAD_LEFT);;
+
         $mtng_time = $mtng_time = Meetings::get_meeting( $this_month, $this_year );
       }
 

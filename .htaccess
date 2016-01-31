@@ -3,6 +3,10 @@ order allow,deny
 deny from all
 </Files>
 
+<FilesMatch ".(eot|ttf|otf|woff)">
+  Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
 ErrorDocument 300 "/lost.html"
 ErrorDocument 400 "/lost.html"
 ErrorDocument 403 "/lost.html"

@@ -1,6 +1,6 @@
 <?php
   class Display {
-  
+
     public static function close_page( $jsSources = array(), $jsonData = array() ) {
 ?>
       </div> <!-- /container -->
@@ -36,10 +36,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <link rel="stylesheet" href="<?php echo baseHref; ?>css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo baseHref; ?>css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo baseHref; ?>css/azbr.css">
+
+    <script src="https://use.fontawesome.com/165222812f.js"></script>
 
     <link rel="icon" type="image/png" href="<?php echo baseHref; ?>images/logo-icon.png">
     <!--
@@ -99,7 +100,7 @@
           </div>
         </div>
         <!-- / header-row -->
-      
+
         <!-- navbar -->
         <div class="navbar navbar-default" role="navigation">
           <div class="container-fluid">

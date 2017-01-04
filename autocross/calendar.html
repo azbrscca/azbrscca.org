@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $calendar_year = 2016;
+  $calendar_year = 2017;
 
   $json_string = MindTheCones::getRequest( "events/calendar/".$calendar_year."/", array( 'public' => 1 ));
   $events = json_decode( $json_string, true );
@@ -117,7 +117,7 @@
                   <?php echo $schedule['site_meeting']; ?>
                 </div>
               </div>
-<?php    
+<?php
   }
 ?>
 
@@ -134,14 +134,14 @@
                   </tr>
                 </thead>
                 <tbody>
-<?php 
+<?php
   $found_next = false;
   foreach( $events as $event ) {
 
     // show the event schedule when registration is open
     // and after it is closed until the day after the event
     $past = $event[ 'date_ts' ] + 24*60*60 < time();
-    $show_schedule = 
+    $show_schedule =
       (($event[ 'status' ] == "open" ) || ($event[ 'status' ] == "closed")) && !$past;
 ?>
 
@@ -221,7 +221,7 @@
               <div class="alert alert-info">
                 <?php show_schedule($schedules['fall']); ?>
               </div>
-              <div class="alert alert-info">              
+              <div class="alert alert-info">
                 <?php show_run_work($run_work['fall']); ?>
               </div>
 

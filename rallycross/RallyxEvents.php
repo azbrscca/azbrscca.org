@@ -6,12 +6,11 @@
         <div class="row">
           <div class="col-md-12">
             <p>
-              RallyX events in Tucson are hosted by the <a href="http://azrallygroup.com/">Arizona Rally Group</a>
+              RallyX events in Tucson are hosted by the <a href="https://www.facebook.com/AzRallyGroup">Arizona Rally Group</a>
               at <a href="">MC Motorsports Park</a>. For event details, please visit the AZRG website or
               Facebook page.
             </p>
             <p class="text-center">
-              <a class="btn btn-primary btn-md" href="http://azrallygroup.com/">AZ Rally Group</a>
               <a class="btn btn-primary btn-md" href="http://mcmotorsportspark.com/">
                 MC Motorsports Park
               </a>
@@ -53,5 +52,3 @@
 
   } // end Class
 ?>
-
-

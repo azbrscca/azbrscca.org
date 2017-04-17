@@ -204,40 +204,8 @@
           </div>
         </div>
 
-<?php } ?>
-
-        <div class="row">
-          <div class="col-md-12">
-
-            <?php
-              $images = Functions::listFiles( "autocross/carousel", "jpg" );
-              if ( $deviceType != "phone" ) {
-            ?>
-            <div id="autox-carousel" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <?php foreach( $images as $index => $image ) {  ?>
-                <div class="item<?php if ( $index == 0 ) { echo " active"; } ?>">
-                  <img alt="" src="<?php echo baseHref.$image; ?>" />
-                </div>
-                <?php } ?>
-              </div>
-            </div>
-
-            <?php
-              } else {
-                $random = rand(0, sizeof($images)-1);
-            ?>
-            <img class="img-responsive" src="<?php echo baseHref.$images[$random]; ?>" />
-            <?php } ?>
-
-            <p>
-              Please refer to the <a href="<?php echo baseHref; ?>/autocross/calendar.html">event calendar</a>
-              for event schedules and run/work order.
-            </p>
-          </div>
-        </div>
 <?php
+      }
     } // end function upcoming_block
-
   } // end Class
 ?>

@@ -1,0 +1,82 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+
+  MindTheCones::setApiKey( $mtcKeys['AZRG'] );
+  MindTheCones::setOrganizationId( $mtcIds['AZRG'] );
+
+  $calendar_year = 2017;
+
+  $json_string = MindTheCones::getRequest( "events/calendar/".$calendar_year."/", array( 'public' => 1 ));
+  $events = json_decode( $json_string, true );
+?>
+        <h2 class="azbr-color"><?php echo $calendar_year; ?> Rallycross Event Calendar</h2>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="well well-sm">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Event Date</th>
+                    <th>Online Registration</th>
+                  </tr>
+                </thead>
+                <tbody>
+<?php
+  $found_next = false;
+  foreach( $events as $event ) {
+
+    // show the event schedule when registration is open
+    // and after it is closed until the day after the event
+    $past = $event[ 'date_ts' ] + 24*60*60 < time();
+?>
+
+                  <tr>
+                    <td>
+                      <p><?php echo date( "l, F j", $event[ 'date_ts' ] ); ?></p>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-12">
+
+                          <?php if ( $event[ 'name' ] != "" ) { ?>
+                          <p><em><?php echo $event[ 'name' ]; ?></em></p>
+                          <?php } ?>
+
+                          <?php if ( $event[ 'status' ] == "closed" ) { ?>
+                          <span class="text-danger">
+                            Closed at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>
+                          </span>
+                          <?php } else if ( $event[ 'status' ] == "will open" ) { ?>
+                          <span class="text-info">
+                            Opens at <?php echo date( "g:ia l, F j", $event[ 'registration_open_ts' ] ); ?>
+                          </span>
+                          <?php } else if ( $event[ 'status' ] == "open" ) { ?>
+                          <span class="text-success">
+                            <a class="btn btn-success btn-sm"
+                                href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>">
+                             Registration is Open!
+                           </a>
+                            Closes at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>
+                          </span>
+                          <?php } ?>
+
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+          </div>
+
+        </div>
+<?php
+  Display::close_page();
+?>

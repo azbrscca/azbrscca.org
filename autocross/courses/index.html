@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $data = MindTheCones::getRequest( "events/past/" );
+  $data = MindTheCones::getRequest( "events/past/", $mtcIds['AZBR'], $mtcKeys['AZBR'] );
   $json = json_decode( $data, true );
 ?>
 

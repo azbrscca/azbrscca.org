@@ -17,10 +17,10 @@
 
             <h2 class="azbr-color"><em>Autocross</em></h2>
             <div class="well well-sm">
-              <?php AutoxEvents::upcoming_block( $deviceType ); ?>
+              <?php AutoxEvents::upcoming_block( $deviceType, $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
             </div>
             <div class="well well-sm">
-              <?php AutoxEvents::past_tabs(); ?>
+              <?php AutoxEvents::past_tabs( $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
             </div>
           </div>
 

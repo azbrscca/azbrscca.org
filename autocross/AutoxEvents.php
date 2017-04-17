@@ -1,9 +1,9 @@
 <?php
   class AutoxEvents {
 
-    public static function avail_results( $deviceType = "unknown" ) {
+    public static function avail_results( $deviceType, $orgId, $apiKey) {
 
-      $data = MindTheCones::getRequest( "results/list/available" );
+      $data = MindTheCones::getRequest( "results/list/available", $orgId, $apiKey );
       $avail_results = json_decode( $data, true );
 ?>
 
@@ -62,7 +62,7 @@
                     <select class="form-control" id="classes" name="classes[]" multiple="multiple" size="4">
                     </select>
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="categories">Categories to Display:</label>
                     <select class="form-control" id="categories" name="categories[]" multiple="multiple" size="4">
@@ -91,9 +91,9 @@
 <?php
 }
 
-    public static function past_tabs() {
+    public static function past_tabs($orgId, $apiKey) {
 
-      $past_events = MindTheCones::getRequest( "events/past/", array( 'limit' => 4 ));
+      $past_events = MindTheCones::getRequest( "events/past/", $orgId, $apiKey, array( 'limit' => 4 ));
       $events = json_decode( $past_events, true );
 ?>
             <div class="row">
@@ -115,12 +115,12 @@
                     <div class="row">
                       <div class="col-md-8">
                         <h5>
-                          <?php echo date( "F j", $event[ 'date_ts' ] ); ?> 
+                          <?php echo date( "F j", $event[ 'date_ts' ] ); ?>
                           <?php if ( !empty( $event[ 'name' ] ) ) { echo $event[ 'name' ]; } ?>
                           Autocross at <?php echo $event[ 'site_name' ]; ?>
                         </h5>
                       </div>
-                    
+
                       <?php if ( $event[ 'results' ] ) { ?>
                       <div class="col-md-4 text-right">
                         <a class="btn btn-primary" href="<?php echo baseHref; ?>autocross/results.html">
@@ -143,7 +143,7 @@
                       </div>
                     </div>
                     <?php
-                      } // course map thumbnail 
+                      } // course map thumbnail
                     ?>
                   </div>
                 <?php } ?>
@@ -155,15 +155,13 @@
 <?php
     } // end function past_tabs
 
-    public static function upcoming_block( $deviceType = "unknown" ) {
-
+    public static function upcoming_block( $deviceType, $orgId, $apiKey ) {
       $args = array( 'public' => 1 );
-      $json = MindTheCones::getRequest( "events/upcoming/open/", $args );
+      $json = MindTheCones::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
       $autox_events = json_decode( $json, true );
-
       if ( empty( $autox_events ) ) {
         $args[ 'limit' ] = 1;
-        $json = MindTheCones::getRequest( "events/upcoming/", $args );
+        $json = MindTheCones::getRequest( "events/upcoming/", $orgId, $apiKey, $args );
         $autox_events = json_decode( $json, true );
       }
 
@@ -181,19 +179,19 @@
 <?php   if ( $event[ 'status' ] == "will open" ) { ?>
            <h4 class="text-center">
               Online registration will open:
-              <?php echo date( "l, F j", $event[ 'registration_open_ts' ] ); ?> at 
+              <?php echo date( "l, F j", $event[ 'registration_open_ts' ] ); ?> at
               <?php echo date( "g:ia", $event[ 'registration_open_ts' ] ); ?>.
             </h4>
 
 <?php   } else if ( $event[ 'status' ] == "open" ) { ?>
-    
+
             <h4 class="text-success text-center">
               Online registration is open now!
               <a class="btn btn-success" href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
             </h4>
             <h5 class="text-center">
               Online registration closes
-              <?php echo date( "l, F j", $event[ 'registration_close_ts' ] ); ?> at 
+              <?php echo date( "l, F j", $event[ 'registration_close_ts' ] ); ?> at
               <?php echo date( "g:ia", $event[ 'registration_close_ts' ] ); ?>.
             </h5>
 
@@ -211,7 +209,7 @@
         <div class="row">
           <div class="col-md-12">
 
-            <?php 
+            <?php
               $images = Functions::listFiles( "autocross/carousel", "jpg" );
               if ( $deviceType != "phone" ) {
             ?>
@@ -243,5 +241,3 @@
 
   } // end Class
 ?>
-
-

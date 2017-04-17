@@ -203,7 +203,6 @@
 <?php   } ?>
           </div>
         </div>
-
 <?php
       }
     } // end function upcoming_block

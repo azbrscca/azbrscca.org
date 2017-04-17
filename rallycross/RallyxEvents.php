@@ -82,7 +82,10 @@
             <p>
               RallyX events in Tucson are hosted by the <a href="https://www.facebook.com/AzRallyGroup">Arizona Rally Group</a>
               at <a href="">MC Motorsports Park</a>. For event details, please visit the
-              <a href="https://www.facebook.com/AzRallyGroup">Facebook page</a>.
+              <a href="https://www.facebook.com/AzRallyGroup">Facebook page</a>. For a complete list of events, visit the
+              <a href="<?php echo baseHref; ?>/rallycross/calendar.html">rallycross event calendar.</a>
+              </p>
+
             </p>
             <p class="text-center">
               <a class="btn btn-primary btn-md" href="http://mcmotorsportspark.com/">

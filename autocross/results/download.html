@@ -5,11 +5,10 @@
 
   if ( !empty( $_POST ) ) {
     $args = Functions::cleanArray( $_POST );
-
 		if ( $args[ 'type' ] == "series" ) {
-			series_results_spreadsheet( $args[ 'id' ] );
+			series_results_spreadsheet( $args[ 'id' ], $mtcIds['AZBR'], $mtcKeys['AZBR'] );
 		} else if ( $args[ 'type' ] == "event" ) {
-			event_results_spreadsheet( $args[ 'id' ] );
+			event_results_spreadsheet( $args[ 'id' ], $mtcIds['AZBR'], $mtcKeys['AZBR'] );
 		}
   }
 
@@ -36,13 +35,12 @@
 		}
 	}
 
-  function event_results_spreadsheet( $eventId ) {
-
-    $data = MindTheCones::getRequest( "db/events/".$eventId."/", $mtcIds['AZBR], $mtcKeys['AZBR'] );
+  function event_results_spreadsheet( $eventId, $mtcId, $mtcKey ) {
+    $data = MindTheCones::getRequest( "db/events/".$eventId."/", $mtcId, $mtcKey );
     $event = json_decode( $data, true );
-
-    $data = MindTheCones::getRequest( "results/event/".$eventId."/", $mtcIds['AZBR], $mtcKeys['AZBR'] );
+    $data = MindTheCones::getRequest( "results/event/".$eventId."/", $mtcId, $mtcKey );
     $jsonData = json_decode( $data, true );
+
 
     $results = array(
     	"PAX" => array(),
@@ -56,6 +54,12 @@
     foreach( $jsonData as $item ) {
       array_push( $results[ $item[ 'category' ] ], $item );
     }
+
+		foreach( array_keys($results) as $category ) {
+			if ( sizeof($results[$category]) == 0 ) {
+			  unset($results[$category]);
+		  }
+	  }
 
     usort( $results[ 'Open' ], 'sortByClass' );
 
@@ -161,12 +165,12 @@
 <?php
   }
 
-  function series_results_spreadsheet( $seriesId ) {
+  function series_results_spreadsheet( $seriesId, $mtcId, $mtcKey ) {
 
-    $data = MindTheCones::getRequest("db/series/".$seriesId."/", $mtcIds['AZBR], $mtcKeys['AZBR']);
+    $data = MindTheCones::getRequest("db/series/".$seriesId."/", $mtcId, $mtcKey);
     $series = json_decode( $data, true );
 
-    $data = MindTheCones::getRequest("results/series/".$seriesId."/", $mtcIds['AZBR], $mtcKeys['AZBR']);
+    $data = MindTheCones::getRequest("results/series/".$seriesId."/", $mtcId, $mtcKey);
     $results = json_decode( $data, true );
 
     header("Content-type: application/vnd.ms-excel");
@@ -198,8 +202,14 @@
               </thead>
               <tbody>
 <?php
-
+		$with_results = array_keys($results[ 'categories' ]);
+		foreach( $categories as $category ) {
+			if (!in_array($category, $with_results)) {
+				unset($categories[array_search($category, $categories)]);
+			}
+		}
     foreach( $categories as $category ) {
+
 
       if ( !empty( $results[ 'categories' ][ $category ][ 'divided' ] ) ) {
         unset( $results[ 'categories' ][ $category ][ 'divided' ] );

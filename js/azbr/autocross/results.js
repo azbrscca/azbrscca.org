@@ -43,10 +43,10 @@ rbc[ result.category ].push( result );
       });
 
       $.each( categories, function( index, category ) {
-
 var showCategory = ( $.inArray( "All", selectedCategories ) >= 0 );
 showCategory |= ( ( $.inArray( "Comps", selectedCategories ) >= 0 ) && ( category != "Time Only" ) )
 showCategory |= ( $.inArray( category, selectedCategories ) >= 0 );
+showCategory &= (rbc[category].length > 0);
 if ( showCategory ) {
 
   row = $( "<tr/>" )
@@ -511,8 +511,8 @@ if ( showCategory ) {
   });
 
   $( "#id" ).change( function() {
-//           var selected = $( this ).find( "option:selected" );
-//           var type = $( "#type" ).val( selected.data( 'type' ) );
+   var selected = $( this ).find( "option:selected" );
+   var type = $( "#type" ).val( selected.data( 'type' ) );
     getResults( true );
   });
 

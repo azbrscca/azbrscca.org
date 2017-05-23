@@ -62,7 +62,6 @@
                     <select class="form-control" id="classes" name="classes[]" multiple="multiple" size="4">
                     </select>
                   </div>
-
                   <div class="form-group">
                     <label for="categories">Categories to Display:</label>
                     <select class="form-control" id="categories" name="categories[]" multiple="multiple" size="4">

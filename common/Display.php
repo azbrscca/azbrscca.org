@@ -183,9 +183,8 @@
 
                 <!-- rally & rallyx dropdown -->
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rallycross &amp; Road Rally  <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rallycross<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li class="dropdown-header">Rallycross</li>
                     <li><a href="<?php echo baseHref; ?>rallycross/calendar.html">Event Calendar</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/details.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/supplemental.html">Supplemental Regulations</a></li>
@@ -193,9 +192,6 @@
                     <li class="divider"></li>
                     <li><a href="http://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
                     <li><a href="https://www.facebook.com/AzRallyGroup">AZ Rally Group (Facebook)</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Road Rally</li>
-                    <li><a href="<?php echo baseHref; ?>roadrally">Event Information</a></li>
                   </ul>
                 </li>
 

@@ -160,11 +160,10 @@
                     <li><a href="<?php echo baseHref; ?>autocross/calendar.html">Event Calendar</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/details.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/supplemental.html">Supplemental Regulations</a></li>
-                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forums</a></li>
+                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/courses/">Course Map Archive</a></li>
-                    <li><a href="http://www.azsolo.zenfolio.com/">Event Photos</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>
@@ -188,9 +187,12 @@
                   <ul class="dropdown-menu">
                     <li class="dropdown-header">Rallycross</li>
                     <li><a href="<?php echo baseHref; ?>rallycross/calendar.html">Event Calendar</a></li>
-                    <li><a href="https://www.facebook.com/AzRallyGroup">AZ Rally Group</a></li>
-                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forums</a></li>
+                    <li><a href="<?php echo baseHref; ?>rallycross/details.html">Site &amp; Entry Fee Information</a></li>
+                    <li><a href="<?php echo baseHref; ?>rallycross/supplemental.html">Supplemental Regulations</a></li>
+                    <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forum</a></li>
+                    <li class="divider"></li>
                     <li><a href="http://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
+                    <li><a href="https://www.facebook.com/AzRallyGroup">AZ Rally Group (Facebook)</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Road Rally</li>
                     <li><a href="<?php echo baseHref; ?>roadrally">Event Information</a></li>

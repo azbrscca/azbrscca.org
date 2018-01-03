@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $calendar_year = 2017;
+  $calendar_year = 2018;
 
   $json_string = MindTheCones::getRequest( "events/calendar/".$calendar_year."/", $mtcIds['AZBR'], $mtcKeys['AZBR'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );

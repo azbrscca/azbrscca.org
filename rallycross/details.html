@@ -1,0 +1,77 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+?>
+
+        <h2 class="azbr-color">Rallycross Site &amp; Entry Fee Information</h2>
+
+        <div class="row">
+
+          <div class="col-md-8">
+            <div class="well well-sm">
+              <h3 class="text-info text-center">Event Site: MC Motorpark/Musselman Honda Circuit</h3>
+
+              <p class="text-center">
+                MC Motorpark/Musselman Honda Circuit is located at 11700 S Harrison Rd.
+                Use the North Entrance. Once on site follow the orange lines till you reach the star area and park.
+
+                <img class="img-responsive" src="<?php echo baseHref; ?>images/rallycross/site1.png" />
+                <img class="img-responsive" src="<?php echo baseHref; ?>images/rallycross/site2.png" />
+              </p>
+
+              <p class="text-center">
+                <iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3382.0672689155917!2d-110.79487698515827!3d32.04037058120066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d661e30f294e33%3A0x249bb6d6224db4bd!2sMC+Motorsports+Park!5e0!3m2!1sen!2sus!4v1515010997150"></iframe>
+              </p>
+
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="well well-sm">
+              <h3 class="text-info text-center">Entry Fees</h3>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">SCCA Members</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 45</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 55</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Non SCCA (Weekend) Members</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 55</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 65</div>
+              </div>
+              <br/>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="alert alert-warning">
+                    The SCCA requires that all event participants be SCCA members.
+                    If you are not an SCCA member a weekend membership is available for an extra $10,
+                    which is included in the Non SCCA entry fees shown above.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<?php
+  Display::close_page();
+?>

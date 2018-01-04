@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $calendar_year = 2017;
+  $calendar_year = 2018;
 
   $json_string = MindTheCones::getRequest( "events/calendar/".$calendar_year."/", $mtcIds['AZBR'], $mtcKeys['AZBR'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );
@@ -210,7 +210,7 @@
           <div class="col-md-4">
 
             <div class="well well-sm">
-              <h4 class="text-center">Regular Schedule &amp; Run/Work Order</h4>
+              <h4 class="text-center">Schedule &amp; Run/Work Order</h4>
 
               <p class="text-center">
                 <em>

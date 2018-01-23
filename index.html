@@ -13,19 +13,6 @@
 ?>
         <div class="row">
           <div class="col-md-7">
-            <h2 class="azbr-color"><em>Tucson Autocross</em></h2>
-            <div class="well well-sm">
-              <?php AutoxEvents::upcoming_block( $deviceType, $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
-              <?php Display::image_carousel( "autocross/carousel"); ?>
-              <p>
-                Please refer to the <a href="<?php echo baseHref; ?>autocross/calendar.html">event calendar</a>
-                for event schedules and run/work order.
-              </p>
-            </div>
-            <div class="well well-sm">
-              <?php AutoxEvents::past_tabs( $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
-            </div>
-
             <h2 class="azbr-color"><em>Starting Line Autocross School</em></h2>
             <div class="well well-sm">
               <p>
@@ -46,6 +33,19 @@
                   Register Now
                 </a>
               </p>
+            </div>
+
+            <h2 class="azbr-color"><em>Tucson Autocross</em></h2>
+            <div class="well well-sm">
+              <?php AutoxEvents::upcoming_block( $deviceType, $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
+              <?php Display::image_carousel( "autocross/carousel"); ?>
+              <p>
+                Please refer to the <a href="<?php echo baseHref; ?>autocross/calendar.html">event calendar</a>
+                for event schedules and run/work order.
+              </p>
+            </div>
+            <div class="well well-sm">
+              <?php AutoxEvents::past_tabs( $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
             </div>
 
             <h2 class="azbr-color"><em>Sierra Vista Autocross</em></h2>

@@ -1,7 +1,7 @@
 <?php
   class RallyxEvents {
 
-    public static function upcoming_block( $deviceType, $orgId, $apiKey ) {
+    public static function upcoming_block( $orgId, $apiKey ) {
       $args = array( 'public' => 1 );
       $json = MindTheCones::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
       $rallyx_events = json_decode( $json, true );

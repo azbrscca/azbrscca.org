@@ -5,17 +5,13 @@
   require_once "autocross/AutoxEvents.php";
   require_once "rallycross/RallyxEvents.php";
 
-  require_once "common/external/Mobile-Detect-2.7.9/Mobile_Detect.php";
-  $detect = new Mobile_Detect;
-  $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
-
   Display::open_page();
 ?>
         <div class="row">
           <div class="col-md-7">
             <h2 class="azbr-color"><em>Tucson Autocross</em></h2>
             <div class="well well-sm">
-              <?php AutoxEvents::upcoming_block( $deviceType, $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
+              <?php AutoxEvents::upcoming_block( $mtcIds['AZBR'], $mtcKeys['AZBR'] ); ?>
               <?php Display::image_carousel( "autocross/carousel"); ?>
               <p>
                 Please refer to the <a href="<?php echo baseHref; ?>autocross/calendar.html">event calendar</a>
@@ -28,7 +24,7 @@
 
             <h2 class="azbr-color"><em>Sierra Vista Autocross</em></h2>
             <div class="well well-sm">
-              <?php AutoxEvents::upcoming_block( $deviceType, $mtcIds['SSCC'], $mtcKeys['SSCC'] ); ?>
+              <?php AutoxEvents::upcoming_block( $mtcIds['SSCC'], $mtcKeys['SSCC'] ); ?>
               <p>
                 Autocross events in Sierra Vista &amp; Bisbee are hosted by the <a href="http://sierrasportscars.net/">Sierra Sports Car Club</a>.
                 For event details and results, please visit <a href="http://sierrasportscars.net/">SierraSportsCars.net</a>.

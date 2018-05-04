@@ -15,5 +15,8 @@
       return $files;
     }
 
+    private static function removePrefix( &$item, $index, $start) {
+      $item = substr( $item, $start );
+    }
   } // class Functions
 ?>

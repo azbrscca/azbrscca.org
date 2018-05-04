@@ -29,10 +29,7 @@
     <div class="row">
       <div class="col-md-12">
 
-        <?php
-          $images = Functions::listFiles( $relPath, $format );
-          if ( $deviceType != "phone" ) {
-        ?>
+        <?php $images = Functions::listFiles( $relPath, $format ); ?>
         <div id="autox-carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <?php foreach( $images as $index => $image ) {  ?>
@@ -42,13 +39,6 @@
             <?php } ?>
           </div>
         </div>
-
-        <?php
-          } else {
-            $random = rand(0, sizeof($images)-1);
-        ?>
-        <img class="img-responsive" src="<?php echo baseHref.$images[$random]; ?>" />
-        <?php } ?>
       </div>
     </div>
 <?php

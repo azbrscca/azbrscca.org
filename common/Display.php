@@ -5,7 +5,7 @@
       </div> <!-- /container -->
     </div> <!-- /wrap -->
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script>
@@ -29,10 +29,7 @@
     <div class="row">
       <div class="col-md-12">
 
-        <?php
-          $images = Functions::listFiles( $relPath, $format );
-          if ( $deviceType != "phone" ) {
-        ?>
+        <?php $images = Functions::listFiles( $relPath, $format ); ?>
         <div id="autox-carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <?php foreach( $images as $index => $image ) {  ?>
@@ -42,13 +39,6 @@
             <?php } ?>
           </div>
         </div>
-
-        <?php
-          } else {
-            $random = rand(0, sizeof($images)-1);
-        ?>
-        <img class="img-responsive" src="<?php echo baseHref.$images[$random]; ?>" />
-        <?php } ?>
       </div>
     </div>
 <?php
@@ -163,7 +153,7 @@
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/courses/">Course Map Archive</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/courses.html">Course Map Archive</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>

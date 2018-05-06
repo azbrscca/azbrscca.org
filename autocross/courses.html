@@ -1,5 +1,5 @@
 <?php
-  require_once "../../common/Common.php";
+  require_once "../common/Common.php";
 
   Display::open_page();
 
@@ -18,7 +18,7 @@
 
 <?php
   foreach( $json as $index => $event ) {
-    $course_map = "autocross/courses/".date( "Y-m-d", $event[ 'date_ts' ] ).".jpg";
+    $course_map = $rootDir."images/autocross/courses/".date( "Y-m-d", $event[ 'date_ts' ] ).".jpg";
     if ( file_exists( rootDir.$course_map ) ) {
       $text = date( "l, F d, Y", $event[ 'date_ts' ] )." at ".$event[ 'site_name' ];
       if ( !empty( $event[ 'name' ] ) ){

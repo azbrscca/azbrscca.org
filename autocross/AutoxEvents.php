@@ -1,7 +1,7 @@
 <?php
   class AutoxEvents {
 
-    public static function avail_results( $deviceType, $orgId, $apiKey) {
+    public static function avail_results( $orgId, $apiKey) {
 
       $data = MindTheCones::getRequest( "results/list/available", $orgId, $apiKey );
       $avail_results = json_decode( $data, true );
@@ -27,14 +27,10 @@
 
                 <div class="form-group text-center">
                   <button class="btn btn-default btn-sm" id="download" type="submit">Download Results</button>
-                  <?php if ($deviceType == "phone") { ?>
-                  <button class="btn btn-default btn-sm" id="filters_btn" type="button" value="false">Show Filters</button>
-                  <?php } else { ?>
                   <button class="btn btn-default btn-sm" id="filters_btn" type="button" value="true">Hide Filters</button>
-                  <?php } ?>
                 </div>
 
-                <div id="sorting_and_filtering" class="<?php if ($deviceType == "phone") { "hide"; } ?>">
+                <div id="sorting_and_filtering">
 
                   <div class="form-group">
                     <label for="sort_type">Sort In:</label>
@@ -154,7 +150,7 @@
 <?php
     } // end function past_tabs
 
-    public static function upcoming_block( $deviceType, $orgId, $apiKey ) {
+    public static function upcoming_block( $orgId, $apiKey ) {
       $args = array( 'public' => 1 );
       $json = MindTheCones::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
       $autox_events = json_decode( $json, true );

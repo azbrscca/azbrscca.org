@@ -153,7 +153,7 @@
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/courses/">Course Map Archive</a></li>
+                    <li><a href="<?php echo baseHref; ?>autocross/courses.html">Course Map Archive</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>

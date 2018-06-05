@@ -15,12 +15,12 @@
       return $files;
     }
 
-    public static function cleanArray( $dirtyArray ) {	+    private static function removePrefix( &$item, $index, $start) {
-      $cleanArray = array();	+      $item = substr( $item, $start );
+    public static function cleanArray( $dirtyArray ) {
+      $item = substr( $item, $start );
       foreach( array_keys( $dirtyArray ) as $key ) {
         if ( is_array( $dirtyArray[ $key ] ) ) {
           $cleanArray[ $key ] = self::cleanArray( $dirtyArray[ $key ] );
-        } else {	
+        } else {
           $cleanArray[ $key ] = self::cleanString( $dirtyArray[ $key ] );
         }
       }

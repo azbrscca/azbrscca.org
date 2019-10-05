@@ -13,10 +13,10 @@
                 Select one of these options if you are a full status SCCA member taking advantage of the $10 discount for pre-registering for both days.
               </p>
               <div class="row">
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   Two Day Competition Entry + Two TOs - $62
                 </div>
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                   <input type="hidden" name="cmd" value="_s-xclick">
                   <input type="hidden" name="hosted_button_id" value="XPXBJSCVJG7J2">
@@ -26,10 +26,10 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   Two Day Competition Entry Only - $42
                 </div>
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                   <input type="hidden" name="cmd" value="_s-xclick">
                   <input type="hidden" name="hosted_button_id" value="W6EZ2EBECYGTU">
@@ -52,10 +52,10 @@
                 </p>
               </div>
               <div class="row">
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   Two Day Competition Entry + Two TOs - $72
                 </div>
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                   <input type="hidden" name="cmd" value="_s-xclick">
                   <input type="hidden" name="hosted_button_id" value="JS4HT2TZP8MT6">
@@ -65,10 +65,10 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   Two Day Competition Entry Only - $52
                 </div>
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-xs-4">
                   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                   <input type="hidden" name="cmd" value="_s-xclick">
                   <input type="hidden" name="hosted_button_id" value="AXRBR3TQJ623S">
@@ -90,20 +90,24 @@
                   which is included in the Non SCCA entry fees shown below.
                 </p>
               </div>
-              <form class="form" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="HULG4G93TQ6ML">
-                <input type="hidden" name="on0" value="Registration"/>
-                <select class="form-control" name="os0">
-                  <option value="SCCA Member Competition ONLY"<?php if ( $scca_member && !$time_only ) { echo " selected"; } ?>>SCCA Member Competition ONLY, $27.00</option>
-                  <option value="SCCA Member Competition &amp; Time Only"<?php if ( $scca_member && $time_only ) { echo " selected"; } ?>>SCCA Member Competition &amp; Time Only, $37.00</option>
-                  <option value="NON SCCA Member Competition ONLY"<?php if ( !$scca_member && !$time_only ) { echo " selected"; } ?>>NON SCCA Member Competition ONLY, $37.00</option>
-                  <option value="NON SCCA Member Competition &amp; Time Only"<?php if ( !$scca_member && $time_only ) { echo " selected"; } ?>>NON SCCA Member Competition &amp; Time Only, $47.00</option>
-                </select>
-                <input type="hidden" name="currency_code" value="USD">
-                <input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
-              </form>
+              <div class="row">
+                <div class="col-md-4 col-xs-4">
+                  <form class="form" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="HULG4G93TQ6ML">
+                    <input type="hidden" name="on0" value="Registration"/>
+                    <select class="form-control" name="os0">
+                      <option value="SCCA Member Competition ONLY"<?php if ( $scca_member && !$time_only ) { echo " selected"; } ?>>SCCA Member Competition ONLY, $27.00</option>
+                      <option value="SCCA Member Competition &amp; Time Only"<?php if ( $scca_member && $time_only ) { echo " selected"; } ?>>SCCA Member Competition &amp; Time Only, $37.00</option>
+                      <option value="NON SCCA Member Competition ONLY"<?php if ( !$scca_member && !$time_only ) { echo " selected"; } ?>>NON SCCA Member Competition ONLY, $37.00</option>
+                      <option value="NON SCCA Member Competition &amp; Time Only"<?php if ( !$scca_member && $time_only ) { echo " selected"; } ?>>NON SCCA Member Competition &amp; Time Only, $47.00</option>
+                    </select>
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

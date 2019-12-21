@@ -3,7 +3,7 @@
 
     public static function avail_results( $orgId, $apiKey) {
 
-      $data = MindTheCones::getRequest( "results/list/available", $orgId, $apiKey );
+      $data = RegAPI::getRequest( "results/list/available", $orgId, $apiKey );
       $avail_results = json_decode( $data, true );
 ?>
 
@@ -88,7 +88,7 @@
 
     public static function past_tabs($orgId, $apiKey) {
 
-      $past_events = MindTheCones::getRequest( "events/past/", $orgId, $apiKey, array( 'limit' => 4 ));
+      $past_events = RegAPI::getRequest( "events/past/", $orgId, $apiKey, array( 'limit' => 4 ));
       $events = json_decode( $past_events, true );
 ?>
             <div class="row">
@@ -152,11 +152,11 @@
 
     public static function upcoming_block( $orgId, $apiKey ) {
       $args = array( 'public' => 1 );
-      $json = MindTheCones::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
+      $json = RegAPI::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
       $autox_events = json_decode( $json, true );
       if ( empty( $autox_events ) ) {
         $args[ 'limit' ] = 1;
-        $json = MindTheCones::getRequest( "events/upcoming/", $orgId, $apiKey, $args );
+        $json = RegAPI::getRequest( "events/upcoming/", $orgId, $apiKey, $args );
         $autox_events = json_decode( $json, true );
       }
 
@@ -182,7 +182,7 @@
 
             <h4 class="text-success text-center">
               Online registration is open now!
-              <a class="btn btn-success" href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
+              <a class="btn btn-success" href="<?php echo reg_api_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
             </h4>
             <h5 class="text-center">
               Online registration closes

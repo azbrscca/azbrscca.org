@@ -4,7 +4,7 @@
   Display::open_page();
 
   $calendar_year = 2019;
-  $json_string = MindTheCones::getRequest( "events/calendar/".$calendar_year."/", $mtcIds['AZRG'], $mtcKeys['AZRG'], array( 'public' => 1 ));
+  $json_string = RegAPI::getRequest( "events/calendar/".$calendar_year."/", $regApiIds['AZRG'], $regApiKeys['AZRG'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );
 ?>
         <h2 class="azbr-color"><?php echo $calendar_year; ?> Rallycross Event Calendar</h2>
@@ -52,7 +52,7 @@
                           <?php } else if ( $event[ 'status' ] == "open" ) { ?>
                           <span class="text-success">
                             <a class="btn btn-success btn-sm"
-                                href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>">
+                                href="<?php echo reg_api_url; ?>register/<?php echo $event[ 'id' ]; ?>">
                              Registration is Open!
                            </a>
                             Closes at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>

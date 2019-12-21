@@ -3,10 +3,10 @@
 
   Display::open_page();
 
-  $json_string = MindTheCones::getRequest( "classes/", $mtcIds['AZBR'], $mtcKeys['AZBR'] );
+  $json_string = RegAPI::getRequest( "classes/", $regApiIds['AZBR'], $regApiKeys['AZBR'] );
   $scca_classes = json_decode( $json_string, true );
 
-  $json_string = MindTheCones::getRequest( "classes/types", $mtcIds['AZBR'], $mtcKeys['AZBR'] );
+  $json_string = RegAPI::getRequest( "classes/types", $regApiIds['AZBR'], $regApiKeys['AZBR'] );
   $class_types = json_decode( $json_string, true );
 
   $pax_lookup = array();

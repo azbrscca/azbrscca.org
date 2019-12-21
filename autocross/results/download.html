@@ -6,9 +6,9 @@
   if ( !empty( $_POST ) ) {
     $args = Functions::cleanArray( $_POST );
 		if ( $args[ 'type' ] == "series" ) {
-			series_results_spreadsheet( $args[ 'id' ], $mtcIds['AZBR'], $mtcKeys['AZBR'] );
+			series_results_spreadsheet( $args[ 'id' ], $regApiIds['AZBR'], $regApiKeys['AZBR'] );
 		} else if ( $args[ 'type' ] == "event" ) {
-			event_results_spreadsheet( $args[ 'id' ], $mtcIds['AZBR'], $mtcKeys['AZBR'] );
+			event_results_spreadsheet( $args[ 'id' ], $regApiIds['AZBR'], $regApiKeys['AZBR'] );
 		}
   }
 
@@ -35,10 +35,10 @@
 		}
 	}
 
-  function event_results_spreadsheet( $eventId, $mtcId, $mtcKey ) {
-    $data = MindTheCones::getRequest( "db/events/".$eventId."/", $mtcId, $mtcKey );
+  function event_results_spreadsheet( $eventId, $regApiId, $regApiKey ) {
+    $data = RegAPI::getRequest( "db/events/".$eventId."/", $regApiId, $regApiKey );
     $event = json_decode( $data, true );
-    $data = MindTheCones::getRequest( "results/event/".$eventId."/", $mtcId, $mtcKey );
+    $data = RegAPI::getRequest( "results/event/".$eventId."/", $regApiId, $regApiKey );
     $jsonData = json_decode( $data, true );
 
 
@@ -165,12 +165,12 @@
 <?php
   }
 
-  function series_results_spreadsheet( $seriesId, $mtcId, $mtcKey ) {
+  function series_results_spreadsheet( $seriesId, $regApiId, $regApiKey ) {
 
-    $data = MindTheCones::getRequest("db/series/".$seriesId."/", $mtcId, $mtcKey);
+    $data = RegAPI::getRequest("db/series/".$seriesId."/", $regApiId, $regApiKey);
     $series = json_decode( $data, true );
 
-    $data = MindTheCones::getRequest("results/series/".$seriesId."/", $mtcId, $mtcKey);
+    $data = RegAPI::getRequest("results/series/".$seriesId."/", $regApiId, $regApiKey);
     $results = json_decode( $data, true );
 
     header("Content-type: application/vnd.ms-excel");

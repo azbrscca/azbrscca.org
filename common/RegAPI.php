@@ -1,5 +1,5 @@
 <?php
-  class MindTheCones {
+  class RegAPI {
 
     public static $apiUrl = "";
     private static $apiVersion = "1.0";
@@ -43,17 +43,17 @@
 
       $requestToken = sha1(
         $apiKey .
-        MindTheCones::getApiVersion() .
+        RegAPI::getApiVersion() .
         $orgId .
         $requestTime
       );
 
       $params = array_merge(
         array(
-          '__mtc_api_version' => MindTheCones::getApiVersion(),
-          '__mtc_organization_id' => $orgId,
-          '__mtc_request_time' => $requestTime,
-          '__mtc_request_token' => $requestToken,
+          '__reg_api_version' => RegAPI::getApiVersion(),
+          '__reg_organization_id' => $orgId,
+          '__reg_request_time' => $requestTime,
+          '__reg_request_token' => $requestToken,
         ),
         $get
       );

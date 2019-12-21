@@ -7,10 +7,10 @@ The website for Tucson & Southern Arizona Region of the Sports Car Club of Ameri
 
 The AZBR website is primarily HTML, CSS, and Javascript with a little bit of PHP sprinkled around. It uses [Bootstrap] for the majority of the styling, grid layout, and responsiveness.
 
-The site relies on [Mind the Cones] for event information on the calendars and the registration information on the front page. Changes made to event dates or registration open &amp; close dates &amp; times appear automatically once saved in MTC. Events must be _public_ in MTC to show up on the front page or event calendars on the AZBR site.
+The site relies on [AZBR Registration] for event information on the calendars and the registration information on the front page. Changes made to event dates or registration open &amp; close dates &amp; times appear automatically once saved in AZBR Registration. Events must be _public_ in AZBR Registration to show up on the front page or event calendars on the AZBR site.
 
 [Bootstrap]: http://getbootstrap.com/docs/3.3/
-[Mind the Cones]: http://www.mindthecones.com/
+[AZBR Registration]: http://registration.azbrscca.org/
 
 ## Terminology
 

@@ -13,7 +13,7 @@
       if ( strpos( $uri, '?' ) !== false ) {
         $uri = substr( $uri, 0, strpos( $uri, '?' ) );
       }
-      echo MindTheCones::getRequest( $uri, $regApiIds['AZBR'], $regApiKeys['AZBR'], $_GET );
+      echo RegAPI::getRequest( $uri, $regApiIds['AZBR'], $regApiKeys['AZBR'], $_GET );
     break;
 
     default:

@@ -1,7 +1,7 @@
 <?php
   require_once "../common/Common.php";
 
-  $apiFlag = "mtc/";
+  $apiFlag = "reg-api/";
   $method = strtoupper( $_SERVER[ 'REQUEST_METHOD' ] );
   $uri = substr( $_SERVER[ 'REQUEST_URI' ],
                   strpos( $_SERVER[ 'REQUEST_URI' ], $apiFlag ) + strlen( $apiFlag ) );
@@ -13,7 +13,7 @@
       if ( strpos( $uri, '?' ) !== false ) {
         $uri = substr( $uri, 0, strpos( $uri, '?' ) );
       }
-      echo MindTheCones::getRequest( $uri, $mtcIds['AZBR'], $mtcKeys['AZBR'], $_GET );
+      echo RegAPI::getRequest( $uri, $regApiIds['AZBR'], $regApiKeys['AZBR'], $_GET );
     break;
 
     default:

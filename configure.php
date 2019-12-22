@@ -15,7 +15,7 @@
   $verbose = ( ( sizeof( $argv ) > 2 ) && ( $argv[ 2 ] == '-v' ) );
 
   $files = array(
-    "mtc/.htaccess",
+    "reg-api/.htaccess",
   );
 
   foreach( $files as $dst ) {

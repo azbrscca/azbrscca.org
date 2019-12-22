@@ -3,11 +3,11 @@
 
     public static function upcoming_block( $orgId, $apiKey ) {
       $args = array( 'public' => 1 );
-      $json = MindTheCones::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
+      $json = RegAPI::getRequest( "events/upcoming/open/", $orgId, $apiKey, $args );
       $rallyx_events = json_decode( $json, true );
       if ( empty( $rallyx_events ) ) {
         $args[ 'limit' ] = 1;
-        $json = MindTheCones::getRequest( "events/upcoming/", $orgId, $apiKey, $args );
+        $json = RegAPI::getRequest( "events/upcoming/", $orgId, $apiKey, $args );
         $rallyx_events = json_decode( $json, true );
       }
 
@@ -32,7 +32,7 @@
 
             <h4 class="text-success text-center">
               Online registration is open now!
-              <a class="btn btn-success" href="<?php echo mtc_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
+              <a class="btn btn-success" href="<?php echo reg_api_url; ?>register/<?php echo $event[ 'id' ]; ?>" target="_top">Register Now</a>
             </h4>
             <h5 class="text-center">
               Online registration closes

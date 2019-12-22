@@ -328,11 +328,11 @@ if ( showCategory ) {
         selectedCategories.push( "All" );
       }
 
-      $.getJSON( baseHref + "mtc/db/events/" + $( "#id" ).val(),
+      $.getJSON( baseHref + "reg-api/db/events/" + $( "#id" ).val(),
                  function( json ) {
         eventJSON = json;
 
-        $.getJSON( baseHref + "mtc/results/event/" + $( "#id" ).val(),
+        $.getJSON( baseHref + "reg-api/results/event/" + $( "#id" ).val(),
                  { 'order_by' : $( "#order_by" ).val() },
                    function( resultsJSON ) {
           results = resultsJSON;
@@ -363,11 +363,11 @@ if ( showCategory ) {
       $( "#sorting_and_filtering").slideUp();
       $( "#filters_btn" ).attr('disabled',"disabled");
 
-      $.getJSON( baseHref + "mtc/db/series/" + $( "#id" ).val(),
+      $.getJSON( baseHref + "reg-api/db/series/" + $( "#id" ).val(),
                  function( json ) {
         seriesJSON = json;
 
-        $.getJSON( baseHref + "mtc/results/series/" + $( "#id" ).val(),
+        $.getJSON( baseHref + "reg-api/results/series/" + $( "#id" ).val(),
                   function( resultsJSON ) {
           results = resultsJSON;
           seriesTable();

@@ -10,7 +10,7 @@ The AZBR website is primarily HTML, CSS, and Javascript with a little bit of PHP
 The site relies on [AZBR Registration] for event information on the calendars and the registration information on the front page. Changes made to event dates or registration open &amp; close dates &amp; times appear automatically once saved in AZBR Registration. Events must be _public_ in AZBR Registration to show up on the front page or event calendars on the AZBR site.
 
 [Bootstrap]: http://getbootstrap.com/docs/3.3/
-[AZBR Registration]: http://registration.azbrscca.org/
+[AZBR Registration]: https://registration.azbrscca.org/
 
 ## Terminology
 
@@ -20,9 +20,9 @@ _1and1_: [AZBR's web hosting provider](https://www.1and1.com/).
 
 _bootstrap_: The responsive front-end library that the AZBR site relies on. The AZBR site is using v3.3 and documentation can be found [here](http://getbootstrap.com/docs/3.3/).
 
-_live site_: The real deal. The legit site. The version that is served up to visitors of http://www.azbrscca.org. When `ssh`-ing into the web server, this is found in the `live.azbrscca.org` directory.
+_live site_: The real deal. The legit site. The version that is served up to visitors of https://www.azbrscca.org. When `ssh`-ing into the web server, this is found in the `live.azbrscca.org` directory.
 
- _dev site_: A staging area where changes can be previewed while on the same server with the same configuration as the live site. This is located at http://dev.azbrscca.org and in the `dev.azbrscca.org` subdirectory of the web server.
+ _dev site_: A staging area where changes can be previewed while on the same server with the same configuration as the live site. This is located at https://dev.azbrscca.org and in the `dev.azbrscca.org` subdirectory of the web server.
 
 ## How Do I ...
 
@@ -32,7 +32,7 @@ Many of the course maps (April 2014 and later, to be exact) are not in GitHub, t
 
 ***Create a new page?***
 
-Start with a copy of the `template.html` file at the top level of the site. When rendered in a browser, it looks like [this](http://www.azbrscca.org/template.html). From there, content can be added as _rows_ divs; the template contains a bare bones example of this.
+Start with a copy of the `template.html` file at the top level of the site. When rendered in a browser, it looks like [this](https://www.azbrscca.org/template.html). From there, content can be added as _rows_ divs; the template contains a bare bones example of this.
 
 Each new page must start with importing `common/Common.php` and call `open_page()` so that the header and menu bar renders properly. Each new page must end with a call to `close_page()` so that the content containers and footer are rendered properly.
 

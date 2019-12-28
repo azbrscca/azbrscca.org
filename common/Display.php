@@ -147,6 +147,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autocross <b class="caret"></b></a>
                   <ul class="dropdown-menu">
+                    <li><a href="https://registration.azbrscca.org">Online Registration</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/calendar.html">Event Calendar</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/details.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/supplemental.html">Supplemental Regulations</a></li>
@@ -176,6 +177,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rallycross<b class="caret"></b></a>
                   <ul class="dropdown-menu">
+                    <li><a href="https://registration.azbrscca.org">Online Registration</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/calendar.html">Event Calendar</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/details.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/supplemental.html">Supplemental Regulations</a></li>

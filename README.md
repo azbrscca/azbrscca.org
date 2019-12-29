@@ -49,3 +49,62 @@ At the top of each `calender.html` file - there is one each in the `autocross` a
 To update the image carousels, add or remove files from the directory associated with the carousel. The autocross carousel lives in the `autocross/carousel` subdirectory and the rallycross carousel lives in the `rallycross/carousel` subdirectory.
 
 Carousel images must be in JPEG format with a `.jpg` extension. The optimal aspect ratio is 2.85:1 (example size: 710px X 205px).
+
+## Deploying to the `dev` site
+
+There is also a development mirror, commonly referred to as _devsite_ that is used for testing and previewing updates before they are pushed live. The dev site is located at https://dev.azbrscca.org/.
+
+Deploying to the _devsite_ requires `ssh` access to the _1and1_ host.
+
+The `dev.azbrscca.org` directory is checkout of the git repo that resides on the web server. Checkout the appropriate branch and navigate to http://dev.azbrscca.org to view the changes.
+
+For example, if I pushed changes to a branch called `2018-updates`:
+```
+ssh <USERNAME>@<1AND1.HOST>
+cd dev.azbrscca.org
+git checkout 2018-updates
+```
+
+***Important Notes***
+There is one configuration file, `common/Common.php` that is not in source control. If this file is removed from the `dev.azbrscca.org` directory, it must manually be copied over from the `config/azbrscca` directory. Make sure to copy over the files with the `.dev` suffix.
+
+If you edit something and need to reset things to checkout another branch, use `git reset --hard`.
+
+## Deploying to the `live` site
+
+### Set up
+
+Deploying to the _livesite_ requires `ssh` access to the _1and1_ host and a `git remote`.
+
+To set up the git remote, run this command while at the root level of your local checkout of out repo. You will only have to do this once unless you delete and re-clone.
+
+```shell
+git remote add livesite ssh://<USERNAME>@<1AND1.HOST><REMOTE_DIR>/git/azbrscca.org/live
+```
+
+The _USERNAME_ and _1AND1HOST_ values can be found by logging into the [_1and1_ administrative console](https://account.1and1.com/?redirect_url=https%3A%2F%2Fmy.1and1.com%2F). The _REMOTE_DIR_ value is the output of the `pwd` command after a successful `ssh` login the web server.
+
+After the `git remote` command is run, `.git/config` should have a block like this:
+
+```
+[remote "livesite"]
+        url = ssh://********@********.host/********/git/azbrscca.org/live
+        fetch = +refs/heads/*:refs/remotes/livesite/*
+```
+
+### Deploying
+
+After the desired changes have been landed on the `master` branch, checkout and update `master`.
+
+```
+git checkout master
+git pull
+```
+
+Then, push to _livesite_.
+
+```
+git push livesite
+```
+
+That's it! The new changes will be pushed to a mirror of the git repo on the web server. Then the repo will be checked out, overwriting the existing `live.azbrscca.org` subdirectory. The [git `post_receive` hook](https://git-scm.com/docs/githooks#post-receive) will run the `configure.php` script. Browse to http://www.azbrscca.org/ and check out the changes.

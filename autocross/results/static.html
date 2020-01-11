@@ -5,7 +5,7 @@
 
   Display::open_page();
 
-  $data = MindTheCones::getRequest( "results/list/available" );
+  $data = RegAPI::getRequest( "results/list/available" );
   $avail_results = json_decode( $data, true );
 
 

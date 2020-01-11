@@ -205,7 +205,8 @@
                   <ul class="dropdown-menu">
                     <li><a href="https://www.scca.com/">SCCA National Website</a></li>
                     <li class="divider"></li>
-                    <li class="dropdown-header"><a href="https://my.scca.com/">Become a Member</a></li>
+                    <li class="dropdown-header">Become a Member</li>
+                    <li><a href="https://my.scca.com/">Join Today</a></li>
                     <li><a href="https://www.scca.com/pages/member-benefits-preview">Membership Benefits</a></li>
                     <li class="divider">
                     <li><a href="http://www.sccagear.com/">SCCA Gear</a></li>

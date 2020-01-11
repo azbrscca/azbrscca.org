@@ -5,7 +5,7 @@
 
   Display::open_page();
 
-  $data = RegAPI::getRequest( "results/list/available" );
+  $data = RegAPI::getRequest( "results/list/available", $regApiIds['AZBR'], $regApiKeys['AZBR'], $_GET );
   $avail_results = json_decode( $data, true );
 
 

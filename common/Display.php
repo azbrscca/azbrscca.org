@@ -159,16 +159,16 @@
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>
-                    <li><a href="http://www.scca.com/pages/solo-cars-and-rules">SCCA Solo (Autocross) Rules</a></li>
+                    <li><a href="https://www.scca.com/pages/solo-cars-and-rules">SCCA Solo (Autocross) Rules</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/pax.html">PAX/RTP Factors</a></li>
                     <!-- <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li> -->
-                    <li><a href="http://www.sccastartingline.com/resources.php">Starting Line AutoX FAQ</a></li>
-                    <li><a href="http://www.solomatters.com/">Solo Matters</a></li>
+                    <li><a href="https://www.sccastartingline.com/">Starting Line AutoX FAQ</a></li>
+                    <li><a href="https://www.scca.com/pages/autocross">SCCA Solo Homepage</a></li>
 
                     <li class="divider"></li>
                     <li class="dropdown-header">More Arizona Autocross</li>
                     <li><a href="http://www.azsolo.com/">Arizona Region SCCA (Phoenix)</a></li>
-                    <li><a href="http://www.sierrasportscars.net/">Sierra Sports Car Club</a></li>
+                    <li><a href="https://www.sierrasportscars.net/">Sierra Sports Car Club</a></li>
                   </ul>
                 </li>
                 <!-- / autox dropdown -->
@@ -183,7 +183,7 @@
                     <li><a href="<?php echo baseHref; ?>rallycross/supplemental.html">Supplemental Regulations</a></li>
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forum</a></li>
                     <li class="divider"></li>
-                    <li><a href="http://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
+                    <li><a href="https://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
                     <li><a href="https://www.facebook.com/AzRallyGroup">AZ Rally Group (Facebook)</a></li>
                   </ul>
                 </li>
@@ -203,19 +203,12 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">SCCA<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <!-- <li><a href="http://www.scca-sopac.org/">Southern Pacific Division</a></li> -->
-                    <li><a href="http://www.scca.org/">SCCA National Website</a></li>
+                    <li><a href="https://www.scca.com/">SCCA National Website</a></li>
                     <li class="divider"></li>
-                    <li class="dropdown-header">Become a Member</li>
-                    <li><a href="http://www.scca.com/about/index.cfm?cid=44704">Membership Details</a></li>
-                    <li><a href="http://ams.scca.com/netforum/eweb/firstgear.htm">First Gear</a></li>
-                    <li><a href="http://ams.scca.com/netforum/eweb/ind.htm">Individual</a></li>
-                    <li><a href="http://ams.scca.com/netforum/eweb/family.htm">Family</a></li>
-                    <li><a href="http://www.scca.com/about/index.cfm?cid=44704">Military Discount</a></li>
+                    <li class="dropdown-header"><a href="https://my.scca.com/">Become a Member</a></li>
+                    <li><a href="https://www.scca.com/pages/member-benefits-preview">Membership Benefits</a></li>
                     <li class="divider">
                     <li><a href="http://www.sccagear.com/">SCCA Gear</a></li>
-                    <li class="divider"></li>
-                    <li><a href="http://www.sccaforums.com/">SCCA Forums</a></li>
                   </ul>
                 </li>
                 <!-- scca dropdown -->

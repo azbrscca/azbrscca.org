@@ -56,7 +56,7 @@ There is also a development mirror, commonly referred to as _devsite_ that is us
 
 Deploying to the _devsite_ requires `ssh` access to the _1and1_ host.
 
-The `dev.azbrscca.org` directory is checkout of the git repo that resides on the web server. Checkout the appropriate branch and navigate to http://dev.azbrscca.org to view the changes.
+The `dev.azbrscca.org` directory is checkout of the git repo that resides on the web server. Checkout the appropriate branch and navigate to https://dev.azbrscca.org to view the changes.
 
 For example, if I pushed changes to a branch called `2018-updates`:
 ```
@@ -107,4 +107,4 @@ Then, push to _livesite_.
 git push livesite
 ```
 
-That's it! The new changes will be pushed to a mirror of the git repo on the web server. Then the repo will be checked out, overwriting the existing `live.azbrscca.org` subdirectory. The [git `post_receive` hook](https://git-scm.com/docs/githooks#post-receive) will run the `configure.php` script. Browse to http://www.azbrscca.org/ and check out the changes.
+That's it! The new changes will be pushed to a mirror of the git repo on the web server. Then the repo will be checked out, overwriting the existing `live.azbrscca.org` subdirectory. The [git `post_receive` hook](https://git-scm.com/docs/githooks#post-receive) will run the `configure.php` script. Browse to https://www.azbrscca.org/ and check out the changes.

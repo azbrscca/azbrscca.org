@@ -152,7 +152,6 @@
                     <li><a href="<?php echo baseHref; ?>autocross/details.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/supplemental.html">Supplemental Regulations</a></li>
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=10">Tucson Autocross Forum</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/subscribe.html">Subscribe to Email</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/courses.html">Course Map Archive</a></li>

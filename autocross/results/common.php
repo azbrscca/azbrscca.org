@@ -165,7 +165,7 @@
                   <tr>
                     <td><a href="static.html?y=2006&m=1">January</a></td>
                     <td><a href="static.html?y=2006&m=2">February</a>&nbsp;</td>
-                    <td><a href="https://www.sierrasportscars.com">SSCC April event</a>&nbsp;</td>
+                    <td><a href="https://www.sierrasportscarclub.com">SSCC April event</a>&nbsp;</td>
                     <td><a href="static.html?y=2006&m=4">April 30th</a>&nbsp;</td>
                     <td><a href="static.html?y=2006&s=spring">Spring Series </a></td>
                   </tr>

@@ -167,7 +167,7 @@
                     <li class="divider"></li>
                     <li class="dropdown-header">More Arizona Autocross</li>
                     <li><a href="http://www.azsolo.com/">Arizona Region SCCA (Phoenix)</a></li>
-                    <li><a href="https://www.sierrasportscars.net/">Sierra Sports Car Club</a></li>
+                    <li><a href="https://www.sierrasportscars.com/">Sierra Sports Car Club</a></li>
                   </ul>
                 </li>
                 <!-- / autox dropdown -->

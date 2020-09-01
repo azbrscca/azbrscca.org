@@ -1,0 +1,203 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+?>
+
+        <h2 class="azbr-color">Autocross Site &amp; Entry Fee Information</h2>
+
+        <div class="row">
+
+          <div class="col-md-8">
+            <div class="well well-sm">
+              <h3 class="text-info text-center">Event Site: Musselman Honda Circuit</h3>
+
+              <p class="text-center">
+                Musselman Honda Circuit is located at 11800 S Harrison Rd,
+                Tucson AZ. TODO: more description how to get there.
+              </p>
+
+              <p class="text-center">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d17069.634903728867!2d-110.7949208!3d32.0362718!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21059f3431d2433a!2sMusselman%20Honda%20Circuit!5e1!3m2!1sen!2sus!4v1598927664014!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              </p>
+
+              <hr/>
+
+              <h4 class="text-info text-center">Site Access</h4>
+              
+              <p>
+                TODO: final instructions for paddock access. Will write something up based on what's decided for approved course.
+              </p>
+              <p>
+                Click the image for a full resolution version. TODO: image
+              </p>
+              
+              <a href="<?php echo baseHref; ?>images/autocross/primary_site_entrance.png">
+              <img class="img-responsive" src="<?php echo baseHref; ?>images/autocross/primary_site_entrance.png" />
+              </a>
+
+              <hr/>
+
+              <h4 class="text-info text-center">Site Regulations</h4>
+
+              <div class="alert alert-danger text-center">
+                <i class="fa fa-exclamation-triangle fa-lg"></i>
+                <strong>
+                  Additional COVID regulations apply.<br/>
+                  Failure to comply with site regulations can result in you
+                  being asked to leave the event without a refund.
+                </strong>
+              </div>
+
+              <p>
+                Take extra precautions to ensure the site is kept safe, clean and not damaged in any way.
+                We need to build a positive relationship with Musselman so we can continue use of the site.
+                Remind others around you if they appear to have forgotten the rules. There will be a number
+                of garbage cans located near the paddock, grid, and trailer. Please use them. AZBR will provide
+                12"x12" boards for use with jacks and jack stands. They must be used to prevent damage to the
+                pavement. ::TODO: Still need boards for jacks and stands?::
+              </p>
+              <ol>
+                <li>
+                  Site entry for participants is <a href="<?php echo baseHref; ?>autoross/calendar.php">listed
+                  on the event calendar for each event</a>. If you show up before the listed time please wait
+                  ::TODO: waiting location:: as we will be setting up the paddock and other required boundaries.
+                </li>
+                <li>
+                  Participating cars and tow vehicles shall be parked in the paddock area as indicated on the
+                  course/site map.
+                </li>
+                <li>
+                  At each event, a mandatory drivers meeting will be held at the time
+                  <a href="<?php echo baseHref;?>events/calendar.php">indicated on the event calendar</a>.
+                  If more time is needed for setup/course walking we can move this out as required.
+                </li>
+                <li>
+                  All participants and spectators shall remain in the autocross site area. 
+                  TODO: does this still apply?
+                </li>
+                <li>
+                  Boards shall be used under jacks and jack stands to prevent damage to the pavement.
+                  AZBR will provide the boards and they will be located near the paddock area. Ask if
+                  you cannot find them. Please return them when finished so they can be used at future events.
+                  ::TODO: Still need boards for jacks and stands?::
+                </li>
+                <li>
+                  Fluids leaked onto the pavement will NOT be tolerated. Water (i.e. air conditioner condensation)
+                  is acceptable. If your car leaks any oil or other fluids you will not be allowed to run. Either
+                  fix the leak before the event or do not participate. You can get a refund if desired up to 24
+                  hours before the event. If your car leaks when you show up on the site you will not be allowed
+                  to run. The exception to this is a breakage that occurs while participating in the event. If
+                  the leak can be repaired quickly off the pavement then continuing to run may be allowed. We
+                  do understand that things can go wrong while running your car. ::TODO: eliminate?::
+                </li>
+                <li>
+                  No filling of fluids-including but not limited to fuel, oil, and coolant-on any asphalt
+                  surface. As with the previous item, this is to prevent damage to the pavement. It is
+                  absolutely imperative that we do our best to maintain the surface if we are going to
+                  continue to enjoy the privilege of using it. ::TODO: eliminate?::
+                </li>
+                <li>
+                  Cars entered for competition shall minimize entering/leaving the paved grid area. 
+                  This is to minimize dirt and debris that could be transferred from unpaved
+                  areas by sticky tires. ::TODO: expand or reword or eliminate this?::
+                </li>
+                <li>
+                  If your car is really loud, i.e. does not fit within the SCCA rules of 100db,
+                  then put a muffler on. If you have to question whether your car loudness is close
+                  to the limit, then put the muffler on.
+                </li>
+                <li>
+                  Sites are hard to come by, and it is critical we keep this site clean. 
+                  Any trash left behind is extremely dangerous to our future use of the site. 
+                  Contain your own trash and pick up anything you see. There will be a few
+                  garbage cans on site. Use those or take trash off site when you leave.
+                </li>
+              </ol>
+            </div>
+          </div> 
+
+          <div class="col-md-4">
+            <div class="well well-sm">
+              <h3 class="text-info text-center">Entry Fees</h3>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">SCCA Members</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 25</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 30</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Non SCCA (Weekend) Members</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 35</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
+              </div>
+              <br/>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="alert alert-warning">
+                    The SCCA requires that all event participants be SCCA members.
+                    If you are not an SCCA member a weekend membership is available for an extra $10,
+                    which is included in the Non SCCA entry fees shown above.
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Time Only Registration</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">All Participants</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 10</div>
+              </div>
+              <br/>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="alert alert-warning">
+                    Time Only entries can only be registered for <em>in addition</em> to a regular competition entry. This applies to both SCCA and non SCCA members, and both pre-registered and on-site entries.
+                  </div>
+                </div>
+
+              </div>
+
+              <h3 class="text-info text-center">Accepted Payments</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <p>
+                    Entry fees can be paid online via Paypal while registration is open.
+                  </p>
+                  <p>
+                    <a class="btn btn-block btn-md btn-primary" href="<?php echo baseHref; ?>autocross/paypal.html">
+                      Pay With Paypal <i class="fa fa-angle-double-right"></i>
+                    </a>
+                  </p>
+                  <p>
+                    The day of the event, registration accepts cash and checks made out to 'Arizona Border Region SCCA' or 'AZBR SCCA'. We do not accept credit cards on site.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+<?php
+  Display::close_page();
+?>

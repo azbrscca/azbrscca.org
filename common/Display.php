@@ -223,6 +223,12 @@
 <?php
     }
     
+    /**
+     * Function to print entry prices for autocross. Used in the autocross/details.html page and all the child pages
+     * that contain info for each site.
+     *
+     * TODO: in the future, consider adding variables/parameters in case prices differ across different sites.
+     */
     public static function print_autox_entry_fees() {
 ?>
           <div class="col-md-4">
@@ -236,11 +242,11 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 25</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 30</div>
               </div>
               <div class="row">
-                <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 30</div>
+                <div class="col-md-8 col-xs-8"><s>Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 35</s></div>
               </div>
 
               <div class="row">
@@ -250,15 +256,22 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 35</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
               </div>
               <div class="row">
-                <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
+                <div class="col-md-8 col-xs-8"><s>Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 45</s></div>
               </div>
               <br/>
               <div class="row">
                 <div class="col-md-12">
+                  <div class="alert alert-danger text-center">
+                    <i class="fa fa-exclamation-triangle fa-lg"></i>
+                    <strong>
+                      Due to COVID, no on site registrations will be allowed at this time. <br />
+                      All entrants must pre register <a href="<?php echo baseHref; ?>autocross/paypal.html">and pre pay using PayPal.</a>
+                    </strong>
+                  </div>
                   <div class="alert alert-warning">
                     The SCCA requires that all event participants be SCCA members.
                     If you are not an SCCA member a weekend membership is available for an extra $10,

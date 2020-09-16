@@ -266,9 +266,9 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="alert alert-danger">
-                    <i class="fa fa-exclamation-triangle fa-lg"></i>
                     <strong>
                       <div class="text-center">
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
                         Due to COVID, the following restrictions apply: <br /><br />
                       </div>
                       <ol>

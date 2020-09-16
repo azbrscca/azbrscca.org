@@ -222,5 +222,111 @@
         <!-- / navbar -->
 <?php
     }
+    
+    /**
+     * Function to print entry prices for autocross. Used in the autocross/details.html page and all the child pages
+     * that contain info for each site.
+     *
+     * TODO: in the future, consider adding variables/parameters in case prices differ across different sites.
+     */
+    public static function print_autox_entry_fees() {
+?>
+          <div class="col-md-4">
+            <div class="well well-sm">
+              <h3 class="text-info text-center">Entry Fees</h3>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">SCCA Members</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 30</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8"><s>Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 35</s></div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Non SCCA (Weekend) Members</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8"><s>Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 45</s></div>
+              </div>
+              <br/>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="alert alert-danger">
+                    <strong>
+                      <div class="text-center">
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
+                        Due to COVID, the following restrictions apply: <br /><br />
+                      </div>
+                      <ol>
+                        <li>
+                          No on site registrations can be accepted at this time. All entrants must pre register <a href="<?php echo baseHref; ?>autocross/paypal.html">and pre pay using PayPal.</a>
+                        </li><br /><br />
+                        <li>
+                          Only registered participants are allowed onsite at this time. Please do not bring any guests or invite any guests as they will not be allowed to enter the site.
+                        </li>
+                      </ol>
+                    </strong>
+                  </div>
+                  <div class="alert alert-warning">
+                    The SCCA requires that all event participants be SCCA members.
+                    If you are not an SCCA member a weekend membership is available for an extra $10,
+                    which is included in the Non SCCA entry fees shown above.
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Time Only Registration</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">All Participants</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 10</div>
+              </div>
+              <br/>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="alert alert-warning">
+                    Time Only entries can only be registered for <em>in addition</em> to a regular competition entry. This applies to both SCCA and non SCCA members, and both pre-registered and on-site entries.
+                  </div>
+                </div>
+
+              </div>
+
+              <h3 class="text-info text-center">Accepted Payments</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <p>
+                    Entry fees can be paid online via Paypal while registration is open.
+                  </p>
+                  <p>
+                    <a class="btn btn-block btn-md btn-primary" href="<?php echo baseHref; ?>autocross/paypal.html">
+                      Pay With Paypal <i class="fa fa-angle-double-right"></i>
+                    </a>
+                  </p>
+                  <p>
+                    The day of the event, registration accepts cash and checks made out to 'Arizona Border Region SCCA' or 'AZBR SCCA'. We do not accept credit cards on site.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+<?php
+    }
   }
 ?>

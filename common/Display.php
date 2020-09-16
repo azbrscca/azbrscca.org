@@ -265,16 +265,16 @@
               <br/>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="alert alert-danger text-center">
+                  <div class="alert alert-danger">
                     <i class="fa fa-exclamation-triangle fa-lg"></i>
                     <strong>
                       <div class="text-center">
-                        Due to COVID, the following restrictions apply: <br />
+                        Due to COVID, the following restrictions apply: <br /><br />
                       </div>
                       <ol>
                         <li>
                           No on site registrations can be accepted at this time. All entrants must pre register <a href="<?php echo baseHref; ?>autocross/paypal.html">and pre pay using PayPal.</a>
-                        </li>
+                        </li><br /><br />
                         <li>
                           Only registered participants are allowed onsite at this time. Please do not bring any guests or invite any guests as they will not be allowed to enter the site.
                         </li>

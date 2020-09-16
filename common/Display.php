@@ -268,8 +268,17 @@
                   <div class="alert alert-danger text-center">
                     <i class="fa fa-exclamation-triangle fa-lg"></i>
                     <strong>
-                      Due to COVID, no on site registrations can be accepted at this time. <br />
-                      All entrants must pre register <a href="<?php echo baseHref; ?>autocross/paypal.html">and pre pay using PayPal.</a>
+                      <div class="text-center">
+                        Due to COVID, the following restrictions apply: <br />
+                      </div>
+                      <ol>
+                        <li>
+                          No on site registrations can be accepted at this time. All entrants must pre register <a href="<?php echo baseHref; ?>autocross/paypal.html">and pre pay using PayPal.</a>
+                        </li>
+                        <li>
+                          Only registered participants are allowed onsite at this time. Please do not bring any guests or invite any guests as they will not be allowed to enter the site.
+                        </li>
+                      </ol>
                     </strong>
                   </div>
                   <div class="alert alert-warning">

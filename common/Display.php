@@ -183,7 +183,7 @@
                     <li><a href="http://www.azsolo.com/forums/index.php?showforum=22">Rallycross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="https://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
-                    <li><a href="https://www.facebook.com/AzRallyGroup">AZ Rally Group (Facebook)</a></li>
+                    <li><a href="https://www.facebook.com/groups/arizonarallygroup">AZ Rally Group (Facebook)</a></li>
                   </ul>
                 </li>
 

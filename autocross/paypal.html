@@ -82,15 +82,76 @@
               <!-- End two days of awesome payment info -->
               
               <!-- Begin single entry payment info -->
-              <h3 class="text-info text-center">Single Day Entry</h3>
-              <!-- remove alert
+              <h3 class="text-info text-center">Single Day Entry - SCCA Member</h3>
+              <p>
+                Select one of these options if you are a full status SCCA member.
+              </p>
+              <div class="row">
+                <div class="col-md-4 col-xs-6">
+                  Single Day Competition Entry Only - $30
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="9JCHFM4ZXT6AG">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                </div>
+              </div>
+              <p/>
+              <div class="row">
+                <div class="col-md-4 col-xs-6">
+                  Single Day Competition + Time Only - $40
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="EASWPKGAUB6HY">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                </div>
+              </div>
+              <h3 class="text-info text-center">Single Day Entry - Non SCCA (Weekend) Member</h3>
+              <p>
+                Select one of these options if you do not have a full time SCCA membership.
+              </p>
               <div class="alert alert-warning">
                 <p>
-                  New PayPal links are being created to reflect the new prices. If you have registered for the event
-                  and are trying to pay, please <a href="<?php echo baseHref; ?>about/board.html">contact the webmaster</a>.
+                  The SCCA requires that all event participants be SCCA members.
+                  If you are not an SCCA member a weekend membership is available for an extra $10,
+                  which is included in the Non SCCA entry fees shown below.
                 </p>
               </div>
-              <!-- Temporarily commented out until Kate gets the new paypal links -->
+              <div class="row">
+                <div class="col-md-4 col-xs-6">
+                  Single Day Competition Entry Only - $40
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="MCT4HMFYRQYNE">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                </div>
+              </div>
+              <p/>
+              <div class="row">
+                <div class="col-md-4 col-xs-6">
+                  Single Day Competition + Time Only - $50
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="VYQZ5UML7B3ZE">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                </div>
+              </div>
+              <!-- Commented out but saved for posterity...
               <p>
                 Select one of these options if you are paying for a single day event.
                 Please select carefully between "SCCA Member" and "NON SCCA Member" (aka Weekend Member).

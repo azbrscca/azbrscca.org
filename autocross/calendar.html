@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $calendar_year = 2020;
+  $calendar_year = 2021;
 
   $json_string = RegAPI::getRequest( "events/calendar/".$calendar_year."/", $regApiIds['AZBR'], $regApiKeys['AZBR'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );

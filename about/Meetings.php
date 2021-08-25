@@ -30,9 +30,7 @@
 
     /***** add rescheduled dates below *****/
     private static $rescheduled_to = array(
-      "2018-09-11",
-	  "2019-01-08",
-	  "2020-01-08",
+      "2021-09-15",
     );
 
 

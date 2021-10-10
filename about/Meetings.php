@@ -2,20 +2,20 @@
   class Meetings {
 
     /*
-      Meetings default to the first Tuesday of the month.
+      Meetings default to the first Wednesday of the month.
       If a meeting is rescheduled, simply add the NEW DATE
       to the $rescheduled_to array below this comment block
       in YYYY-MM-DD format enclosed in quotes and followed
       by a comma.
 
-      For example, the first Tuesday in January of 2013 was the 1st,
+      For example, the first Wednesday in January of 2013 was the 2nd,
       thus the meeting was rescheduled for the 8th:
 
       $rescheduled_to = array(
         "2013-01-08",
       );
 
-      The new date does not have to be a Tuesday.
+      The new date does not have to be a Wednesday.
 
       As many dates as needed can be included, here we
       have the first three meetings of 2013 all on

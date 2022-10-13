@@ -8,8 +8,9 @@
   $json_string = RegAPI::getRequest( "events/calendar/".$calendar_year."/", $regApiIds['AZBR'], $regApiKeys['AZBR'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );
 
+  // TODO: we should add additional site-specific schedules (e.g. spring_kino, summer_kino, etc.).
   $schedules = array(
-
+/* Musselman times
     "spring" => array(
       "site_open" => "8:30am",
       "reg_tech_open" => "8:45am",
@@ -36,18 +37,53 @@
       "novice_walk" => "9:45am",
       "site_meeting" => "10:00am"
     )
+*/
+    // Kino times
+    // TODO: fix the tech open/close?
+    "spring" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:45am",
+      "reg_close" => "9:30am",
+      "tech_close" => "9:45am",
+      "novice_walk" => "9:45am",
+      "site_meeting" => "10:00am"
+    ),
+
+    "summer" => array(
+      "site_open" => "6:30am",
+      "reg_tech_open" => "7:30am",
+      "reg_close" => "9:00am",
+      "tech_close" => "9:15am",
+      "novice_walk" => "9:15am",
+      "site_meeting" => "9:30am"
+    ),
+
+    "fall" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:45am",
+      "reg_close" => "9:30am",
+      "tech_close" => "9:45am",
+      "novice_walk" => "9:45am",
+      "site_meeting" => "10:00am"
+    )
   );
 
+  // TODO: site-specific run work, mostly for Musselman style (comp/TO combined). What follows below is hacky and dumb.
   $run_work = array(
     //Musselman run work
-    "spring" => array( "A" => "C", "C" => "A" ),
-    "summer" => array( "A" => "C", "C" => "A" ),
-    "fall" => array( "A" => "C", "C" => "A" ),
+    //"spring" => array( "A" => "C", "C" => "A" ),
+    //"summer" => array( "A" => "C", "C" => "A" ),
+    //"fall" => array( "A" => "C", "C" => "A" ),
     
     //Non-Musselman run work
     //"spring" => array( "A" => "C", "B" => "D", "C" => "A", "D" => "B" ),
     //"summer" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
     //"fall" => array( "A" => "C", "B" => "D", "C" => "A", "D" => "B" ),
+    
+    //Kino run work
+    "spring" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    "summer" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    "fall" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
 
   );
 
@@ -214,6 +250,7 @@
 
           <div class="col-md-4">
 
+            <!-- TODO: this needs rework or elimination, if we want to move to site-specific schedules. -->
             <div class="well well-sm">
               <h4 class="text-center">Schedule &amp; Run/Work Order</h4>
 

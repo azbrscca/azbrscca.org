@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $calendar_year = 2022;
+  $calendar_year = 2023;
 
   $json_string = RegAPI::getRequest( "events/calendar/".$calendar_year."/", $regApiIds['AZBR'], $regApiKeys['AZBR'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );

@@ -245,8 +245,8 @@
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 30</div>
               </div>
               <div class="row">
-                <div class="col-md-8 col-xs-8"><s>Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 35</s></div>
+                <div class="col-md-8 col-xs-8">Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 50</div>
               </div>
 
               <div class="row">
@@ -259,8 +259,8 @@
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
               </div>
               <div class="row">
-                <div class="col-md-8 col-xs-8"><s>Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 45</s></div>
+                <div class="col-md-8 col-xs-8">Registering On Site</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 60</div>
               </div>
               <br/>
               <div class="row">

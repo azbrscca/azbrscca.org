@@ -265,22 +265,6 @@
               <br/>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="alert alert-danger">
-                    <strong>
-                      <div class="text-center">
-                        <i class="fa fa-exclamation-triangle fa-lg"></i>
-                        Due to COVID, the following restrictions apply: <br /><br />
-                      </div>
-                      <ol>
-                        <li>
-                          No on site registrations can be accepted at this time. All entrants must pre register <a href="<?php echo baseHref; ?>autocross/paypal.html">and pre pay using PayPal.</a>
-                        </li><br /><br />
-                        <li>
-                          Only registered participants are allowed onsite at this time. Please do not bring any guests or invite any guests as they will not be allowed to enter the site.
-                        </li>
-                      </ol>
-                    </strong>
-                  </div>
                   <div class="alert alert-warning">
                     The SCCA requires that all event participants be SCCA members.
                     If you are not an SCCA member a weekend membership is available for an extra $10,

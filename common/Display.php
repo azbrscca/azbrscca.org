@@ -256,18 +256,18 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 45</div>
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 60</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 65</div>
               </div>
               <br/>
               <div class="row">
                 <div class="col-md-12">
                   <div class="alert alert-warning">
                     The SCCA requires that all event participants be SCCA members.
-                    If you are not an SCCA member a weekend membership is available for an extra $10,
+                    If you are not an SCCA member a weekend membership is available for an extra $15,
                     which is included in the Non SCCA entry fees shown above.
                   </div>
                 </div>

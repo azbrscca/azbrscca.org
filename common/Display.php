@@ -214,7 +214,7 @@
                 <!-- scca dropdown -->
               </ul>
               <p class="navbar-text navbar-right">
-                <a href="http://www.scca.com/pages/join-scca"><strong><em>Join the SCCA Today!</em></strong></a>
+                <a href="https://my.scca.com/"><strong><em>Join the SCCA Today!</em></strong></a>
               </p>
             </div><!-- / nav-collapse -->
           </div><!-- / container-fluid  -->

@@ -113,7 +113,7 @@
                   <a class="azbr-color" href="<?php echo baseHref; ?>"><em>Arizona Border Region</em></a>
                 </h1>
                 <h3 class="text-right">
-                  The Tucson & Southern Arizona Region of the Sports Car Club of America since 1959
+                  Southern Arizona Region of the Sports Car Club of America since 1959
                 </h3>
               </div>
 

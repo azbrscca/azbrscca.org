@@ -1,0 +1,289 @@
+<?php
+  require_once "../common/Common.php";
+
+  Display::open_page();
+
+  $calendar_year = 2024;
+
+  $json_string = RegAPI::getRequest( "events/calendar/".$calendar_year."/", $regApiIds['AZBR'], $regApiKeys['AZBR'], array( 'public' => 1 ));
+  $events = json_decode( $json_string, true );
+
+  // TODO: we should add additional site-specific schedules (e.g. spring_kino, summer_kino, etc.).
+  $schedules = array(
+/* Musselman times
+    "spring" => array(
+      "site_open" => "8:30am",
+      "reg_tech_open" => "8:45am",
+      "reg_close" => "9:30am",
+      "tech_close" => "9:45am",
+      "novice_walk" => "9:45am",
+      "site_meeting" => "10:00am"
+    ),
+
+    "summer" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:30am",
+      "reg_close" => "9:00am",
+      "tech_close" => "9:15am",
+      "novice_walk" => "9:15am",
+      "site_meeting" => "9:30am"
+    ),
+
+    "fall" => array(
+      "site_open" => "8:30am",
+      "reg_tech_open" => "8:45am",
+      "reg_close" => "9:30am",
+      "tech_close" => "9:45am",
+      "novice_walk" => "9:45am",
+      "site_meeting" => "10:00am"
+    )
+ */
+    // Kino times
+    "spring" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:30am",
+      "reg_close" => "8:30am",
+      "tech_close" => "8:45am",
+      "novice_walk" => "9:00am",
+      "site_meeting" => "9:15am"
+    ),
+
+    "summer" => array(
+      "site_open" => "6:30am",
+      "reg_tech_open" => "6:30am",
+      "reg_close" => "7:30am",
+      "tech_close" => "7:45am",
+      "novice_walk" => "8:00am",
+      "site_meeting" => "8:15am"
+    ),
+
+    "fall" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:30am",
+      "reg_close" => "8:30am",
+      "tech_close" => "8:45am",
+      "novice_walk" => "9:00am",
+      "site_meeting" => "9:15am"
+    )
+  );
+
+  // TODO: site-specific run work, mostly for Musselman style (comp/TO combined). What follows below is hacky and dumb.
+  $run_work = array(
+    //Musselman run work
+    //"spring" => array( "A" => "C", "C" => "A" ),
+    //"summer" => array( "A" => "C", "C" => "A" ),
+    //"fall" => array( "A" => "C", "C" => "A" ),
+    
+    //Non-Musselman run work
+    //"spring" => array( "A" => "C", "B" => "D", "C" => "A", "D" => "B" ),
+    //"summer" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    //"fall" => array( "A" => "C", "B" => "D", "C" => "A", "D" => "B" ),
+    
+    //Kino run work
+    "spring" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    "summer" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    "fall" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+
+  );
+
+  function get_series( $event_month ) {
+
+    if (in_array($event_month, range(1, 4))) {
+      return "spring";
+    } else if (in_array( $event_month, range(5, 8))) {
+      return "summer";
+    } else if (in_array( $event_month, range(9, 12))) {
+      return "fall";
+    } else {
+      return "unknown";
+    }
+  }
+
+  function show_run_work( $run_work ) {
+    $keys = array_keys( $run_work );
+    sort($keys);
+?>
+              <div class="row">
+                <div class="col-md-12 text-center">
+<?php foreach( $keys as $key ) {  ?>
+                  <p>
+                    Run <span class="label label-info"><?php echo $key; ?></span>
+                    Work <span class="label label-info"><?php echo $run_work[$key];?></span>
+                  </p>
+<?php } ?>
+                </div>
+              </div>
+<?php
+  }
+
+  function show_schedule( $schedule ) {
+?>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Site Open</div>
+                <div class="col-md-4 col-xs-2">
+                  <?php echo $schedule['site_open']; ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registration &amp; Tech Open</div>
+                <div class="col-md-4 col-xs-2">
+                  <?php echo $schedule['reg_tech_open']; ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registration Closes</div>
+                <div class="col-md-4 col-xs-2">
+                  <?php echo $schedule['reg_close']; ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Tech Closes</div>
+                <div class="col-md-4 col-xs-2">
+                  <?php echo $schedule['tech_close']; ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Novice Walk</div>
+                <div class="col-md-4 col-xs-2">
+                  <?php echo $schedule['novice_walk']; ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">
+                    <strong>Mandatory</strong> Site Meeting
+                    <small>Everyone on site for the event must attend, driving or not.</small>
+                </div>
+                <div class="col-md-4 col-xs-2">
+                  <?php echo $schedule['site_meeting']; ?>
+                </div>
+              </div>
+<?php
+  }
+?>
+
+        <h2 class="azbr-color"><?php echo $calendar_year; ?> Autocross Event Calendar</h2>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="well well-sm">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Event Date</th>
+                    <th>Online Registration</th>
+                  </tr>
+                </thead>
+                <tbody>
+<?php
+  $found_next = false;
+  foreach( $events as $event ) {
+
+    // show the event schedule when registration is open
+    // and after it is closed until the day after the event
+    // TODO: also show the schedule maybe 7-14 days before reg opens
+    $past = $event[ 'date_ts' ] + 24*60*60 < time();
+    $show_schedule =
+      (($event[ 'status' ] == "open" ) || ($event[ 'status' ] == "closed")) && !$past;
+?>
+
+                  <tr>
+                    <td>
+                      <p><?php echo date( "l, F j", $event[ 'date_ts' ] ); ?></p>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-12">
+
+                          <?php if ( $event[ 'name' ] != "" ) { ?>
+                          <p><em><?php echo $event[ 'name' ]; ?></em></p>
+                          <?php } ?>
+
+                          <?php if ( $event[ 'status' ] == "closed" ) { ?>
+                          <span class="text-danger">
+                            Closed at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>
+                          </span>
+                          <?php } else if ( $event[ 'status' ] == "will open" ) { ?>
+                          <span class="text-info">
+                            Opens at <?php echo date( "g:ia l, F j", $event[ 'registration_open_ts' ] ); ?>
+                          </span>
+                          <?php } else if ( $event[ 'status' ] == "open" ) { ?>
+                          <span class="text-success">
+                            <a class="btn btn-success btn-sm"
+                                href="<?php echo reg_api_url; ?>register/<?php echo $event[ 'id' ]; ?>">
+                             Registration is Open!
+                           </a>
+                            Closes at <?php echo date( "g:ia l, F j", $event[ 'registration_close_ts' ] ); ?>
+                          </span>
+                          <?php } ?>
+
+                        </div>
+                      </div>
+
+                      <?php
+                        if ($show_schedule) {
+                           $key = get_series(date("n", $event['date_ts']));
+                      ?>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h5 class="text-center">Event Schedule</h5>
+                          <div class="alert alert-info">
+                            <?php show_schedule($schedules[$key]); ?>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <h5 class="text-center">Event Run/Work</h5>
+                          <div class="alert alert-info">
+                            <?php show_run_work($run_work[$key]); ?>
+                          </div>
+                        </div>
+                      </div>
+                      <?php
+                        }
+                      ?>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+
+            <!-- TODO: this needs rework or elimination, if we want to move to site-specific schedules. -->
+            <div class="well well-sm">
+              <h4 class="text-center">Schedule &amp; Run/Work Order</h4>
+
+              <p class="text-center">
+                <em>
+                  Fall &amp; Spring Events:<br/>January - April and September - December
+                </em>
+              </p>
+
+              <div class="alert alert-info">
+                <?php show_schedule($schedules['fall']); ?>
+              </div>
+              <div class="alert alert-info">
+                <?php show_run_work($run_work['fall']); ?>
+              </div>
+
+              <p class="text-center">
+                <em>
+                  Summer Events: May - August
+                </em>
+              </p>
+
+              <div class="alert alert-info">
+                <?php show_schedule($schedules['summer']); ?>
+              </div>
+              <div class="alert alert-info">
+                <?php show_run_work($run_work['summer']); ?>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+<?php
+  Display::close_page();
+?>

@@ -180,13 +180,14 @@
                     <li><a href="<?php echo baseHref; ?>rallycross/calendar.html">Event Calendar</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/details.html">Site &amp; Entry Fee Information</a></li>
                     <li><a href="<?php echo baseHref; ?>rallycross/supplemental.html">Supplemental Regulations</a></li>
-                    <!--<li><a href="https://forum.azsolo.com/index.php?/forum/13-rallycross/">Rallycross Forum</a></li>-->
+                    <li><a href="https://forum.azsolo.com/index.php?/forum/13-rallycross/">Rallycross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="https://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
                     <li><a href="https://www.facebook.com/groups/arizonarallygroup">AZ Rally Group (Facebook)</a></li>
                   </ul>
                 </li>
 				-->
+				
                 <!-- azbr dropdown -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">AZ Border Region <b class="caret"></b></a>

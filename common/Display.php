@@ -154,7 +154,7 @@
                     <li><a href="https://forum.azsolo.com/index.php?/forum/11-tucson-autocross/">Tucson Autocross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
-                    <li><a href="<?php echo baseHref; ?>autocross/courses.html">Course Map Archive</a></li>
+                    <!--<li><a href="<?php echo baseHref; ?>autocross/courses.html">Course Map Archive</a></li>-->
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>
@@ -173,7 +173,7 @@
                 <!-- / autox dropdown -->
 
                 <!-- rally & rallyx dropdown -->
-                <li class="dropdown">
+                <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rallycross<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="https://registration.azbrscca.org">Online Registration</a></li>
@@ -186,7 +186,7 @@
                     <li><a href="https://www.facebook.com/groups/arizonarallygroup">AZ Rally Group (Facebook)</a></li>
                   </ul>
                 </li>
-
+				-->
                 <!-- azbr dropdown -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">AZ Border Region <b class="caret"></b></a>

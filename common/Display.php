@@ -154,13 +154,11 @@
                     <li><a href="https://forum.azsolo.com/index.php?/forum/11-tucson-autocross/">Tucson Autocross Forum</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo baseHref; ?>autocross/results.html">Event Results</a></li>
-                    <!--<li><a href="<?php echo baseHref; ?>autocross/courses.html">Course Map Archive</a></li>-->
 
                     <li class="divider"></li>
                     <li class="dropdown-header">SCCA Classing &amp; Rules</li>
                     <li><a href="https://www.scca.com/pages/solo-cars-and-rules">SCCA Solo (Autocross) Rules</a></li>
                     <li><a href="<?php echo baseHref; ?>autocross/pax.html">PAX/RTP Factors</a></li>
-                    <!-- <li><a href="<?php echo baseHref; ?>novice/">Novice Guide</a></li> -->
                     <li><a href="https://www.scca.com/pages/starting-line-autocross-school">Starting Line AutoX</a></li>
                     <li><a href="https://www.scca.com/pages/autocross">SCCA Solo Homepage</a></li>
 
@@ -171,23 +169,7 @@
                   </ul>
                 </li>
                 <!-- / autox dropdown -->
-
-                <!-- rally & rallyx dropdown -->
-                <!--<li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rallycross<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="https://registration.azbrscca.org">Online Registration</a></li>
-                    <li><a href="<?php echo baseHref; ?>rallycross/calendar.html">Event Calendar</a></li>
-                    <li><a href="<?php echo baseHref; ?>rallycross/details.html">Site &amp; Entry Fee Information</a></li>
-                    <li><a href="<?php echo baseHref; ?>rallycross/supplemental.html">Supplemental Regulations</a></li>
-                    <li><a href="https://forum.azsolo.com/index.php?/forum/13-rallycross/">Rallycross Forum</a></li>
-                    <li class="divider"></li>
-                    <li><a href="https://www.scca.com/pages/rallycross-cars-and-rules">SCCA Rallycross Rules</a></li>
-                    <li><a href="https://www.facebook.com/groups/arizonarallygroup">AZ Rally Group (Facebook)</a></li>
-                  </ul>
-                </li>
-				-->
-				
+			
                 <!-- azbr dropdown -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">AZ Border Region <b class="caret"></b></a>

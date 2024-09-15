@@ -99,11 +99,6 @@
     }
   }
 
-  function show_run_work( $run_work ) {
-    $keys = array_keys( $run_work );
-    sort($keys);
-  }
-  
   function show_site_info ($site_id){
    //Kino=20 Musselman=21
    if $site_id == 20 {
@@ -112,6 +107,11 @@
 	return "https://dev.azbrscca.org/autocross/musselman.html";   
    }
   }
+  
+  function show_run_work( $run_work ) {
+    $keys = array_keys( $run_work );
+    sort($keys);
+  
 ?>
               <div class="row">
                 <div class="col-md-12 text-center">

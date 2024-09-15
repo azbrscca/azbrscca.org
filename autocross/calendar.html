@@ -102,6 +102,16 @@
   function show_run_work( $run_work ) {
     $keys = array_keys( $run_work );
     sort($keys);
+  }
+  
+  function show_site_info ($site_id){
+   //Kino=20 Musselman=21
+   if $site_id == 20 {
+   	return "https://dev.azbrscca.org/autocross/kino.html";
+   } else if $site_id == 21 {
+	return "https://dev.azbrscca.org/autocross/musselman.html";   
+   }
+  }
 ?>
               <div class="row">
                 <div class="col-md-12 text-center">
@@ -243,7 +253,9 @@
                       ?>
                     </td>
 					<td>
+						
 						<p><a href="https://dev.azbrscca.org/autocross/details.html"><?php echo $event[ 'site_name' ]; ?></a></p>
+						<?php show_site_info($event['site_id']; ?>
 					</td>
                   </tr>
                   <?php } ?>

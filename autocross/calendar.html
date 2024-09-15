@@ -86,6 +86,11 @@
 
   );
 
+  function get_site_info( $event_id) {
+  	return $event_id;
+  }
+
+
   function get_series( $event_month ) {
 
     if (in_array($event_month, range(1, 4))) {
@@ -249,6 +254,7 @@
 						
 						<p><a href="https://dev.azbrscca.org/autocross/details.html"><?php echo $event[ 'site_name' ]; ?></a></p>
 						<?php echo $event['site_id']; ?>
+						<?php get_site_info($event['site_id']); ?>
 					</td>
                   </tr>
                   <?php } ?>

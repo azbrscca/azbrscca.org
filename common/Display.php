@@ -225,11 +225,11 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 30</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 42</div>
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 50</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 65</div>
               </div>
 
               <div class="row">
@@ -239,11 +239,11 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 45</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 57</div>
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 65</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 80</div>
               </div>
               <br/>
               <div class="row">

@@ -3,7 +3,7 @@
 
   Display::open_page();
 
-  $calendar_year = 2025;
+  $calendar_year = 2026;
 
   $json_string = RegAPI::getRequest( "events/calendar/".$calendar_year."/", $regApiIds['AZBR'], $regApiKeys['AZBR'], array( 'public' => 1 ));
   $events = json_decode( $json_string, true );
@@ -39,6 +39,7 @@
       "site_meeting" => "10:00am"
     )
 */
+/* 
     // Kino times
     "spring" => array(
       "site_open" => "7:30am",
@@ -66,7 +67,34 @@
       "novice_walk" => "9:00am",
       "site_meeting" => "9:15am"
     )
+*/
+    // Podium times
+    "spring" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:30am",
+      "reg_close" => "8:30am",
+      "tech_close" => "8:45am",
+      "novice_walk" => "9:00am",
+      "site_meeting" => "9:15am"
+    ),
 
+    "summer" => array(
+      "site_open" => "6:30am",
+      "reg_tech_open" => "6:30am",
+      "reg_close" => "7:30am",
+      "tech_close" => "7:45am",
+      "novice_walk" => "8:00am",
+      "site_meeting" => "8:15am"
+    ),
+
+    "fall" => array(
+      "site_open" => "7:30am",
+      "reg_tech_open" => "7:30am",
+      "reg_close" => "8:30am",
+      "tech_close" => "8:45am",
+      "novice_walk" => "9:00am",
+      "site_meeting" => "9:15am"
+    )
   );
 
   // TODO: site-specific run work, mostly for Musselman style (comp/TO combined). What follows below is hacky and dumb.
@@ -82,10 +110,14 @@
     //"fall" => array( "A" => "C", "B" => "D", "C" => "A", "D" => "B" ),
     
     //Kino run work
+    //"spring" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    //"summer" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+    //"fall" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
+
+    //Podium run work
     "spring" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
     "summer" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
     "fall" => array( "A" => "B", "B" => "A", "C" => "D", "D" => "C" ),
-
   );
 
   function get_site_info( $event_id) {
@@ -93,6 +125,8 @@
 	return "https://dev.azbrscca.org/autocross/kino.html";
 	} else if ($event_id==20) {
 	return "https://dev.azbrscca.org/autocross/musselman.html"; 
+	} else if ($event_id==23) {
+	return "https://dev.azbrscca.org/autocross/podium.html";
 	}
 	
   }

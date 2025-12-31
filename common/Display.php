@@ -295,6 +295,7 @@
 				<div class="col-md-8 col-xs-8">Registering Onsite</div>
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 53</div>
               </div>
+			  <br />
               <div class="row">
                 <div class="col-md-12">
                   <div class="alert alert-warning">

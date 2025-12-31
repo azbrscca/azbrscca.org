@@ -234,11 +234,11 @@
 			  
 			  <div class="row">
                 <div class="col-md-12">
-                  <h4 class="text-info">Podium Club Members</h4> <hr/>
-				  <i>Podium Club Events Only</i>
+                  <h4 class="text-info">Podium Club Members</h4>
                 </div>
               </div>
               <div class="row">
+				<div class="col-md-8 col-xs-8">Podium Club Events Only</div>
                 <div class="col-md-8 col-xs-8">Registering Online</div>
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 20</div>
               </div>

@@ -275,20 +275,30 @@
 
 			  <div class="row">
                 <div class="col-md-12">
-                  <h4 class="text-info">Podium Club Members</h4>
+                  <h4 class="text-info">Podium Club and SCCA Members</h4>
                 </div>
               </div>
               <div class="row">
-				<div class="col-md-8 col-xs-8">Podium Club Events Only</div>
-                <div class="col-md-8 col-xs-8">Registering Online with SCCA Membership</div>
+                <div class="col-md-8 col-xs-8">Registering Online</div>
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 20</div>
-				<div class="col-md-8 col-xs-8">Registering Online with out SCCA Membership</div>
+				<div class="col-md-8 col-xs-8">Registering Onsite</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 33</div>
+              </div>
+			  <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Podium Club Members only</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 40</div>
+				<div class="col-md-8 col-xs-8">Registering Onsite</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 53</div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="alert alert-warning">
-                    The SCCA requires that all event participants be SCCA members.
+                    Podium Club Membership discount is only available for Podium Club events. The SCCA requires that all event participants be SCCA members.
                     If you are not an SCCA member a weekend membership is available for an extra $20,
                     which is included in the Non SCCA entry fees shown above. If you wish to become an SCCA member, <a href="https://my.scca.com/">Join the SCCA Today!</a>
                   </div>

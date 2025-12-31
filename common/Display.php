@@ -231,6 +231,17 @@
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
                 <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 65</div>
               </div>
+			  
+			  <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-info">Podium Club Members</h4> <hr/>
+				  <i>Podium Club Events Only</i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-xs-8">Registering Online</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 20</div>
+              </div>
 
               <div class="row">
                 <div class="col-md-12">
@@ -239,19 +250,19 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 57</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 62</div>
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 80</div>
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 85</div>
               </div>
               <br/>
               <div class="row">
                 <div class="col-md-12">
                   <div class="alert alert-warning">
                     The SCCA requires that all event participants be SCCA members.
-                    If you are not an SCCA member a weekend membership is available for an extra $15,
-                    which is included in the Non SCCA entry fees shown above.
+                    If you are not an SCCA member a weekend membership is available for an extra $20,
+                    which is included in the Non SCCA entry fees shown above. If you wish to become an SCCA member, <a href="https://my.scca.com/">Join the SCCA Today!</a>
                   </div>
                 </div>
               </div>

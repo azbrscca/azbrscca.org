@@ -1,6 +1,6 @@
 $( document ).ready( function() {  
 
-  var categories = [ 'PAX', 'Open', 'Street Tire', 'Ladies', 'Novice', 'Time Only' ];
+  var categories = [ 'PAX', 'Open', 'Street Tire', 'Ladies', 'Novice', 'Podium Club', 'Time Only' ];
   var classes = new Array();
   var options = {};
   var eventJSON, results, seriesJSON;

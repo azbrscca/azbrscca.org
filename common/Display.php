@@ -225,11 +225,13 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 80</div>
+<!--Podium                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 80</div>-->
+				<div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 42</div>
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 100</div>
+<!--Podium                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 100</div>-->
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 65</div>
               </div>
 			  
               <div class="row">
@@ -239,11 +241,13 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering Online</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 100</div>
+<!--Podium                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 100</div>-->
+				<div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 62</div>
               </div>
               <div class="row">
                 <div class="col-md-8 col-xs-8">Registering On Site</div>
-                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 120</div>
+<!--Podium                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 120</div>-->
+                <div class="col-md-4 col-xs-2"><i class="fa fa-usd"></i> 85</div>
               </div>
               <br/>
               <div class="row">
@@ -273,7 +277,7 @@
                 </div>
               </div>
 
-			  <div class="row">
+<!--Podium			  <div class="row">
                 <div class="col-md-12">
                   <h4 class="text-info">Podium Club and SCCA Members</h4>
                 </div>
@@ -304,8 +308,8 @@
                     which is included in the Non SCCA entry fees shown above. If you wish to become an SCCA member, <a href="https://my.scca.com/">Join the SCCA Today!</a>
                   </div>
                 </div>
-              </div>
-<!--              <h3 class="text-info text-center">Accepted Payments</h3>
+              </div>-->
+              <h3 class="text-info text-center">Accepted Payments</h3>
               <div class="row">
                 <div class="col-md-12">
                   <p>
@@ -320,7 +324,7 @@
                     The day of the event, registration accepts cash and checks made out to 'Arizona Border Region SCCA' or 'AZBR SCCA'. We do not accept credit cards on site.
                   </p>
                 </div>
-              </div> -->
+              </div>
 
             </div>
           </div>

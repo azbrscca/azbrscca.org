@@ -315,11 +315,11 @@
                   <p>
                     Entry fees can be paid online via Paypal while registration is open.
                   </p>
-                  <p>
+                  <!--<p>
                     <a class="btn btn-block btn-md btn-primary" href="<?php echo baseHref; ?>autocross/paypal.html">
                       Pay With Paypal <i class="fa fa-angle-double-right"></i>
                     </a>
-                  </p>
+                  </p>-->
                   <p>
                     The day of the event, registration accepts cash and checks made out to 'Arizona Border Region SCCA' or 'AZBR SCCA'. We do not accept credit cards on site.
                   </p>
